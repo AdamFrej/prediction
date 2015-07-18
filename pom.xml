@@ -24,6 +24,7 @@
 
     <properties>
         <spring.version>4.1.6.RELEASE</spring.version>
+        <pebble.version>1.5.1</pebble.version>
     </properties>
 
     <dependencies>
@@ -53,6 +54,17 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mitchellbosecke</groupId>
+            <artifactId>pebble</artifactId>
+            <version>${pebble.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mitchellbosecke</groupId>
+            <artifactId>pebble-spring3</artifactId>
+            <version>${pebble.version}</version>
         </dependency>
 
     </dependencies>

@@ -18,6 +18,11 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.1.6.RELEASE" />
+          <element id="library" level="project" name="Maven: com.mitchellbosecke:pebble:1.5.1" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:16.0.1" />
+          <element id="library" level="project" name="Maven: com.coverity.security:coverity-escapers:1.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.1" />
+          <element id="library" level="project" name="Maven: com.mitchellbosecke:pebble-spring3:1.5.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
