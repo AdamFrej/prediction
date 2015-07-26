@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="prediction:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="prediction-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="prediction:war exploded" />
-    </root>
-  </artifact>
-</component>

@@ -1,4 +1,4 @@
-package pl.waw.frej.prediction.spring;
+package pl.waw.frej.prediction.web.spring;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

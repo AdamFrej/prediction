@@ -1,4 +1,4 @@
-package pl.waw.frej.prediction.spring;
+package pl.waw.frej.prediction.web.spring;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -17,7 +17,8 @@ public class AppInitializer implements WebApplicationInitializer {
         context.scan(Config.class.getPackage().getName());
 
         servletContext.addListener(new ContextLoaderListener(context));
-        ServletRegistration.Dynamic appServlet = servletContext.addServlet("appServlet", new DispatcherServlet(context));
+        ServletRegistration.Dynamic appServlet =
+            servletContext.addServlet("appServlet", new DispatcherServlet(context));
 
         appServlet.setLoadOnStartup(1);
         Set<String> mappings = appServlet.addMapping("/");
