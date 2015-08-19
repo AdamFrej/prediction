@@ -2,18 +2,22 @@ package pl.frej.waw.prediction.core.usecase;
 
 import pl.frej.waw.prediction.core.boundary.QuestionController;
 import pl.frej.waw.prediction.core.entity.Question;
+import pl.frej.waw.prediction.core.persistence.Questions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleQuestionController implements QuestionController {
+    private final Questions questions;
+
+    public SimpleQuestionController(Questions questions) {
+        this.questions = questions;
+    }
+
     @Override public Question read(String id) {
-        return new Question();
+        return questions.find(id);
     }
 
     @Override public List<Question> read() {
-        List<Question> questions = new ArrayList<>();
-        questions.add(new Question());
-        return questions;
+        return questions.find();
     }
 }

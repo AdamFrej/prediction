@@ -9,7 +9,7 @@ public interface OfferController {
     boolean add(String questionId, String answerId, OfferType type, Integer price,
         Integer quantity);
 
-    List<Offer> find(String UserId);
+    List<Offer> find(String userId);
 
-    boolean cancel(String OfferId);
+    boolean cancel(String offerId);
 }
