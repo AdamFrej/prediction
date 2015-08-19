@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/pebble-1.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/spring-expression-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/spring-web-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/spring-context-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/spring-core-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/spring-context-support-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/coverity-escapers-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/spring-aop-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/javax.servlet-api-3.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/spring-beans-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/guava-16.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/pebble-spring3-1.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/slf4j-api-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/prediction-web/target/prediction-web-1.0-SNAPSHOT/WEB-INF/lib/commons-logging-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
