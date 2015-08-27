@@ -1,10 +1,13 @@
 package pl.frej.waw.prediction.core.entity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private List<String> transactionIds;
-    private List<String> answerIds;
+    private Map<String, Integer> answerQuantities;
+    private Integer funds;
 
     public List<String> getTransactionIds() {
         return transactionIds;
@@ -14,11 +17,18 @@ public class User {
         this.transactionIds = transactionIds;
     }
 
-    public List<String> getAnswerIds() {
-        return answerIds;
+    public Map<String, Integer> getAnswerQuantities() {
+        if (answerQuantities == null) {
+            answerQuantities = new HashMap<>();
+        }
+        return answerQuantities;
     }
 
-    public void setAnswerIds(List<String> answerIds) {
-        this.answerIds = answerIds;
+    public Integer getFunds() {
+        return funds;
+    }
+
+    public void setFunds(Integer funds) {
+        this.funds = funds;
     }
 }

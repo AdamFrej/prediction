@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface Transactions {
     List<Transaction> find();
+
+    void add(Transaction transaction);
 }

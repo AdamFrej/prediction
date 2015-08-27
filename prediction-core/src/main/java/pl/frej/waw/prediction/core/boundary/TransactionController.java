@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TransactionController {
     List<Transaction> find(String userId);
+
+    void make();
 }

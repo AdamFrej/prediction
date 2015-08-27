@@ -12,4 +12,6 @@ public interface Offers {
     Offer find(String Id);
 
     List<Offer> findByUser(String userId);
+
+    List<Offer> findByAnswer(String answerId);
 }

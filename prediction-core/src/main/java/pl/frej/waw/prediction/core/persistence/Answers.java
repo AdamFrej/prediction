@@ -12,4 +12,6 @@ public interface Answers {
     Answer find(String Id);
 
     List<Answer> findByUser(String userId);
+
+    List<Answer> findAll();
 }
