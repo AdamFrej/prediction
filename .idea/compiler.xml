@@ -31,12 +31,18 @@
         <processorPath useClasspath="true" />
         <module name="prediction-core" />
       </profile>
+      <profile default="false" name="Annotation profile for prediction-persistence" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="prediction-persistence" />
+      </profile>
       <profile default="false" name="Annotation profile for prediction-persistance" enabled="true">
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="prediction-persistance" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

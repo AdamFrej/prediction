@@ -17,4 +17,7 @@ public interface Answer {
     LocalDateTime getCompletionTime();
 
     void setCompletionTime(LocalDateTime completionTime);
+
+    User getUser();
+    void setUser(User user);
 }

@@ -1,34 +1,17 @@
 package pl.frej.waw.prediction.core.entity;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class User {
-    private List<String> transactionIds;
-    private Map<Long, Integer> answerQuantities;
-    private Integer funds;
+ public interface User {
 
-    public List<String> getTransactionIds() {
-        return transactionIds;
-    }
+     List<Transaction> getTransactions();
 
-    public void setTransactionIds(List<String> transactionIds) {
-        this.transactionIds = transactionIds;
-    }
+     void setTransactions(List<Transaction> transactions);
 
-    public Map<Long, Integer> getAnswerQuantities() {
-        if (answerQuantities == null) {
-            answerQuantities = new HashMap<>();
-        }
-        return answerQuantities;
-    }
+     Map<Long, Integer> getAnswerQuantities();
 
-    public Integer getFunds() {
-        return funds;
-    }
+     Integer getFunds();
 
-    public void setFunds(Integer funds) {
-        this.funds = funds;
-    }
+     void setFunds(Integer funds);
 }

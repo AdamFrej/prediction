@@ -1,9 +1,10 @@
-package database;
+package pl.waw.frej.prediction.persistence.collection;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import database.entity.OfferEntity;
-import database.repository.OfferRepository;
+import org.springframework.stereotype.Service;
+import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
+import pl.waw.frej.prediction.persistence.database.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.frej.waw.prediction.core.entity.Offer;
 import pl.frej.waw.prediction.core.persistence.Offers;
@@ -11,7 +12,7 @@ import pl.frej.waw.prediction.core.persistence.Offers;
 import java.util.List;
 import java.util.Optional;
 
-
+@Service
 public class PersistentOffers implements Offers {
 
     @Autowired
@@ -45,6 +46,7 @@ public class PersistentOffers implements Offers {
 
     @Override
     public List<Offer> findByAnswer(Long answerId) {
-        return Lists.newArrayList(Iterables.transform(offerRepository.findByAnswerId(answerId),offerEntity -> (Offer)offerEntity));
+        return null;
+//        return Lists.newArrayList(Iterables.transform(offerRepository.findByAnswerId(answerId),offerEntity -> (Offer)offerEntity));
     }
 }

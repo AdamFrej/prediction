@@ -7,5 +7,5 @@ import java.util.List;
 public interface Questions {
     List<Question> find();
 
-    Question find(String id);
+    Question find(Long id);
 }

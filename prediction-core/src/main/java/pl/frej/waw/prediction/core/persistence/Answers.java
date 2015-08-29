@@ -1,6 +1,7 @@
 package pl.frej.waw.prediction.core.persistence;
 
 import pl.frej.waw.prediction.core.entity.Answer;
+import pl.frej.waw.prediction.core.entity.User;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface Answers {
 
     Answer find(Long id);
 
-    List<Answer> findByUser(String userId);
+    List<Answer> findByUser(User user);
 
     List<Answer> findAll();
 }

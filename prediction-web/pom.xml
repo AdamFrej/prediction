@@ -40,6 +40,11 @@
             <artifactId>prediction-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>pl.waw.frej</groupId>
+            <artifactId>prediction-persistence</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>

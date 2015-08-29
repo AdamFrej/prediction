@@ -1,4 +1,4 @@
-package database.entity;
+package pl.waw.frej.prediction.persistence.database.entity;
 
 
 import pl.frej.waw.prediction.core.entity.Offer;
@@ -13,13 +13,14 @@ public class OfferEntity implements Offer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    
+    @Enumerated(EnumType.STRING)
     private OfferType offerType;
-    @Column
+    
     private Integer price;
-    @Column
+    
     private Integer quantity;
-    @Column
+    
     private Long answerId;
 
     public Long getId() {

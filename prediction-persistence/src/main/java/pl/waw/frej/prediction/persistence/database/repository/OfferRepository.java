@@ -1,7 +1,7 @@
-package database.repository;
+package pl.waw.frej.prediction.persistence.database.repository;
 
 
-import database.entity.OfferEntity;
+import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public interface OfferRepository extends Repository<OfferEntity,Long>{
     void delete(OfferEntity deleted);
 
     List<OfferEntity> findAll();
-    List<OfferEntity> findByAnswerId(Long answerId);
+//    List<OfferEntity> findByAnswerId(Long answerId);
 
     Optional<OfferEntity> findOne(Long id);
 

@@ -18,7 +18,7 @@ public class SimpleOfferController implements OfferController {
         this.users = users;
     }
 
-    @Override public boolean add(String questionId, Offer offer, String userId) {
+    @Override public boolean add(Long questionId, Offer offer, Long userId) {
         if (isValid(offer, userId)) {
             offers.add(offer);
             return true;
@@ -40,7 +40,7 @@ public class SimpleOfferController implements OfferController {
         return true;
     }
 
-    private boolean isValid(Offer offer, String userId) {
+    private boolean isValid(Offer offer, Long userId) {
         User user = users.find(userId);
 
         switch (offer.getOfferType()) {

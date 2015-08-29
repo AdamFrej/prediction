@@ -1,23 +1,23 @@
-package database.entity;
+package pl.waw.frej.prediction.persistence.database.entity;
 
 import pl.frej.waw.prediction.core.entity.Answer;
+import pl.frej.waw.prediction.core.entity.Offer;
+import pl.frej.waw.prediction.core.entity.Question;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
-public class AnswerEntity implements Answer {
-
+public class QuestionEntity implements Question {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column
     private String name;
-    @Column
     private String description;
-    @Column
-    private LocalDateTime completionTime;
+
+    //@OneToMany
+    //private List<Answer> answers;
 
     @Override
     public Long getId() {
@@ -43,13 +43,14 @@ public class AnswerEntity implements Answer {
     public void setDescription(String description) {
         this.description = description;
     }
+
     @Override
-    public LocalDateTime getCompletionTime() {
-        return completionTime;
+    public List<Answer> getAnswers() {
+        return null;
     }
 
     @Override
-    public void setCompletionTime(LocalDateTime completionTime) {
-        this.completionTime = completionTime;
+    public void setAnswers(List<Answer> answers) {
+
     }
 }

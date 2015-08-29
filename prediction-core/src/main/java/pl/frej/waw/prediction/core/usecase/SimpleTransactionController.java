@@ -4,10 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Ordering;
 import pl.frej.waw.prediction.core.boundary.TransactionController;
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Offer;
-import pl.frej.waw.prediction.core.entity.OfferType;
-import pl.frej.waw.prediction.core.entity.Transaction;
+import pl.frej.waw.prediction.core.entity.*;
 import pl.frej.waw.prediction.core.persistence.Answers;
 import pl.frej.waw.prediction.core.persistence.Offers;
 import pl.frej.waw.prediction.core.persistence.Transactions;
@@ -22,6 +19,8 @@ public class SimpleTransactionController implements TransactionController {
     private final Transactions transactions;
     private final Offers offers;
     private final Answers answers;
+
+    private EntityFactory entityFactory;
 
     public SimpleTransactionController(Transactions transactions, Offers offers, Answers answers) {
         this.transactions = transactions;
@@ -39,7 +38,7 @@ public class SimpleTransactionController implements TransactionController {
             List<Offer> buyOffers = Ordering.from(BY_PRICE).reverse().sortedCopy(Iterables.filter(o, BUY));
             List<Offer> sellOffers = Ordering.from(BY_PRICE).sortedCopy(Iterables.filter(o, SELL));
             if (transactionIsAvailable(buyOffers, sellOffers)) {
-                Transaction transaction = new Transaction();
+                Transaction transaction = entityFactory.createTransaction();
                 transactions.add(transaction);
 
             }

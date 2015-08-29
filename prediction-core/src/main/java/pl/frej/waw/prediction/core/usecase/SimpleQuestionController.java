@@ -13,7 +13,7 @@ public class SimpleQuestionController implements QuestionController {
         this.questions = questions;
     }
 
-    @Override public Question read(String id) {
+    @Override public Question read(Long id) {
         return questions.find(id);
     }
 

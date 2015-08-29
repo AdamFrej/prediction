@@ -10,6 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <groupId>pl.waw.frej</groupId>
     <artifactId>prediction-persistence</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>

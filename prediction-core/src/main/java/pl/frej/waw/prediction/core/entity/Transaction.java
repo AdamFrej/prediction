@@ -1,4 +1,7 @@
 package pl.frej.waw.prediction.core.entity;
 
-public class Transaction {
+public interface Transaction {
+    Long getId();
+    User getUser();
+    void setUser(User user);
 }
