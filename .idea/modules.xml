@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/prediction.iml" filepath="$PROJECT_DIR$/prediction.iml" />
       <module fileurl="file://$PROJECT_DIR$/prediction-core/prediction-core.iml" filepath="$PROJECT_DIR$/prediction-core/prediction-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/prediction-persistence/prediction-persistence.iml" filepath="$PROJECT_DIR$/prediction-persistence/prediction-persistence.iml" />
       <module fileurl="file://$PROJECT_DIR$/prediction-web/prediction-web.iml" filepath="$PROJECT_DIR$/prediction-web/prediction-web.iml" />
     </modules>
   </component>

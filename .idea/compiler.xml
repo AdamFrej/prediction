@@ -18,23 +18,32 @@
         <processorPath useClasspath="true" />
       </profile>
       <profile default="false" name="Annotation profile for prediction-web" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="prediction-web" />
       </profile>
       <profile default="false" name="Annotation profile for prediction-core" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="prediction-core" />
+      </profile>
+      <profile default="false" name="Annotation profile for prediction-persistance" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="prediction-persistance" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="prediction" target="1.5" />
       <module name="prediction-core" target="1.8" />
+      <module name="prediction-persistance" target="1.8" />
+      <module name="prediction-persistence" target="1.8" />
       <module name="prediction-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>

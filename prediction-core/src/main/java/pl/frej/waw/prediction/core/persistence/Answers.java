@@ -9,7 +9,7 @@ public interface Answers {
 
     boolean remove(Answer answer);
 
-    Answer find(String Id);
+    Answer find(Long id);
 
     List<Answer> findByUser(String userId);
 

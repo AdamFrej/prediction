@@ -12,16 +12,18 @@
 
     <artifactId>prediction-core</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <packaging>jar</packaging>
-
     <name>prediction-core</name>
+
+    <properties>
+        <guava.version>18.0</guava.version>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 

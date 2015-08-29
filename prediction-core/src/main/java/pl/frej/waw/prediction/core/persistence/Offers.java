@@ -7,11 +7,11 @@ import java.util.List;
 public interface Offers {
     boolean add(Offer offer);
 
-    boolean remove(String id);
+    boolean remove(Long id);
 
-    Offer find(String Id);
+    Offer find(Long Id);
 
-    List<Offer> findByUser(String userId);
+    List<Offer> findByUser(Long userId);
 
-    List<Offer> findByAnswer(String answerId);
+    List<Offer> findByAnswer(Long answerId);
 }

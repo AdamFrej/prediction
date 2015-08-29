@@ -11,6 +11,7 @@
     <modules>
         <module>prediction-core</module>
         <module>prediction-web</module>
+        <module>prediction-persistance</module>
     </modules>
     <packaging>pom</packaging>
 

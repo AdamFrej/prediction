@@ -27,15 +27,15 @@ public class SimpleOfferController implements OfferController {
         }
     }
 
-    @Override public List<Offer> find(String userId) {
+    @Override public List<Offer> find(Long userId) {
         return offers.findByUser(userId);
     }
 
-    @Override public List<Offer> findByAnswer(String answerId) {
+    @Override public List<Offer> findByAnswer(Long answerId) {
         return offers.findByAnswer(answerId);
     }
 
-    @Override public boolean cancel(String OfferId) {
+    @Override public boolean cancel(Long OfferId) {
         offers.remove(OfferId);
         return true;
     }

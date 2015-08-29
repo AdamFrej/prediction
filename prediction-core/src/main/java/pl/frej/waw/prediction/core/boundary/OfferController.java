@@ -7,9 +7,9 @@ import java.util.List;
 public interface OfferController {
     boolean add(String questionId, Offer offer, String UserId);
 
-    List<Offer> find(String userId);
+    List<Offer> find(Long userId);
 
-    List<Offer> findByAnswer(String answerId);
+    List<Offer> findByAnswer(Long answerId);
 
-    boolean cancel(String offerId);
+    boolean cancel(Long offerId);
 }

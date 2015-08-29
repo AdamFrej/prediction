@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class User {
     private List<String> transactionIds;
-    private Map<String, Integer> answerQuantities;
+    private Map<Long, Integer> answerQuantities;
     private Integer funds;
 
     public List<String> getTransactionIds() {
@@ -17,7 +17,7 @@ public class User {
         this.transactionIds = transactionIds;
     }
 
-    public Map<String, Integer> getAnswerQuantities() {
+    public Map<Long, Integer> getAnswerQuantities() {
         if (answerQuantities == null) {
             answerQuantities = new HashMap<>();
         }

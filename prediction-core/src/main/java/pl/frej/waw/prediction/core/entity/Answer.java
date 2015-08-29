@@ -2,41 +2,19 @@ package pl.frej.waw.prediction.core.entity;
 
 import java.time.LocalDateTime;
 
-public class Answer {
-    private String id;
-    private String name;
-    private String description;
-    private LocalDateTime completionTime;
+public interface Answer {
 
-    public String getId() {
-        return id;
-    }
+    Long getId();
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    String getName();
 
-    public String getName() {
-        return name;
-    }
+    void setName(String name);
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    String getDescription();
 
-    public String getDescription() {
-        return description;
-    }
+    void setDescription(String description);
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    LocalDateTime getCompletionTime();
 
-    public LocalDateTime getCompletionTime() {
-        return completionTime;
-    }
-
-    public void setCompletionTime(LocalDateTime completionTime) {
-        this.completionTime = completionTime;
-    }
+    void setCompletionTime(LocalDateTime completionTime);
 }

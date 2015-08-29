@@ -1,47 +1,20 @@
 package pl.frej.waw.prediction.core.entity;
 
-public class Offer {
-    private OfferType offerType;
-    private Integer price;
-    private Integer quantity;
-    private String answerId;
+ public interface Offer {
 
-    public Offer(OfferType offerType, Integer price, Integer quantity, String answerId) {
-        this.offerType = offerType;
-        this.price = price;
-        this.quantity = quantity;
-        this.answerId = answerId;
-    }
+     OfferType getOfferType();
 
-    public OfferType getOfferType() {
-        return offerType;
-    }
+     void setOfferType(OfferType offerType);
 
-    public void setOfferType(OfferType offerType) {
-        this.offerType = offerType;
-    }
+     Integer getPrice();
 
-    public Integer getPrice() {
-        return price;
-    }
+     void setPrice(Integer price);
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
+     Integer getQuantity();
 
-    public Integer getQuantity() {
-        return quantity;
-    }
+     void setQuantity(Integer quantity);
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+     Long getAnswerId();
 
-    public String getAnswerId() {
-        return answerId;
-    }
-
-    public void setAnswerId(String answerId) {
-        this.answerId = answerId;
-    }
-}
+     void setAnswerId(Long answerId);
+ }
