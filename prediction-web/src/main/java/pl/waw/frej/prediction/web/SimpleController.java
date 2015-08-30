@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.User;
 import pl.frej.waw.prediction.core.persistence.Answers;
+import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
+import pl.waw.frej.prediction.persistence.database.repository.UserRepository;
 
 import java.util.List;
 
@@ -17,6 +19,8 @@ public class SimpleController {
 
     @Autowired
     private Answers answers;
+
+    @Autowired private UserRepository userRepository;
 
     @RequestMapping(value = "/makler", method = RequestMethod.GET)
     public ModelAndView test(){
@@ -31,5 +35,13 @@ public class SimpleController {
     @ResponseBody
     public List<Answer> getAnswers(User user){
         return answers.findByUser(user);
+    }
+
+    @RequestMapping(value = "/add/user", method = RequestMethod.GET) @ResponseBody public UserEntity addUser() {
+        return userRepository.save(new UserEntity());
+    }
+
+    @RequestMapping(value = "/get/user", method = RequestMethod.GET) @ResponseBody public List<UserEntity> getUser() {
+        return userRepository.findAll();
     }
 }

@@ -14,9 +14,7 @@ public class TransactionEntity implements Transaction {
     @Id
     private Long id;
 
-    //@ManyToOne
-//    @JoinColumn(name = "id")
-    //private UserEntity user;
+    @ManyToOne @JoinColumn(name = "USER_ID") private UserEntity user;
 
     @Override
     public Long getId() {

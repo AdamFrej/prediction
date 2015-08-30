@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="H2 -prediction" uuid="4f4d7a26-934f-43ec-89b5-37f5a4a1dedb">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+    <schema name="PUBLIC" catalog="PREDICTION-DB"/>
+  </data-source>
+</component>
