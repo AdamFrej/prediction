@@ -8,4 +8,5 @@ public interface QuestionController {
     Question read(Long id);
 
     List<Question> read();
+    void add(Question question);
 }

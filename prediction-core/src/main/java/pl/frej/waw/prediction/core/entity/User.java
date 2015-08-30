@@ -14,4 +14,6 @@ import java.util.Map;
      Integer getFunds();
 
      void setFunds(Integer funds);
-}
+
+     Long getId();
+ }

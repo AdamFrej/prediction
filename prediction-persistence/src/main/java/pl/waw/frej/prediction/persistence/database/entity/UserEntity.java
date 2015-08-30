@@ -10,12 +10,22 @@ import java.util.Map;
 @Entity
 public class UserEntity implements User {
 
-    @Id @GeneratedValue @Column(name = "USER_ID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USER_ID")
     private Long id;
 
-    @OneToMany(mappedBy = "user") private List<TransactionEntity> transactions;
+    @OneToMany(mappedBy = "user")
+    private List<TransactionEntity> transactions;
+
+
 //    private Map<Long, Integer> answerQuantities;
     private Integer funds;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
 
     @Override
     public List<Transaction> getTransactions() {

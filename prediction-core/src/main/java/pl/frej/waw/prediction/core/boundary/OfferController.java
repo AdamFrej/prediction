@@ -5,7 +5,7 @@ import pl.frej.waw.prediction.core.entity.Offer;
 import java.util.List;
 
 public interface OfferController {
-    boolean add(Long questionId, Offer offer, Long UserId);
+    boolean add(Offer offer, Long UserId);
 
     List<Offer> find(Long userId);
 

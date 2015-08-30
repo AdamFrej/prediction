@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.frej.waw.prediction.core.entity.Question;
 import pl.frej.waw.prediction.core.persistence.Questions;
+import pl.waw.frej.prediction.persistence.database.entity.QuestionEntity;
 import pl.waw.frej.prediction.persistence.database.repository.QuestionRepository;
 
 import java.util.List;
@@ -23,6 +24,15 @@ public class PersistentQuestions implements Questions {
 
     @Override
     public Question find(Long id) {
-        return (Question)questionRepository.findOne(id).orElse(null);
+        return questionRepository.findOne(id).orElse(null);
+    }
+
+    @Override
+    public void add(Question question) {
+        QuestionEntity qE = new QuestionEntity();
+        qE.setName(question.getName());
+        qE.setDescription(question.getDescription());
+        qE.setAnswers(question.getAnswers());
+        questionRepository.save(qE);
     }
 }

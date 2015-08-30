@@ -8,4 +8,6 @@ public interface Questions {
     List<Question> find();
 
     Question find(Long id);
+
+    void add(Question question);
 }

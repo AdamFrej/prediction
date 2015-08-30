@@ -1,22 +1,16 @@
-package pl.waw.frej.prediction.persistence.database.entity;
+package pl.waw.frej.prediction.web.model;
 
 import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.Question;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-@Entity
-public class QuestionEntity implements Question {
-    @Id
-    @GeneratedValue
-    @Column(name = "QUESTION_ID")
+public class QuestionForm implements Serializable, Question {
     private Long id;
     private String name;
     private String description;
-
-    @OneToMany(mappedBy = "question")
-    private List<AnswerEntity> answers;
+    private List<Answer> answers;
 
     @Override
     public Long getId() {
@@ -45,11 +39,11 @@ public class QuestionEntity implements Question {
 
     @Override
     public List<Answer> getAnswers() {
-        return null;
+        return answers;
     }
 
     @Override
     public void setAnswers(List<Answer> answers) {
-
+        this.answers = answers;
     }
 }

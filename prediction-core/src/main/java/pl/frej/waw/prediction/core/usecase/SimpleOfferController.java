@@ -1,6 +1,7 @@
 package pl.frej.waw.prediction.core.usecase;
 
 import pl.frej.waw.prediction.core.boundary.OfferController;
+import pl.frej.waw.prediction.core.boundary.TransactionController;
 import pl.frej.waw.prediction.core.entity.Offer;
 import pl.frej.waw.prediction.core.entity.User;
 import pl.frej.waw.prediction.core.persistence.Offers;
@@ -12,15 +13,18 @@ public class SimpleOfferController implements OfferController {
 
     private final Offers offers;
     private final Users users;
+    private final TransactionController transactionController;
 
-    public SimpleOfferController(Offers offers, Users users) {
+    public SimpleOfferController(Offers offers, Users users, TransactionController transactionController) {
         this.offers = offers;
         this.users = users;
+        this.transactionController = transactionController;
     }
 
-    @Override public boolean add(Long questionId, Offer offer, Long userId) {
+    @Override public boolean add(Offer offer, Long userId) {
         if (isValid(offer, userId)) {
             offers.add(offer);
+            transactionController.make();
             return true;
         } else {
             return false;

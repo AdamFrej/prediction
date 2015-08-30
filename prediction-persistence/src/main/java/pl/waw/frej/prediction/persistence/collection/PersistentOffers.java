@@ -2,12 +2,12 @@ package pl.waw.frej.prediction.persistence.collection;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import org.springframework.stereotype.Service;
-import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
-import pl.waw.frej.prediction.persistence.database.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pl.frej.waw.prediction.core.entity.Offer;
 import pl.frej.waw.prediction.core.persistence.Offers;
+import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
+import pl.waw.frej.prediction.persistence.database.repository.OfferRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,12 @@ public class PersistentOffers implements Offers {
 
     @Override
     public boolean add(Offer offer) {
-        offerRepository.save((OfferEntity) offer);
+        OfferEntity oE = new OfferEntity();
+        oE.setAnswerId(offer.getAnswerId());
+        oE.setOfferType(offer.getOfferType());
+        oE.setPrice(offer.getPrice());
+        oE.setQuantity(offer.getQuantity());
+        offerRepository.save(oE);
         return true;
     }
 

@@ -1,8 +1,8 @@
 package pl.waw.frej.prediction.persistence.database.repository;
 
 
-import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
 import org.springframework.data.repository.Repository;
+import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
 
 import java.util.List;
 import java.util.Optional;

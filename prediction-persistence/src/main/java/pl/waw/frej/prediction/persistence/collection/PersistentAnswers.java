@@ -2,13 +2,13 @@ package pl.waw.frej.prediction.persistence.collection;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.persistence.Answers;
 import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.repository.AnswerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.persistence.Answers;
 
 import java.util.List;
 

@@ -1,31 +1,18 @@
-package pl.waw.frej.prediction.persistence.database.entity;
+package pl.waw.frej.prediction.web.model;
+
 
 import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Question;
 import pl.frej.waw.prediction.core.entity.User;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Entity
-public class AnswerEntity implements Answer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class AnswerForm implements Serializable, Answer{
     private Long id;
-
-    
     private String name;
     private String description;
     private LocalDateTime completionTime;
-
-//    @ManyToOne
-//    @JoinColumn(name = "USER_ID")
-//    private UserEntity user;
-
-    @ManyToOne
-    @JoinColumn(name = "QUESTION_ID")
-    private QuestionEntity question;
+    private User user;
 
     @Override
     public Long getId() {
@@ -51,6 +38,7 @@ public class AnswerEntity implements Answer {
     public void setDescription(String description) {
         this.description = description;
     }
+
     @Override
     public LocalDateTime getCompletionTime() {
         return completionTime;
@@ -63,19 +51,11 @@ public class AnswerEntity implements Answer {
 
     @Override
     public User getUser() {
-        return null;
+        return user;
     }
 
     @Override
     public void setUser(User user) {
-//        this.user = (UserEntity)user;
-    }
-
-    public Question getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(QuestionEntity question) {
-        this.question = question;
+        this.user = user;
     }
 }

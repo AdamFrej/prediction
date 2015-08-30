@@ -1,26 +1,16 @@
-package pl.waw.frej.prediction.persistence.database.entity;
-
+package pl.waw.frej.prediction.web.model;
 
 import pl.frej.waw.prediction.core.entity.Offer;
 import pl.frej.waw.prediction.core.entity.OfferType;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
-@Entity
-public class OfferEntity implements Offer {
+public class OfferForm implements Serializable,Offer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    
-    @Enumerated(EnumType.STRING)
     private OfferType offerType;
-    
     private Integer price;
-    
     private Integer quantity;
-
     private Long answerId;
 
     public Long getId() {

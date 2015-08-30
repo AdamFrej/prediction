@@ -14,7 +14,7 @@ public class AppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
 
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.scan(Config.class.getPackage().getName());
+        context.scan(AppConfig.class.getPackage().getName());
 
         servletContext.addListener(new ContextLoaderListener(context));
         ServletRegistration.Dynamic appServlet =

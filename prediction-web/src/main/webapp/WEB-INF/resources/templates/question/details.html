@@ -1,0 +1,13 @@
+Szczegóły pytania:
+<ul>
+    <li>id: {{question.id}}</li>
+    <li>nazwa: {{question.name}}</li>
+    <li>opis: {{question.description}}</li>
+    <li>odpowiedzi:
+        <ul>
+            {% for answer in question.answers %}
+            <li>{{answer}}</li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>

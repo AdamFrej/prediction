@@ -1,8 +1,7 @@
 package pl.waw.frej.prediction.persistence.database.repository;
 
-import pl.frej.waw.prediction.core.entity.User;
-import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import org.springframework.data.repository.Repository;
+import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 
 import java.util.List;
 import java.util.Optional;

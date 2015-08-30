@@ -20,4 +20,9 @@ public class SimpleQuestionController implements QuestionController {
     @Override public List<Question> read() {
         return questions.find();
     }
+
+    @Override
+    public void add(Question question) {
+        questions.add(question);
+    }
 }

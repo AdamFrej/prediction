@@ -1,0 +1,21 @@
+Pytania
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>nazwa</th>
+        <th>opis</th>
+        <th>odpowiedzi</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for question in questions %}
+    <tr>
+        <td>{{question.id}}</td>
+        <td><a href="question/{{question.id}}">{{question.name}}</a></td>
+        <td>{{question.description}}</td>
+        <td>{% for answer in question.answers %}{{answer}} {% endfor %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
