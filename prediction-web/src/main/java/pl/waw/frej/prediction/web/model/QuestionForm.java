@@ -4,6 +4,7 @@ import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.Question;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class QuestionForm implements Serializable, Question {
@@ -11,6 +12,10 @@ public class QuestionForm implements Serializable, Question {
     private String name;
     private String description;
     private List<Answer> answers;
+
+    private AnswerForm answerOne;
+    private AnswerForm answerTwo;
+    private Date completionTime;
 
     @Override
     public Long getId() {
@@ -45,5 +50,31 @@ public class QuestionForm implements Serializable, Question {
     @Override
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public AnswerForm getAnswerOne() {
+        return answerOne;
+    }
+
+    public void setAnswerOne(AnswerForm answerOne) {
+        this.answerOne = answerOne;
+    }
+
+    public AnswerForm getAnswerTwo() {
+        return answerTwo;
+    }
+
+    public void setAnswerTwo(AnswerForm answerTwo) {
+        this.answerTwo = answerTwo;
+    }
+
+    @Override
+    public Date getCompletionTime() {
+        return completionTime;
+    }
+
+    @Override
+    public void setCompletionTime(Date completionTime) {
+        this.completionTime = completionTime;
     }
 }

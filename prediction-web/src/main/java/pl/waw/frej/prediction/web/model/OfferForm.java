@@ -9,8 +9,8 @@ public class OfferForm implements Serializable,Offer {
 
     private Long id;
     private OfferType offerType;
-    private Integer price;
-    private Integer quantity;
+    private Long price;
+    private Long quantity;
     private Long answerId;
 
     public Long getId() {
@@ -28,22 +28,22 @@ public class OfferForm implements Serializable,Offer {
     }
 
     @Override
-    public Integer getPrice() {
+    public Long getPrice() {
         return price;
     }
 
     @Override
-    public void setPrice(Integer price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
     @Override
-    public Integer getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
     @Override
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 

@@ -15,7 +15,7 @@ import java.util.List;
 public class SimpleTransactionController implements TransactionController {
     private static final Comparator<Offer> BY_PRICE = (o1, o2) -> o1.getPrice().compareTo(o2.getPrice());
     private static final Predicate<Offer> BUY = offer -> OfferType.BUY.equals(offer.getOfferType());
-    private static final Predicate<Offer> SELL = offer -> OfferType.SELl.equals(offer.getOfferType());
+    private static final Predicate<Offer> SELL = offer -> OfferType.SELL.equals(offer.getOfferType());
     private final Transactions transactions;
     private final Offers offers;
     private final Answers answers;

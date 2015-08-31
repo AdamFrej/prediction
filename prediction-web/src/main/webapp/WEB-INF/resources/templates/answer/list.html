@@ -1,0 +1,23 @@
+Notowania
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nazwa</th>
+        <th>Cena kupna</th>
+        <th>Cena sprzedazy</th>
+        <th>Sredni kurs</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for answer in answers %}
+    <tr>
+        <td><a href="offer/{{offer.id}}">{{answer.id}}</a></td>
+        <td>{{answer.name}}</td>
+        <td>answer.buyPrice</td>
+        <td>answer.sellPrice</td>
+        <td>answer.AveragePrice</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

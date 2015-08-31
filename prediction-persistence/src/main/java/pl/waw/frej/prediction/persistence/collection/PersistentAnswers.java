@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.frej.waw.prediction.core.entity.Answer;
+import pl.frej.waw.prediction.core.entity.Question;
 import pl.frej.waw.prediction.core.entity.User;
 import pl.frej.waw.prediction.core.persistence.Answers;
 import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
@@ -18,11 +19,17 @@ public class PersistentAnswers implements Answers {
     @Autowired
     private AnswerRepository answerRepository;
 
+    @Autowired
+    private Transformer transformer;
+
     @Override
     public boolean add(Answer answer) {
-        answerRepository.save((AnswerEntity) answer);
+        AnswerEntity answerEntity = transformer.getAnswerEntity(answer);
+        answerRepository.save(answerEntity);
         return true;
     }
+
+
 
     @Override
     public boolean remove(Answer answer) {

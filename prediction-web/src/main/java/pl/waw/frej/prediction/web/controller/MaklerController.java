@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import pl.frej.waw.prediction.core.boundary.AnswerController;
 import pl.frej.waw.prediction.core.boundary.OfferController;
 import pl.frej.waw.prediction.core.boundary.QuestionController;
 import pl.frej.waw.prediction.core.entity.User;
@@ -26,6 +27,9 @@ public class MaklerController {
     private OfferController offerController;
 
     @Autowired
+    private AnswerController answerController;
+
+    @Autowired
     private UserRepository userRepository;
     @Autowired
     private OfferRepository offerRepository;
@@ -36,7 +40,7 @@ public class MaklerController {
         UserEntity user = getUserFromSession(session);
         if (user == null) {
             user = new UserEntity();
-            user.setFunds(15);
+            user.setFunds(15L);
             userRepository.save(user);
             session.setAttribute("user", user);
         }
@@ -46,6 +50,15 @@ public class MaklerController {
         modelAndView.addObject("questions", questionController.read());
         modelAndView.addObject("offers", offerController.find(user.getId()));
         modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/market", method = RequestMethod.GET)
+    public ModelAndView market(HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("pages/market");
+        modelAndView.addObject("websiteTitle", "Notowania");
+        modelAndView.addObject("answers", answerController.getPrices());
         return modelAndView;
     }
 

@@ -19,6 +19,10 @@
     <description>Projekt prediction - portal rynków przewidywań</description>
     <url>frej.waw.pl/prediction</url>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <build>
         <pluginManagement>
             <plugins>

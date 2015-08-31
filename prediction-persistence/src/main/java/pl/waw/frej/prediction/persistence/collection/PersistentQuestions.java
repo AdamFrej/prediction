@@ -15,11 +15,14 @@ import java.util.List;
 public class PersistentQuestions implements Questions {
 
     @Autowired
+    private Transformer transformer;
+
+    @Autowired
     private QuestionRepository questionRepository;
 
     @Override
     public List<Question> find() {
-        return Lists.newArrayList(Iterables.transform(questionRepository.findAll(), questionEntity -> (Question)questionEntity));
+        return Lists.newArrayList(Iterables.transform(questionRepository.findAll(), questionEntity -> (Question) questionEntity));
     }
 
     @Override
@@ -28,11 +31,9 @@ public class PersistentQuestions implements Questions {
     }
 
     @Override
-    public void add(Question question) {
-        QuestionEntity qE = new QuestionEntity();
-        qE.setName(question.getName());
-        qE.setDescription(question.getDescription());
-        qE.setAnswers(question.getAnswers());
-        questionRepository.save(qE);
+    public QuestionEntity add(Question question) {
+        return questionRepository.save(transformer.getQuestionEntity(question));
     }
+
+
 }

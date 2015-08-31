@@ -2,17 +2,19 @@ package pl.waw.frej.prediction.web.model;
 
 
 import pl.frej.waw.prediction.core.entity.Answer;
+import pl.frej.waw.prediction.core.entity.Question;
 import pl.frej.waw.prediction.core.entity.User;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class AnswerForm implements Serializable, Answer{
     private Long id;
     private String name;
     private String description;
-    private LocalDateTime completionTime;
+    private Date completionTime;
     private User user;
+    private Question question;
 
     @Override
     public Long getId() {
@@ -40,13 +42,23 @@ public class AnswerForm implements Serializable, Answer{
     }
 
     @Override
-    public LocalDateTime getCompletionTime() {
+    public Date getCompletionTime() {
         return completionTime;
     }
 
     @Override
-    public void setCompletionTime(LocalDateTime completionTime) {
+    public void setCompletionTime(Date completionTime) {
         this.completionTime = completionTime;
+    }
+
+    @Override
+    public Question getQuestion() {
+        return question;
+    }
+
+    @Override
+    public void setQuestion(Question question) {
+        this.question=question;
     }
 
     @Override

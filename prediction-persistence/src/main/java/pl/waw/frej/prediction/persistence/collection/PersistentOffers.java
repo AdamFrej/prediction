@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.frej.waw.prediction.core.entity.Offer;
+import pl.frej.waw.prediction.core.entity.OfferType;
 import pl.frej.waw.prediction.core.persistence.Offers;
 import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
 import pl.waw.frej.prediction.persistence.database.repository.OfferRepository;
@@ -32,7 +33,7 @@ public class PersistentOffers implements Offers {
     @Override
     public boolean remove(Long id) {
         Optional<OfferEntity> one = offerRepository.findOne(id);
-        if(one.isPresent()) {
+        if (one.isPresent()) {
             offerRepository.delete(one.get());
             return true;
         }
@@ -46,12 +47,22 @@ public class PersistentOffers implements Offers {
 
     @Override
     public List<Offer> findByUser(Long userId) {
-        return Lists.newArrayList(Iterables.transform(offerRepository.findAll(),offerEntity -> (Offer)offerEntity));
+        return transformOffers(offerRepository.findAll());
     }
 
     @Override
     public List<Offer> findByAnswer(Long answerId) {
-        return null;
-//        return Lists.newArrayList(Iterables.transform(offerRepository.findByAnswerId(answerId),offerEntity -> (Offer)offerEntity));
+        return transformOffers(offerRepository.findByAnswerId(answerId));
+    }
+
+    @Override
+    public List<Offer> findByAnswerAndType(Long answerId, OfferType offerType) {
+        return OfferType.BUY.equals(offerType)
+                ? transformOffers(offerRepository.findByAnswerIdAndOfferTypeOrderByPriceDesc(answerId, offerType))
+                : transformOffers(offerRepository.findByAnswerIdAndOfferTypeOrderByPriceAsc(answerId, offerType));
+    }
+
+    private List<Offer> transformOffers(List<OfferEntity> offerEntities) {
+        return Lists.newArrayList(Iterables.transform(offerEntities, offerEntity -> (Offer) offerEntity));
     }
 }

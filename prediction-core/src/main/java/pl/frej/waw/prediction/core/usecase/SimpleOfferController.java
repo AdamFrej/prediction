@@ -50,7 +50,7 @@ public class SimpleOfferController implements OfferController {
         switch (offer.getOfferType()) {
             case BUY:
                 return hasFundsForAtLeastOneAnswer(offer, user);
-            case SELl:
+            case SELL:
                 return hasAnswerInSpecifiedQuantity(offer, user);
             default:
                 return false;

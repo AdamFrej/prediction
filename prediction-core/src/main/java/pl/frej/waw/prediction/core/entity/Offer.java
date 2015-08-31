@@ -6,13 +6,13 @@ package pl.frej.waw.prediction.core.entity;
 
      void setOfferType(OfferType offerType);
 
-     Integer getPrice();
+     Long getPrice();
 
-     void setPrice(Integer price);
+     void setPrice(Long price);
 
-     Integer getQuantity();
+     Long getQuantity();
 
-     void setQuantity(Integer quantity);
+     void setQuantity(Long quantity);
 
      Long getAnswerId();
 

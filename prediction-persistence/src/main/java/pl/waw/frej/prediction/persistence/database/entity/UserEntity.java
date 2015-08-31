@@ -19,8 +19,8 @@ public class UserEntity implements User {
     private List<TransactionEntity> transactions;
 
 
-//    private Map<Long, Integer> answerQuantities;
-    private Integer funds;
+//    private Map<Long, Long> answerQuantities;
+    private Long funds;
 
     @Override
     public Long getId() {
@@ -38,21 +38,21 @@ public class UserEntity implements User {
     }
 
     @Override
-    public Map<Long, Integer> getAnswerQuantities() {
+    public Map<Long, Long> getAnswerQuantities() {
         return null;
     }
 
-    public void setAnswerQuantities(Map<Long, Integer> answerQuantities) {
+    public void setAnswerQuantities(Map<Long, Long> answerQuantities) {
 //        this.answerQuantities = answerQuantities;
     }
 
     @Override
-    public Integer getFunds() {
+    public Long getFunds() {
         return funds;
     }
 
     @Override
-    public void setFunds(Integer funds) {
+    public void setFunds(Long funds) {
         this.funds = funds;
     }
 }

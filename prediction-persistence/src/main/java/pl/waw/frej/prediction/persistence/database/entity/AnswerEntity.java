@@ -5,7 +5,7 @@ import pl.frej.waw.prediction.core.entity.Question;
 import pl.frej.waw.prediction.core.entity.User;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class AnswerEntity implements Answer {
@@ -17,7 +17,7 @@ public class AnswerEntity implements Answer {
     
     private String name;
     private String description;
-    private LocalDateTime completionTime;
+    private Date completionTime;
 
 //    @ManyToOne
 //    @JoinColumn(name = "USER_ID")
@@ -52,12 +52,12 @@ public class AnswerEntity implements Answer {
         this.description = description;
     }
     @Override
-    public LocalDateTime getCompletionTime() {
+    public Date getCompletionTime() {
         return completionTime;
     }
 
     @Override
-    public void setCompletionTime(LocalDateTime completionTime) {
+    public void setCompletionTime(Date completionTime) {
         this.completionTime = completionTime;
     }
 
@@ -71,11 +71,12 @@ public class AnswerEntity implements Answer {
 //        this.user = (UserEntity)user;
     }
 
+    @Override
     public Question getQuestion() {
         return question;
     }
-
-    public void setQuestion(QuestionEntity question) {
-        this.question = question;
+    @Override
+    public void setQuestion(Question question) {
+        this.question = (QuestionEntity)question;
     }
 }

@@ -4,6 +4,7 @@ import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.Question;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,6 +15,7 @@ public class QuestionEntity implements Question {
     private Long id;
     private String name;
     private String description;
+    private Date completionTime;
 
     @OneToMany(mappedBy = "question")
     private List<AnswerEntity> answers;
@@ -51,5 +53,15 @@ public class QuestionEntity implements Question {
     @Override
     public void setAnswers(List<Answer> answers) {
 
+    }
+
+    @Override
+    public Date getCompletionTime() {
+        return completionTime;
+    }
+
+    @Override
+    public void setCompletionTime(Date completionTime) {
+        this.completionTime = completionTime;
     }
 }

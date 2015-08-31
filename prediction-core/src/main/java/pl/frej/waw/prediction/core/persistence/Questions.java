@@ -9,5 +9,5 @@ public interface Questions {
 
     Question find(Long id);
 
-    void add(Question question);
+    Question add(Question question);
 }

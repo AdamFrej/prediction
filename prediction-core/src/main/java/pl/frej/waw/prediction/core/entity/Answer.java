@@ -1,6 +1,6 @@
 package pl.frej.waw.prediction.core.entity;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public interface Answer {
 
@@ -14,9 +14,12 @@ public interface Answer {
 
     void setDescription(String description);
 
-    LocalDateTime getCompletionTime();
+    Date getCompletionTime();
 
-    void setCompletionTime(LocalDateTime completionTime);
+    void setCompletionTime(Date completionTime);
+
+    Question getQuestion();
+    void setQuestion(Question question);
 
     User getUser();
     void setUser(User user);

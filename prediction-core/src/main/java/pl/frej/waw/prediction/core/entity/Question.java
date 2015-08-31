@@ -1,5 +1,6 @@
 package pl.frej.waw.prediction.core.entity;
 
+import java.util.Date;
 import java.util.List;
 
  public interface Question {
@@ -17,4 +18,7 @@ import java.util.List;
      List<Answer> getAnswers();
 
      void setAnswers(List<Answer> answers);
+
+     Date getCompletionTime();
+     void setCompletionTime(Date completionTime);
 }

@@ -1,6 +1,7 @@
 package pl.frej.waw.prediction.core.persistence;
 
 import pl.frej.waw.prediction.core.entity.Offer;
+import pl.frej.waw.prediction.core.entity.OfferType;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface Offers {
     List<Offer> findByUser(Long userId);
 
     List<Offer> findByAnswer(Long answerId);
+    List<Offer> findByAnswerAndType(Long answerId, OfferType offerType);
 }

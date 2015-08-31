@@ -9,11 +9,11 @@ import java.util.Map;
 
      void setTransactions(List<Transaction> transactions);
 
-     Map<Long, Integer> getAnswerQuantities();
+     Map<Long, Long> getAnswerQuantities();
 
-     Integer getFunds();
+     Long getFunds();
 
-     void setFunds(Integer funds);
+     void setFunds(Long funds);
 
      Long getId();
  }

@@ -17,9 +17,9 @@ public class OfferEntity implements Offer {
     @Enumerated(EnumType.STRING)
     private OfferType offerType;
     
-    private Integer price;
+    private Long price;
     
-    private Integer quantity;
+    private Long quantity;
 
     private Long answerId;
 
@@ -38,22 +38,22 @@ public class OfferEntity implements Offer {
     }
 
     @Override
-    public Integer getPrice() {
+    public Long getPrice() {
         return price;
     }
 
     @Override
-    public void setPrice(Integer price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
     @Override
-    public Integer getQuantity() {
+    public Long getQuantity() {
         return quantity;
     }
 
     @Override
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
 
