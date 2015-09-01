@@ -16,6 +16,7 @@ public class QuestionForm implements Serializable, Question {
     private AnswerForm answerOne;
     private AnswerForm answerTwo;
     private Date completionTime;
+    private Long completionValue;
 
     @Override
     public Long getId() {
@@ -76,5 +77,15 @@ public class QuestionForm implements Serializable, Question {
     @Override
     public void setCompletionTime(Date completionTime) {
         this.completionTime = completionTime;
+    }
+
+    @Override
+    public Long getCompletionValue() {
+        return completionValue;
+    }
+
+    @Override
+    public void setCompletionValue(Long completionValue) {
+        this.completionValue = completionValue;
     }
 }

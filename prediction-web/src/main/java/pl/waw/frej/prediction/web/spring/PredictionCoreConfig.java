@@ -35,7 +35,7 @@ public class PredictionCoreConfig {
 
     @Bean
     TransactionController transactionController(){
-        return new SimpleTransactionController(transactions,offers, answers);
+        return new SimpleTransactionController(transactions, answers, answerController(), users, entityFactory());
     }
 
     @Bean

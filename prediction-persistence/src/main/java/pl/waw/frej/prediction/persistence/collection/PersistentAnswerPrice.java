@@ -16,6 +16,7 @@ public class PersistentAnswerPrice implements AnswerPrice {
         return answer;
     }
 
+    @Override
     public void setAnswer(Answer answer) {
         this.answer = answer;
     }

@@ -10,6 +10,8 @@ public interface UserRepository extends Repository<UserEntity,Long> {
     Optional<UserEntity> findOne(Long id);
 
     UserEntity save(UserEntity persisted);
+    void delete(UserEntity userEntity);
 
     List<UserEntity> findAll();
+
 }

@@ -58,7 +58,7 @@ public class SimpleOfferController implements OfferController {
     }
 
     private boolean hasAnswerInSpecifiedQuantity(Offer offer, User user) {
-        return offer.getQuantity().compareTo(user.getAnswerQuantities().get(offer.getAnswerId())) < 1;
+        return false;//offer.getQuantity().compareTo(user.getAnswerQuantities().get(offer.getAnswerId())) < 1;
     }
 
     private boolean hasFundsForAtLeastOneAnswer(Offer offer, User user) {

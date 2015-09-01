@@ -37,19 +37,11 @@ public class MaklerController {
 
     @RequestMapping(value = "/makler", method = RequestMethod.GET)
     public ModelAndView maklerMain(HttpSession session) {
-        UserEntity user = getUserFromSession(session);
-        if (user == null) {
-            user = new UserEntity();
-            user.setFunds(15L);
-            userRepository.save(user);
-            session.setAttribute("user", user);
-        }
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/makler");
         modelAndView.addObject("websiteTitle", "Makler");
         modelAndView.addObject("questions", questionController.read());
-        modelAndView.addObject("offers", offerController.find(user.getId()));
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("offers", offerController.find(getUserFromSession(session).getId()));
         return modelAndView;
     }
 
@@ -87,6 +79,13 @@ public class MaklerController {
     }
 
     private UserEntity getUserFromSession(HttpSession session) {
-        return (UserEntity) session.getAttribute("user");
+        UserEntity user = (UserEntity) session.getAttribute("user");
+        if (user == null) {
+            user = new UserEntity();
+            user.setFunds(15L);
+            userRepository.save(user);
+            session.setAttribute("user", user);
+        }
+        return user;
     }
 }

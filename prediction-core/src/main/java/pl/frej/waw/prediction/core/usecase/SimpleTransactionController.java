@@ -1,31 +1,29 @@
 package pl.frej.waw.prediction.core.usecase;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Ordering;
+import pl.frej.waw.prediction.core.boundary.AnswerController;
 import pl.frej.waw.prediction.core.boundary.TransactionController;
 import pl.frej.waw.prediction.core.entity.*;
 import pl.frej.waw.prediction.core.persistence.Answers;
-import pl.frej.waw.prediction.core.persistence.Offers;
 import pl.frej.waw.prediction.core.persistence.Transactions;
+import pl.frej.waw.prediction.core.persistence.Users;
 
-import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class SimpleTransactionController implements TransactionController {
-    private static final Comparator<Offer> BY_PRICE = (o1, o2) -> o1.getPrice().compareTo(o2.getPrice());
-    private static final Predicate<Offer> BUY = offer -> OfferType.BUY.equals(offer.getOfferType());
-    private static final Predicate<Offer> SELL = offer -> OfferType.SELL.equals(offer.getOfferType());
     private final Transactions transactions;
-    private final Offers offers;
     private final Answers answers;
+    private final AnswerController answerController;
+    private final Users users;
 
     private EntityFactory entityFactory;
 
-    public SimpleTransactionController(Transactions transactions, Offers offers, Answers answers) {
+    public SimpleTransactionController(Transactions transactions, Answers answers, AnswerController answerController, Users users, EntityFactory entityFactory) {
         this.transactions = transactions;
-        this.offers = offers;
         this.answers = answers;
+        this.answerController = answerController;
+        this.users = users;
+        this.entityFactory = entityFactory;
     }
 
     @Override public List<Transaction> find(String userId) {
@@ -33,19 +31,37 @@ public class SimpleTransactionController implements TransactionController {
     }
 
     @Override public void make() {
-        for (Answer answer : answers.findAll()) {
-            List<Offer> o = offers.findByAnswer(answer.getId());
-            List<Offer> buyOffers = Ordering.from(BY_PRICE).reverse().sortedCopy(Iterables.filter(o, BUY));
-            List<Offer> sellOffers = Ordering.from(BY_PRICE).sortedCopy(Iterables.filter(o, SELL));
-            if (transactionIsAvailable(buyOffers, sellOffers)) {
-                Transaction transaction = entityFactory.createTransaction();
-                transactions.add(transaction);
+        answers.findAll().stream().filter(this::hasValidTransactions).forEach(this::complete);
+    }
 
+    @Override
+    public void buyBundle(User user, Question question, Long quantity) {
+        if(question.getCompletionValue() * quantity <= user.getFunds()){
+            for (Answer answer : question.getAnswers()) {
+                user.addAnswer(answer, quantity);
             }
+            user.setFunds(user.getFunds()-quantity*question.getCompletionValue());
+        }
+        User updated = users.update(user);
+        if(updated.getFunds().compareTo(user.getFunds())==0){
+            complete(question);
         }
     }
 
-    private boolean transactionIsAvailable(List<Offer> buyOffers, List<Offer> sellOffers) {
-        return buyOffers.get(0).getPrice() >= sellOffers.get(0).getPrice();
+    private boolean hasValidTransactions(Answer answer) {
+        Optional<Long> buyPrice = answerController.getBuyPrice(answer);
+        Optional<Long> sellPrice = answerController.getSellPrice(answer);
+        return buyPrice.isPresent() && sellPrice.isPresent() && buyPrice.get() >= sellPrice.get();
     }
+
+    private void complete(Answer answer) {
+        Transaction transaction = entityFactory.createTransaction();
+        transactions.add(transaction);
+    }
+
+    private void complete(Question question) {
+        Transaction transaction = entityFactory.createTransaction();
+        transactions.add(transaction);
+    }
+
 }

@@ -3,22 +3,27 @@ package pl.frej.waw.prediction.core.entity;
 import java.util.Date;
 import java.util.List;
 
- public interface Question {
+public interface Question {
 
-     Long getId();
+    Long getId();
 
-     String getName();
+    String getName();
 
-     void setName(String name);
+    void setName(String name);
 
-     String getDescription();
+    String getDescription();
 
-     void setDescription(String description);
+    void setDescription(String description);
 
-     List<Answer> getAnswers();
+    List<Answer> getAnswers();
 
-     void setAnswers(List<Answer> answers);
+    void setAnswers(List<Answer> answers);
 
-     Date getCompletionTime();
-     void setCompletionTime(Date completionTime);
+    Date getCompletionTime();
+
+    void setCompletionTime(Date completionTime);
+
+    Long getCompletionValue();
+
+    void setCompletionValue(Long completionValue);
 }

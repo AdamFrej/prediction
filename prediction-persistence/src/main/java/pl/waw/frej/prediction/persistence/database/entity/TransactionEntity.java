@@ -3,15 +3,13 @@ package pl.waw.frej.prediction.persistence.database.entity;
 import pl.frej.waw.prediction.core.entity.Transaction;
 import pl.frej.waw.prediction.core.entity.User;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class TransactionEntity implements Transaction {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @ManyToOne @JoinColumn(name = "USER_ID") private UserEntity user;

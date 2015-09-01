@@ -16,6 +16,7 @@ public class QuestionEntity implements Question {
     private String name;
     private String description;
     private Date completionTime;
+    private Long completionValue;
 
     @OneToMany(mappedBy = "question")
     private List<AnswerEntity> answers;
@@ -63,5 +64,15 @@ public class QuestionEntity implements Question {
     @Override
     public void setCompletionTime(Date completionTime) {
         this.completionTime = completionTime;
+    }
+
+    @Override
+    public Long getCompletionValue() {
+        return completionValue;
+    }
+
+    @Override
+    public void setCompletionValue(Long completionValue) {
+        this.completionValue = completionValue;
     }
 }

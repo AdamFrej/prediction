@@ -11,7 +11,8 @@ import java.util.Date;
 public class AnswerEntity implements Answer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
+    @Column(name = "ANSWER_ID")
     private Long id;
 
     

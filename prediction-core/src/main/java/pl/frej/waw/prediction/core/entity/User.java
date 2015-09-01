@@ -7,9 +7,10 @@ import java.util.Map;
 
      List<Transaction> getTransactions();
 
-     void setTransactions(List<Transaction> transactions);
+     Map<Answer, Long> getAnswerQuantities();
 
-     Map<Long, Long> getAnswerQuantities();
+     void addAnswer(Answer answer, Long quantity);
+     void removeAnswer(Answer answer, Long quantity);
 
      Long getFunds();
 

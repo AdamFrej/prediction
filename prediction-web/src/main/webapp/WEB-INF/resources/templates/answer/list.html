@@ -12,11 +12,11 @@ Notowania
     <tbody>
     {%for answer in answers %}
     <tr>
-        <td><a href="offer/{{offer.id}}">{{answer.id}}</a></td>
+        <td>{{answer.id}}</td>
         <td>{{answer.name}}</td>
-        <td>answer.buyPrice</td>
-        <td>answer.sellPrice</td>
-        <td>answer.AveragePrice</td>
+        <td>{{answer.buyPrice}}</td>
+        <td>{{answer.sellPrice}}</td>
+        <td>{{answer.AveragePrice}}</td>
     </tr>
     {% endfor %}
     </tbody>

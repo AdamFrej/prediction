@@ -15,4 +15,5 @@ public interface AnswerPrice {
     void setSellPrice(Long price);
 
     void setAveragePrice(Long price);
+    void setAnswer(Answer answer);
 }

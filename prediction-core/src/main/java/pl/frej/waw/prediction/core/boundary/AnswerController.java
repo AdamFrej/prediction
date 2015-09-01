@@ -1,18 +1,18 @@
 package pl.frej.waw.prediction.core.boundary;
 
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.AnswerPrice;
-import pl.frej.waw.prediction.core.entity.OfferType;
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.entity.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AnswerController {
     List<Answer> find(User user);
 
-    Long getSellPrice(Answer answer);
+    Optional<Long> getSellPrice(Answer answer);
 
-    Long getBuyPrice(Answer answer);
+    Optional<Long> getBuyPrice(Answer answer);
+
+    Optional<Long> getAveragePrice(Answer answer);
 
     List<AnswerPrice> getPrices();
 }
