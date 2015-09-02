@@ -16,4 +16,6 @@ public interface Offers {
 
     List<Offer> findByAnswer(Long answerId);
     List<Offer> findByAnswerAndType(Long answerId, OfferType offerType);
+
+    Offer update(Offer offer);
 }

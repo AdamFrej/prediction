@@ -1,29 +1,36 @@
 package pl.waw.frej.prediction.web.model;
 
+import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.Offer;
 import pl.frej.waw.prediction.core.entity.OfferType;
+import pl.frej.waw.prediction.core.entity.User;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Date;
 
-public class OfferForm implements Serializable,Offer {
+public class OfferForm implements Serializable, Offer {
 
     private Long id;
     private OfferType offerType;
     private Long price;
     private Long quantity;
     private Long answerId;
+    private Long userId;
+    private LocalDateTime createdDate;
 
+    @Override
     public Long getId() {
         return id;
     }
 
     @Override
-    public OfferType getOfferType() {
+    public OfferType getType() {
         return offerType;
     }
 
     @Override
-    public void setOfferType(OfferType offerType) {
+    public void setType(OfferType offerType) {
         this.offerType = offerType;
     }
 
@@ -47,13 +54,41 @@ public class OfferForm implements Serializable,Offer {
         this.quantity = quantity;
     }
 
-    @Override
     public Long getAnswerId() {
         return answerId;
     }
 
-    @Override
-    public void setAnswerId(Long answerId) {
+    public void setAnswer(Long answerId) {
         this.answerId = answerId;
+    }
+
+    @Override
+    public Answer getAnswer() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void setAnswer(Answer answer) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public User getUser() {
+        return null;
+    }
+
+    @Override
+    public void setUser(User user) {
+        this.userId = user.getId();
+    }
+
+    @Override
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    @Override
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 }

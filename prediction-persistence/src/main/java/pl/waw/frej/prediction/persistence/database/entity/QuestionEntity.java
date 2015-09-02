@@ -2,6 +2,7 @@ package pl.waw.frej.prediction.persistence.database.entity;
 
 import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.Question;
+import pl.frej.waw.prediction.core.entity.User;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class QuestionEntity implements Question {
     private String description;
     private Date completionTime;
     private Long completionValue;
+    private UserEntity operator;
 
     @OneToMany(mappedBy = "question")
     private List<AnswerEntity> answers;
@@ -74,5 +76,15 @@ public class QuestionEntity implements Question {
     @Override
     public void setCompletionValue(Long completionValue) {
         this.completionValue = completionValue;
+    }
+
+    @Override
+    public User getOperator() {
+        return operator;
+    }
+
+    @Override
+    public void setOperator(User operator) {
+        this.operator = (UserEntity) operator;
     }
 }

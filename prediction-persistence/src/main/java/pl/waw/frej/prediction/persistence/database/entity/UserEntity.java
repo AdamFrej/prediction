@@ -62,6 +62,16 @@ public class UserEntity implements User {
     }
 
     @Override
+    public void addAnswer(Answer answer) {
+        modifyAnswerQuantity(answer, 1L);
+    }
+
+    @Override
+    public void removeAnswer(Answer answer) {
+        modifyAnswerQuantity(answer, -1L);
+    }
+
+    @Override
     public void removeAnswer(Answer answer, Long quantity) {
         Long currentQuantity = answerQuantities.get(answer);
 

@@ -1,10 +1,15 @@
 package pl.waw.frej.prediction.persistence.database.entity;
 
 
+import org.springframework.data.annotation.CreatedDate;
+import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.Offer;
 import pl.frej.waw.prediction.core.entity.OfferType;
+import pl.frej.waw.prediction.core.entity.User;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class OfferEntity implements Offer {
@@ -13,27 +18,27 @@ public class OfferEntity implements Offer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Enumerated(EnumType.STRING)
     private OfferType offerType;
-    
     private Long price;
-    
     private Long quantity;
+    private AnswerEntity answer;
+    private UserEntity user;
+    @CreatedDate
+    LocalDateTime createdDate;
 
-    private Long answerId;
-
+    @Override
     public Long getId() {
         return id;
     }
 
     @Override
-    public OfferType getOfferType() {
+    public OfferType getType() {
         return offerType;
     }
 
     @Override
-    public void setOfferType(OfferType offerType) {
+    public void setType(OfferType offerType) {
         this.offerType = offerType;
     }
 
@@ -58,12 +63,32 @@ public class OfferEntity implements Offer {
     }
 
     @Override
-    public Long getAnswerId() {
-        return answerId;
+    public Answer getAnswer() {
+        return answer;
     }
 
     @Override
-    public void setAnswerId(Long answerId) {
-        this.answerId = answerId;
+    public void setAnswer(Answer answer) {
+        this.answer = (AnswerEntity) answer;
+    }
+
+    @Override
+    public void setUser(User user) {
+        this.user = (UserEntity) user;
+    }
+
+    @Override
+    public User getUser() {
+        return user;
+    }
+
+    @Override
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    @Override
+    public void setCreatedDate (LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 }

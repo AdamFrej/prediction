@@ -26,4 +26,7 @@ public interface Question {
     Long getCompletionValue();
 
     void setCompletionValue(Long completionValue);
+
+    User getOperator();
+    void setOperator(User user);
 }

@@ -8,6 +8,7 @@ import pl.frej.waw.prediction.core.entity.Offer;
 import pl.frej.waw.prediction.core.entity.OfferType;
 import pl.frej.waw.prediction.core.persistence.Offers;
 import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
+import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
 import pl.waw.frej.prediction.persistence.database.repository.OfferRepository;
 
 import java.util.List;
@@ -19,11 +20,14 @@ public class PersistentOffers implements Offers {
     @Autowired
     private OfferRepository offerRepository;
 
+    @Autowired
+    private Transformer transformer;
+
     @Override
     public boolean add(Offer offer) {
         OfferEntity oE = new OfferEntity();
-        oE.setAnswerId(offer.getAnswerId());
-        oE.setOfferType(offer.getOfferType());
+        oE.setAnswer(offer.getAnswer());
+        oE.setType(offer.getType());
         oE.setPrice(offer.getPrice());
         oE.setQuantity(offer.getQuantity());
         offerRepository.save(oE);
@@ -60,6 +64,19 @@ public class PersistentOffers implements Offers {
         return OfferType.BUY.equals(offerType)
                 ? transformOffers(offerRepository.findByAnswerIdAndOfferTypeOrderByPriceDesc(answerId, offerType))
                 : transformOffers(offerRepository.findByAnswerIdAndOfferTypeOrderByPriceAsc(answerId, offerType));
+    }
+
+    @Override
+    public Offer update(Offer offer) {
+        Optional<OfferEntity> optional = offerRepository.findOne(offer.getId());
+        if (optional.isPresent()) {
+            OfferEntity oldOffer = optional.get();
+            OfferEntity newOffer = transformer.getOfferEntity(offer);
+            offerRepository.delete(oldOffer);
+            OfferEntity save = offerRepository.save(newOffer);
+            return save;
+        } else
+            return offer;
     }
 
     private List<Offer> transformOffers(List<OfferEntity> offerEntities) {

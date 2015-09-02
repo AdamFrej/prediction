@@ -1,20 +1,32 @@
 package pl.frej.waw.prediction.core.entity;
 
- public interface Offer {
+import java.time.LocalDateTime;
 
-     OfferType getOfferType();
+public interface Offer {
 
-     void setOfferType(OfferType offerType);
+    Long getId();
 
-     Long getPrice();
+    OfferType getType();
 
-     void setPrice(Long price);
+    void setType(OfferType offerType);
 
-     Long getQuantity();
+    Long getPrice();
 
-     void setQuantity(Long quantity);
+    void setPrice(Long price);
 
-     Long getAnswerId();
+    Long getQuantity();
 
-     void setAnswerId(Long answerId);
- }
+    void setQuantity(Long quantity);
+
+    Answer getAnswer();
+
+    void setAnswer(Answer answer);
+
+    User getUser();
+
+    void setUser(User user);
+
+    LocalDateTime getCreatedDate();
+
+    void setCreatedDate(LocalDateTime createdDate);
+}

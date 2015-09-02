@@ -2,6 +2,7 @@ package pl.waw.frej.prediction.web.model;
 
 import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.Question;
+import pl.frej.waw.prediction.core.entity.User;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,6 +18,7 @@ public class QuestionForm implements Serializable, Question {
     private AnswerForm answerTwo;
     private Date completionTime;
     private Long completionValue;
+    private User operator;
 
     @Override
     public Long getId() {
@@ -87,5 +89,15 @@ public class QuestionForm implements Serializable, Question {
     @Override
     public void setCompletionValue(Long completionValue) {
         this.completionValue = completionValue;
+    }
+
+    @Override
+    public User getOperator() {
+        return operator;
+    }
+
+    @Override
+    public void setOperator(User user) {
+        this.operator = operator;
     }
 }

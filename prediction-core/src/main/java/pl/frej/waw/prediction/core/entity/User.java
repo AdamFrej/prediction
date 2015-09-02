@@ -10,7 +10,9 @@ import java.util.Map;
      Map<Answer, Long> getAnswerQuantities();
 
      void addAnswer(Answer answer, Long quantity);
+     void addAnswer(Answer answer);
      void removeAnswer(Answer answer, Long quantity);
+     void removeAnswer(Answer answer);
 
      Long getFunds();
 
