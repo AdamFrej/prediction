@@ -18,6 +18,7 @@ public class QuestionEntity implements Question {
     private String description;
     private Date completionTime;
     private Long completionValue;
+    @OneToOne(cascade=CascadeType.ALL)
     private UserEntity operator;
 
     @OneToMany(mappedBy = "question")

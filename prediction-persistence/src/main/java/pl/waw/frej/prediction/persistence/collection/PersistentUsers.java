@@ -44,4 +44,9 @@ public class PersistentUsers implements Users {
     public void update(List<User> users){
         users.forEach(this::update);
     }
+
+    @Override
+    public void add(User user){
+        userRepository.save(transformer.getUserEntity(user));
+    }
 }

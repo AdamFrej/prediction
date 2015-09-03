@@ -9,4 +9,6 @@ public interface Transactions {
     List<Transaction> find();
 
     void add(Transaction transaction);
+
+    Transaction create();
 }

@@ -19,11 +19,14 @@ public class TransactionEntity implements Transaction {
     @JoinColumn(name = "USER_ID")
     private UserEntity user;
 
-    private Answer answer;
+    @OneToOne(cascade=CascadeType.ALL)
+    private AnswerEntity answer;
     private Long price;
     private Long quantity;
 
+    @OneToOne(cascade=CascadeType.ALL)
     private UserEntity buyer;
+    @OneToOne(cascade=CascadeType.ALL)
     private UserEntity seller;
 
     private LocalDateTime completionDate;
@@ -39,7 +42,7 @@ public class TransactionEntity implements Transaction {
     }
 
     @Override
-    public void setUser(User user) {
+    public void setAuthor(User user) {
         this.user = (UserEntity) user;
     }
 
@@ -50,7 +53,7 @@ public class TransactionEntity implements Transaction {
 
     @Override
     public void setAnswer(Answer answer) {
-        this.answer = answer;
+        this.answer = (AnswerEntity) answer;
     }
 
     @Override

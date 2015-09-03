@@ -22,7 +22,10 @@ public class OfferEntity implements Offer {
     private OfferType offerType;
     private Long price;
     private Long quantity;
+
+    @OneToOne(cascade=CascadeType.ALL)
     private AnswerEntity answer;
+    @OneToOne(cascade=CascadeType.ALL)
     private UserEntity user;
     @CreatedDate
     LocalDateTime createdDate;

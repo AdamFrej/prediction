@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.frej.waw.prediction.core.entity.Offer;
 import pl.frej.waw.prediction.core.entity.OfferType;
+import pl.frej.waw.prediction.core.entity.User;
 import pl.frej.waw.prediction.core.persistence.Offers;
 import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
 import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
@@ -25,12 +26,7 @@ public class PersistentOffers implements Offers {
 
     @Override
     public boolean add(Offer offer) {
-        OfferEntity oE = new OfferEntity();
-        oE.setAnswer(offer.getAnswer());
-        oE.setType(offer.getType());
-        oE.setPrice(offer.getPrice());
-        oE.setQuantity(offer.getQuantity());
-        offerRepository.save(oE);
+        offerRepository.save(transformer.getOfferEntity(offer));
         return true;
     }
 
@@ -50,8 +46,8 @@ public class PersistentOffers implements Offers {
     }
 
     @Override
-    public List<Offer> findByUser(Long userId) {
-        return transformOffers(offerRepository.findAll());
+    public List<Offer> findByUser(User user) {
+        return transformOffers(offerRepository.findByUser(transformer.getUserEntity(user)));
     }
 
     @Override
@@ -80,6 +76,6 @@ public class PersistentOffers implements Offers {
     }
 
     private List<Offer> transformOffers(List<OfferEntity> offerEntities) {
-        return Lists.newArrayList(Iterables.transform(offerEntities, offerEntity -> (Offer) offerEntity));
+        return Lists.newArrayList(offerEntities);
     }
 }

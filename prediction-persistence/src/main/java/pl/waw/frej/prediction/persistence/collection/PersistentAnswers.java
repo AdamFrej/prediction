@@ -29,8 +29,6 @@ public class PersistentAnswers implements Answers {
         return true;
     }
 
-
-
     @Override
     public boolean remove(Answer answer) {
         answerRepository.delete((AnswerEntity) answer);
@@ -43,13 +41,7 @@ public class PersistentAnswers implements Answers {
     }
 
     @Override
-    public List<Answer> findByUser(User user) {
-        return null;
-        //return Lists.newArrayList(Iterables.transform(answerRepository.findByUser(user), answerEntity -> (Answer) answerEntity));
-    }
-
-    @Override
     public List<Answer> findAll() {
-        return Lists.newArrayList(Iterables.transform(answerRepository.findAll(), answerEntity -> (Answer) answerEntity));
+        return Lists.newArrayList(answerRepository.findAll());
     }
 }

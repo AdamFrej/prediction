@@ -19,11 +19,16 @@ public class PersistentTransactions implements Transactions {
 
     @Override
     public List<Transaction> find() {
-        return Lists.newArrayList(Iterables.transform(transactionRepository.findAll(),transactionEntity -> (Transaction)transactionEntity));
+        return Lists.newArrayList(transactionRepository.findAll());
     }
 
     @Override
     public void add(Transaction transaction) {
         transactionRepository.save((TransactionEntity) transaction);
+    }
+
+    @Override
+    public Transaction create() {
+        return new TransactionEntity();
     }
 }

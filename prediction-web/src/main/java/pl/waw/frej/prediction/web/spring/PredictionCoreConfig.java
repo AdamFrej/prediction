@@ -3,17 +3,10 @@ package pl.waw.frej.prediction.web.spring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import pl.frej.waw.prediction.core.boundary.AnswerController;
-import pl.frej.waw.prediction.core.boundary.OfferController;
-import pl.frej.waw.prediction.core.boundary.QuestionController;
-import pl.frej.waw.prediction.core.boundary.TransactionController;
-import pl.frej.waw.prediction.core.entity.EntityFactory;
 import pl.frej.waw.prediction.core.persistence.*;
-import pl.frej.waw.prediction.core.usecase.SimpleAnswerController;
-import pl.frej.waw.prediction.core.usecase.SimpleOfferController;
-import pl.frej.waw.prediction.core.usecase.SimpleQuestionController;
-import pl.frej.waw.prediction.core.usecase.SimpleTransactionController;
-import pl.waw.frej.prediction.persistence.collection.PersistentFactory;
+import pl.frej.waw.prediction.core.usecase.Admin;
+import pl.frej.waw.prediction.core.usecase.Makler;
+import pl.frej.waw.prediction.core.usecase.Operator;
 
 @Configuration
 public class PredictionCoreConfig {
@@ -29,27 +22,17 @@ public class PredictionCoreConfig {
     private Answers answers;
 
     @Bean
-    EntityFactory entityFactory(){
-        return new PersistentFactory();
+    public Operator operator(){
+        return new Operator(questions, answers);
     }
 
     @Bean
-    TransactionController transactionController(){
-        return new SimpleTransactionController(transactions, offerController(), users, entityFactory());
+    public Makler makler(){
+        return new Makler(answers, questions, offers, users, transactions);
     }
 
     @Bean
-    OfferController offerController(){
-        return new SimpleOfferController(offers,users, transactionController());
-    }
-
-    @Bean
-    QuestionController questionController(){
-        return new SimpleQuestionController(questions, answers);
-    }
-
-    @Bean
-    AnswerController answerController(){
-        return new SimpleAnswerController(answers, offers, entityFactory());
+    public Admin admin(){
+        return new Admin(users);
     }
 }

@@ -1,6 +1,7 @@
 package pl.frej.waw.prediction.core.entity;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public interface Offer {
 
@@ -29,4 +30,10 @@ public interface Offer {
     LocalDateTime getCreatedDate();
 
     void setCreatedDate(LocalDateTime createdDate);
+
+    default boolean isValid(){
+        boolean hasFunds = getPrice() <= getUser().getFunds();
+        boolean hasAnswers = getQuantity() <= getUser().getAnswerQuantities().get(getAnswer());
+        return OfferType.BUY.equals(getType()) ? hasFunds : hasAnswers;
+    }
 }

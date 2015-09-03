@@ -12,7 +12,5 @@ public interface Answers {
 
     Answer find(Long id);
 
-    List<Answer> findByUser(User user);
-
     List<Answer> findAll();
 }
