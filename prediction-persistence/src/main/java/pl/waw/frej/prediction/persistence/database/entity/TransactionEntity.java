@@ -1,8 +1,8 @@
 package pl.waw.frej.prediction.persistence.database.entity;
 
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Transaction;
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Transaction;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

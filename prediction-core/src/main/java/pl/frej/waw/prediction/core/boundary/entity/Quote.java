@@ -1,4 +1,4 @@
-package pl.frej.waw.prediction.core.entity;
+package pl.frej.waw.prediction.core.boundary.entity;
 
 
 public class Quote {

@@ -1,7 +1,6 @@
-package pl.frej.waw.prediction.core.persistence;
+package pl.frej.waw.prediction.core.boundary.persistence;
 
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,4 +13,8 @@ public interface Answers {
     Optional<Answer> find(Long id);
 
     List<Answer> findAll();
+
+    List<Answer> update(List<Answer> answers);
+
+    Answer update(Answer answer);
 }

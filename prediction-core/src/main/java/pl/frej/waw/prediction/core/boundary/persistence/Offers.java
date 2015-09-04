@@ -1,9 +1,9 @@
-package pl.frej.waw.prediction.core.persistence;
+package pl.frej.waw.prediction.core.boundary.persistence;
 
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Offer;
-import pl.frej.waw.prediction.core.entity.OfferType;
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Offer;
+import pl.frej.waw.prediction.core.boundary.entity.OfferType;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,7 @@ public interface Offers {
 
     boolean remove(Long id);
 
-    Offer find(Long Id);
+    Optional<Offer> find(Long Id);
 
     List<Offer> findByUser(User user);
 

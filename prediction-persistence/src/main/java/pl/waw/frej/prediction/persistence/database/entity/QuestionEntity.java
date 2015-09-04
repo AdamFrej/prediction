@@ -2,12 +2,12 @@ package pl.waw.frej.prediction.persistence.database.entity;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Question;
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Question;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -18,7 +18,7 @@ public class QuestionEntity implements Question {
     private Long id;
     private String name;
     private String description;
-    private Date completionTime;
+    private LocalDateTime completionTime;
     private Long completionValue;
     @OneToOne(cascade = CascadeType.ALL)
     private UserEntity operator;
@@ -62,12 +62,12 @@ public class QuestionEntity implements Question {
     }
 
     @Override
-    public Date getCompletionTime() {
+    public LocalDateTime getCompletionTime() {
         return completionTime;
     }
 
     @Override
-    public void setCompletionTime(Date completionTime) {
+    public void setCompletionTime(LocalDateTime completionTime) {
         this.completionTime = completionTime;
     }
 

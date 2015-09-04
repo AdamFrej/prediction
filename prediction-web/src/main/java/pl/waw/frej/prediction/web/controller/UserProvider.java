@@ -2,8 +2,9 @@ package pl.waw.frej.prediction.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.frej.waw.prediction.core.usecase.Admin;
-import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
+import pl.frej.waw.prediction.core.boundary.control.Admin;
+import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.persistence.EntityFactory;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,10 +14,10 @@ public class UserProvider {
     @Autowired
     private Admin admin;
 
-    public UserEntity from(HttpSession session) {
-        UserEntity user = (UserEntity) session.getAttribute("user");
+    public User from(HttpSession session) {
+        User user = (User) session.getAttribute("user");
         if (user == null) {
-            user = new UserEntity();
+            user = EntityFactory.createUser();
             user.setFunds(15L);
             admin.addUser(user);
             session.setAttribute("user", user);

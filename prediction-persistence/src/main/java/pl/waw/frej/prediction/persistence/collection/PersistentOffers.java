@@ -1,21 +1,19 @@
 package pl.waw.frej.prediction.persistence.collection;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import pl.frej.waw.prediction.core.entity.Offer;
-import pl.frej.waw.prediction.core.entity.OfferType;
-import pl.frej.waw.prediction.core.entity.User;
-import pl.frej.waw.prediction.core.persistence.Offers;
+import org.springframework.stereotype.Component;
+import pl.frej.waw.prediction.core.boundary.entity.Offer;
+import pl.frej.waw.prediction.core.boundary.entity.OfferType;
+import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.frej.waw.prediction.core.boundary.persistence.Offers;
 import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
-import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
 import pl.waw.frej.prediction.persistence.database.repository.OfferRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class PersistentOffers implements Offers {
 
     @Autowired
@@ -41,8 +39,8 @@ public class PersistentOffers implements Offers {
     }
 
     @Override
-    public Offer find(Long id) {
-        return offerRepository.findOne(id).orElse(null);
+    public Optional<Offer> find(Long id) {
+        return Optional.ofNullable((Offer) offerRepository.findOne(id).orElse(null));
     }
 
     @Override

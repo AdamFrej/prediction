@@ -6,10 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import pl.frej.waw.prediction.core.usecase.Makler;
-import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
+import pl.frej.waw.prediction.core.boundary.control.Makler;
 import pl.waw.frej.prediction.web.model.BundleForm;
-import pl.waw.frej.prediction.web.model.OfferForm;
 
 import javax.servlet.http.HttpSession;
 

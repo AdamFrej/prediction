@@ -1,11 +1,13 @@
 package pl.waw.frej.prediction.persistence.database.entity;
 
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Question;
-import pl.frej.waw.prediction.core.entity.User;
+import com.google.common.collect.Lists;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Question;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class AnswerEntity implements Answer {
@@ -18,11 +20,14 @@ public class AnswerEntity implements Answer {
     
     private String name;
     private String description;
-    private Date completionTime;
+    private LocalDateTime completionTime;
 
-//    @ManyToOne
-//    @JoinColumn(name = "USER_ID")
-//    private UserEntity user;
+    @ManyToMany
+    @JoinTable(
+            name="ANSWER_USER",
+            joinColumns={@JoinColumn(name="ANSWER_ID", referencedColumnName="ANSWER_ID")},
+            inverseJoinColumns={@JoinColumn(name="USER_ID", referencedColumnName="USER_ID")})
+    private List<UserEntity> owners;
 
     @ManyToOne
     @JoinColumn(name = "QUESTION_ID")
@@ -53,23 +58,28 @@ public class AnswerEntity implements Answer {
         this.description = description;
     }
     @Override
-    public Date getCompletionTime() {
+    public LocalDateTime getCompletionTime() {
         return completionTime;
     }
 
     @Override
-    public void setCompletionTime(Date completionTime) {
+    public void setCompletionTime(LocalDateTime completionTime) {
         this.completionTime = completionTime;
     }
 
     @Override
-    public User getUser() {
-        return null;
+    public List<User> getOwners() {
+        return Lists.newArrayList(owners);
     }
 
     @Override
-    public void setUser(User user) {
-//        this.user = (UserEntity)user;
+    public void addOwner(User user) {
+        owners.add((UserEntity) user);
+    }
+
+    @Override
+    public void removeOwner(User owner) {
+        owners.remove(owner);
     }
 
     @Override
@@ -79,5 +89,10 @@ public class AnswerEntity implements Answer {
     @Override
     public void setQuestion(Question question) {
         this.question = (QuestionEntity)question;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof AnswerEntity ? this.getId().equals(((AnswerEntity) obj).getId()) : super.equals(obj);
     }
 }

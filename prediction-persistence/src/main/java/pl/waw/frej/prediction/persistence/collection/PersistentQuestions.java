@@ -3,16 +3,16 @@ package pl.waw.frej.prediction.persistence.collection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import pl.frej.waw.prediction.core.entity.Question;
-import pl.frej.waw.prediction.core.persistence.Questions;
+import org.springframework.stereotype.Component;
+import pl.frej.waw.prediction.core.boundary.entity.Question;
+import pl.frej.waw.prediction.core.boundary.persistence.Questions;
 import pl.waw.frej.prediction.persistence.database.entity.QuestionEntity;
 import pl.waw.frej.prediction.persistence.database.repository.QuestionRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class PersistentQuestions implements Questions {
 
     @Autowired
@@ -27,7 +27,7 @@ public class PersistentQuestions implements Questions {
     }
 
     @Override
-    public Optional<Question> find(Long id) {
+    public Optional<Question> findOne(Long id) {
         return Optional.ofNullable((Question) questionRepository.findOne(id).orElse(null));
     }
 

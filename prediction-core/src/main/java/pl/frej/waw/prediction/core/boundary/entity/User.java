@@ -1,4 +1,4 @@
-package pl.frej.waw.prediction.core.entity;
+package pl.frej.waw.prediction.core.boundary.entity;
 
 import java.util.List;
 import java.util.Map;
@@ -12,11 +12,13 @@ import java.util.Map;
      void addAnswer(Answer answer, Long quantity);
      void addAnswer(Answer answer);
      void removeAnswer(Answer answer, Long quantity);
-     void removeAnswer(Answer answer);
+     void removeOneAnswer(Answer answer);
+     void removeAllAnswers(Answer answer);
 
      Long getFunds();
 
      void setFunds(Long funds);
+     void modifyFunds(Long funds);
 
      Long getId();
  }

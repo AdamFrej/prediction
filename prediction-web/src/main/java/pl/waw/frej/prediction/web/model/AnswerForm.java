@@ -1,9 +1,8 @@
 package pl.waw.frej.prediction.web.model;
 
 
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Question;
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.boundary.entity.Question;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 
 import java.io.Serializable;
 import java.util.Date;

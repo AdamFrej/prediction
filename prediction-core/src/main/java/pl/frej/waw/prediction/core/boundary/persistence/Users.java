@@ -1,8 +1,7 @@
-package pl.frej.waw.prediction.core.persistence;
+package pl.frej.waw.prediction.core.boundary.persistence;
 
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,7 @@ public interface Users {
 
     User update(User user);
 
-    void update(List<User> users);
+    List<User> update(List<User> users);
 
     void add(User user);
 }

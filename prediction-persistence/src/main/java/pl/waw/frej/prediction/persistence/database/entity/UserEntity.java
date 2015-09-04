@@ -1,9 +1,9 @@
 package pl.waw.frej.prediction.persistence.database.entity;
 
 import com.google.common.collect.Lists;
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Transaction;
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Transaction;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 
 import javax.persistence.*;
 import java.util.HashMap;
@@ -60,6 +60,7 @@ public class UserEntity implements User {
     }
 
     private void modifyAnswerQuantity(Answer answer, Long quantity) {
+        answer.addOwner(this);
         Long previousQuantity = answerQuantities.get(answer);
         answerQuantities.put((AnswerEntity)answer, previousQuantity == null ? quantity : previousQuantity + quantity);
     }
@@ -70,8 +71,15 @@ public class UserEntity implements User {
     }
 
     @Override
-    public void removeAnswer(Answer answer) {
-        modifyAnswerQuantity(answer, -1L);
+    public void removeOneAnswer(Answer answer) {
+        removeAnswer(answer,1L);
+    }
+
+    @Override
+    public void removeAllAnswers(Answer answer) {
+        Long quantity = answerQuantities.get(answer);
+        if(quantity!=null)
+            removeAnswer(answer, quantity);
     }
 
     @Override
@@ -85,8 +93,10 @@ public class UserEntity implements User {
 
         modifyAnswerQuantity(answer, -quantity);
 
-        if(answerQuantities.get(answer) == 0)
+        if(answerQuantities.get(answer) <= 0) {
             answerQuantities.remove(answer);
+            answer.removeOwner(this);
+        }
     }
 
     @Override
@@ -97,5 +107,10 @@ public class UserEntity implements User {
     @Override
     public void setFunds(Long funds) {
         this.funds = funds;
+    }
+
+    @Override
+    public void modifyFunds(Long funds) {
+        this.funds+=funds;
     }
 }

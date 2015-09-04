@@ -1,38 +1,53 @@
 package pl.waw.frej.prediction.web.spring;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import pl.frej.waw.prediction.core.persistence.*;
-import pl.frej.waw.prediction.core.usecase.Admin;
-import pl.frej.waw.prediction.core.usecase.Makler;
-import pl.frej.waw.prediction.core.usecase.Operator;
+import pl.frej.waw.prediction.core.boundary.control.*;
+import pl.frej.waw.prediction.core.boundary.persistence.*;
+import pl.waw.frej.prediction.persistence.CollectionFactory;
 
 @Configuration
 public class PredictionCoreConfig {
-    @Autowired
-    private Offers offers;
-    @Autowired
-    private Users users;
-    @Autowired
-    private Questions questions;
-    @Autowired
-    private Transactions transactions;
-    @Autowired
-    private Answers answers;
+
+    @Bean
+    public Answers answers(){
+        return CollectionFactory.createAnswers();
+    }
+    @Bean
+    public Offers offers(){
+        return CollectionFactory.createOffers();
+    }
+    @Bean
+    public Questions questions(){
+        return CollectionFactory.createQuestions();
+    }
+
+    @Bean
+    public Transactions transactions(){
+        return CollectionFactory.createTransactions();
+    }
+    @Bean
+    public Users users(){
+        return CollectionFactory.createUsers();
+    }
 
     @Bean
     public Operator operator(){
-        return new Operator(questions, answers);
+        return ControlFactory.createOperator(questions(), answers(), users());
     }
 
     @Bean
     public Makler makler(){
-        return new Makler(answers, questions, offers, users, transactions);
+        return ControlFactory.createMakler(answers(), questions(), offers(), users(), transactions());
     }
 
     @Bean
     public Admin admin(){
-        return new Admin(users);
+        return ControlFactory.createAdmin(users());
+    }
+
+    @Bean
+    public QuestionReader questionReader(){
+        return ControlFactory.createQuestionReader(questions());
     }
 }

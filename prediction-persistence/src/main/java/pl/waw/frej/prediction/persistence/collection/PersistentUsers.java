@@ -1,17 +1,18 @@
 package pl.waw.frej.prediction.persistence.collection;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import pl.frej.waw.prediction.core.entity.User;
-import pl.frej.waw.prediction.core.persistence.Users;
-import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
+import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.frej.waw.prediction.core.boundary.persistence.Users;
 import pl.waw.frej.prediction.persistence.database.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class PersistentUsers implements Users {
 
     @Autowired
@@ -28,21 +29,12 @@ public class PersistentUsers implements Users {
     @Override
     @Transactional
     public User update(User user) {
-        Optional<UserEntity> optional = userRepository.findOne(user.getId());
-        if (optional.isPresent()) {
-            UserEntity oldUser = optional.get();
-            UserEntity newUser = transformer.getUserEntity(user);
-            userRepository.delete(oldUser);
-            UserEntity save = userRepository.save(newUser);
-            return save;
-        } else
-            return user;
+        return userRepository.save(transformer.getUserEntity(user));
     }
 
     @Override
-    @Transactional
-    public void update(List<User> users){
-        users.forEach(this::update);
+    public List<User> update(List<User> users){
+        return Lists.newArrayList(userRepository.save(Iterables.transform(users, transformer::getUserEntity)));
     }
 
     @Override

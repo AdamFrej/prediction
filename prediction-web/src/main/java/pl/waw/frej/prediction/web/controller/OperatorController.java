@@ -6,12 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.usecase.Operator;
+import pl.frej.waw.prediction.core.boundary.control.Operator;
 import pl.waw.frej.prediction.web.model.Converter;
 import pl.waw.frej.prediction.web.model.QuestionForm;
-
-import java.util.ArrayList;
 
 @Controller
 public class OperatorController {
@@ -32,7 +29,7 @@ public class OperatorController {
 
     @RequestMapping(value = "/addQuestion", method = RequestMethod.POST)
     public String addQuestion(QuestionForm f) {
-        operator.add(converter.getQuestionEntity(f));
+        operator.add(converter.getQuestion(f));
         return "redirect:/operator";
     }
 }

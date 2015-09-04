@@ -1,19 +1,19 @@
 package pl.frej.waw.prediction.core.operations;
 
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Offer;
-import pl.frej.waw.prediction.core.entity.Transaction;
-import pl.frej.waw.prediction.core.entity.User;
-import pl.frej.waw.prediction.core.persistence.Offers;
-import pl.frej.waw.prediction.core.persistence.Transactions;
-import pl.frej.waw.prediction.core.persistence.Users;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Offer;
+import pl.frej.waw.prediction.core.boundary.entity.Transaction;
+import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.frej.waw.prediction.core.boundary.persistence.Offers;
+import pl.frej.waw.prediction.core.boundary.persistence.Transactions;
+import pl.frej.waw.prediction.core.boundary.persistence.Users;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static pl.frej.waw.prediction.core.entity.OfferType.BUY;
-import static pl.frej.waw.prediction.core.entity.OfferType.SELL;
+import static pl.frej.waw.prediction.core.boundary.entity.OfferType.BUY;
+import static pl.frej.waw.prediction.core.boundary.entity.OfferType.SELL;
 
 public class Transfer {
 
@@ -86,7 +86,7 @@ public class Transfer {
 
     private void exchangeFundsForAnswers() {
         buyer.addAnswer(answer);
-        seller.removeAnswer(answer);
+        seller.removeOneAnswer(answer);
 
         buyer.setFunds(buyer.getFunds() - price);
         seller.setFunds(seller.getFunds() + price);

@@ -3,13 +3,13 @@ package pl.waw.frej.prediction.web.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.User;
-import pl.frej.waw.prediction.core.persistence.Answers;
-import pl.frej.waw.prediction.core.persistence.Users;
-import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
-import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
-import pl.waw.frej.prediction.persistence.database.entity.QuestionEntity;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Offer;
+import pl.frej.waw.prediction.core.boundary.entity.Question;
+import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.frej.waw.prediction.core.boundary.persistence.Answers;
+import pl.frej.waw.prediction.core.boundary.persistence.Users;
+import pl.waw.frej.prediction.persistence.EntityFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,42 +23,42 @@ public class Converter {
     @Autowired
     private Answers answers;
 
-    public OfferEntity getOfferEntity(OfferForm offerForm) {
-        OfferEntity offerEntity = new OfferEntity();
+    public Offer getOffer(OfferForm offerForm) {
+        Offer offer = EntityFactory.createOffer();
 
-        offerEntity.setType(offerForm.getType());
-        offerEntity.setPrice(offerForm.getPrice());
-        offerEntity.setQuantity(offerForm.getQuantity());
+        offer.setType(offerForm.getType());
+        offer.setPrice(offerForm.getPrice());
+        offer.setQuantity(offerForm.getQuantity());
 
         Optional<Answer> answer = answers.find(offerForm.getAnswerId());
         Optional<User> user = users.find(offerForm.getUserId());
 
         if (answer.isPresent())
-            offerEntity.setAnswer(answer.get());
+            offer.setAnswer(answer.get());
         if (user.isPresent())
-            offerEntity.setUser(user.get());
+            offer.setUser(user.get());
 
-        return offerEntity;
+        return offer;
     }
 
-    public QuestionEntity getQuestionEntity(QuestionForm questionForm){
-        QuestionEntity questionEntity= new QuestionEntity();
+    public Question getQuestion(QuestionForm questionForm){
+        Question question= EntityFactory.createQuestion();
 
-        questionEntity.setCompletionTime(questionForm.getCompletionTime());
-        questionEntity.setCompletionValue(questionForm.getCompletionValue());
-        questionEntity.setDescription(questionForm.getDescription());
-        questionEntity.setName(questionForm.getName());
+        question.setCompletionTime(questionForm.getCompletionTime());
+        question.setCompletionValue(questionForm.getCompletionValue());
+        question.setDescription(questionForm.getDescription());
+        question.setName(questionForm.getName());
 
         List<Answer> answers = new ArrayList<>();
         answers.add(fromDescription(questionForm.getAnswerOne()));
         answers.add(fromDescription(questionForm.getAnswerTwo()));
-        questionEntity.setAnswers(answers);
+        question.setAnswers(answers);
 
-        return questionEntity;
+        return question;
     }
 
-    private AnswerEntity fromDescription(String description) {
-        AnswerEntity a = new AnswerEntity();
+    private Answer fromDescription(String description) {
+        Answer a = EntityFactory.createAnswer();
         a.setDescription(description);
         return a;
     }

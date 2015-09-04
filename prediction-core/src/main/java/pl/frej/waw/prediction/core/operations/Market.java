@@ -1,11 +1,11 @@
 package pl.frej.waw.prediction.core.operations;
 
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Quote;
-import pl.frej.waw.prediction.core.entity.Offer;
-import pl.frej.waw.prediction.core.entity.OfferType;
-import pl.frej.waw.prediction.core.persistence.Answers;
-import pl.frej.waw.prediction.core.persistence.Offers;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Quote;
+import pl.frej.waw.prediction.core.boundary.entity.Offer;
+import pl.frej.waw.prediction.core.boundary.entity.OfferType;
+import pl.frej.waw.prediction.core.boundary.persistence.Answers;
+import pl.frej.waw.prediction.core.boundary.persistence.Offers;
 
 import java.util.List;
 import java.util.Optional;

@@ -2,14 +2,13 @@ package pl.waw.frej.prediction.persistence.database.entity;
 
 
 import org.springframework.data.annotation.CreatedDate;
-import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Offer;
-import pl.frej.waw.prediction.core.entity.OfferType;
-import pl.frej.waw.prediction.core.entity.User;
+import pl.frej.waw.prediction.core.boundary.entity.Answer;
+import pl.frej.waw.prediction.core.boundary.entity.Offer;
+import pl.frej.waw.prediction.core.boundary.entity.OfferType;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 public class OfferEntity implements Offer {

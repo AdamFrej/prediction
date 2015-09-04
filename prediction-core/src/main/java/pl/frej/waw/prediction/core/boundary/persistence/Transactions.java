@@ -1,7 +1,6 @@
-package pl.frej.waw.prediction.core.persistence;
+package pl.frej.waw.prediction.core.boundary.persistence;
 
-import pl.frej.waw.prediction.core.entity.Question;
-import pl.frej.waw.prediction.core.entity.Transaction;
+import pl.frej.waw.prediction.core.boundary.entity.Transaction;
 
 import java.util.List;
 

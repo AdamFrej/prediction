@@ -6,29 +6,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import pl.frej.waw.prediction.core.persistence.Offers;
-import pl.frej.waw.prediction.core.persistence.Questions;
-import pl.frej.waw.prediction.core.usecase.Makler;
-import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
+import pl.frej.waw.prediction.core.boundary.control.Makler;
+import pl.frej.waw.prediction.core.boundary.control.QuestionReader;
+import pl.frej.waw.prediction.core.boundary.entity.Offer;
+import pl.frej.waw.prediction.core.boundary.entity.Question;
+import pl.frej.waw.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.web.model.Converter;
 import pl.waw.frej.prediction.web.model.OfferForm;
+import pl.waw.frej.prediction.web.spring.ResourceNotFoundException;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 public class MaklerController {
 
     @Autowired
-    private Questions questions;
-    @Autowired
-    private UserProvider userProvider;
-    @Autowired
-    private Offers offers;
+    private QuestionReader questionReader;
     @Autowired
     private Makler makler;
 
     @Autowired
     private Converter converter;
+    @Autowired
+    private UserProvider userProvider;
 
 
     @RequestMapping(value = "/makler", method = RequestMethod.GET)
@@ -36,7 +37,7 @@ public class MaklerController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/makler");
         modelAndView.addObject("websiteTitle", "Makler");
-        modelAndView.addObject("questions", questions.find());
+        modelAndView.addObject("questions", questionReader.read());
         modelAndView.addObject("offers", makler.findOffers(userProvider.from(session)));
         return modelAndView;
     }
@@ -55,7 +56,11 @@ public class MaklerController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/questionDetails");
         modelAndView.addObject("websiteTitle", "Pytanie nr: " + id.toString());
-        modelAndView.addObject("question", questions.find(id));
+        Optional<Question> question = questionReader.read(id);
+        if(question.isPresent())
+            modelAndView.addObject("question", question.get());
+        else
+            throw new ResourceNotFoundException();
         return modelAndView;
     }
 
@@ -64,15 +69,19 @@ public class MaklerController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/offerDetails");
         modelAndView.addObject("websiteTitle", "Oferta nr: " + id.toString());
-        modelAndView.addObject("offer", offers.find(id));
+        Optional<Offer> offer = makler.findOffer(id);
+        if(offer.isPresent())
+            modelAndView.addObject("offer", offer.get());
+        else
+            throw new ResourceNotFoundException();
         return modelAndView;
     }
 
     @RequestMapping(value = "/addOffer", method = RequestMethod.POST)
     public String addOffer(OfferForm f, HttpSession session) {
-        UserEntity user = userProvider.from(session);
+        User user = userProvider.from(session);
         f.setUserId(user.getId());
-        makler.addOffer(converter.getOfferEntity(f), user);
+        makler.addOffer(converter.getOffer(f), user);
         return "redirect:/makler";
     }
 
