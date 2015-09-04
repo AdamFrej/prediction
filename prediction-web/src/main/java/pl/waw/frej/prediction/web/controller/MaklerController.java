@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import pl.frej.waw.prediction.core.persistence.Offers;
 import pl.frej.waw.prediction.core.persistence.Questions;
-import pl.frej.waw.prediction.core.usecase.Admin;
 import pl.frej.waw.prediction.core.usecase.Makler;
 import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
+import pl.waw.frej.prediction.web.model.Converter;
 import pl.waw.frej.prediction.web.model.OfferForm;
 
 import javax.servlet.http.HttpSession;
@@ -21,11 +21,14 @@ public class MaklerController {
     @Autowired
     private Questions questions;
     @Autowired
-    private Admin admin;
+    private UserProvider userProvider;
     @Autowired
     private Offers offers;
     @Autowired
     private Makler makler;
+
+    @Autowired
+    private Converter converter;
 
 
     @RequestMapping(value = "/makler", method = RequestMethod.GET)
@@ -34,7 +37,7 @@ public class MaklerController {
         modelAndView.setViewName("pages/makler");
         modelAndView.addObject("websiteTitle", "Makler");
         modelAndView.addObject("questions", questions.find());
-        modelAndView.addObject("offers", makler.findOffers(getUserFromSession(session)));
+        modelAndView.addObject("offers", makler.findOffers(userProvider.from(session)));
         return modelAndView;
     }
 
@@ -67,18 +70,11 @@ public class MaklerController {
 
     @RequestMapping(value = "/addOffer", method = RequestMethod.POST)
     public String addOffer(OfferForm f, HttpSession session) {
-        makler.addOffer(f, getUserFromSession(session));
+        UserEntity user = userProvider.from(session);
+        f.setUserId(user.getId());
+        makler.addOffer(converter.getOfferEntity(f), user);
         return "redirect:/makler";
     }
 
-    private UserEntity getUserFromSession(HttpSession session) {
-        UserEntity user = (UserEntity) session.getAttribute("user");
-        if (user == null) {
-            user = new UserEntity();
-            user.setFunds(15L);
-            admin.addUser(user);
-            session.setAttribute("user", user);
-        }
-        return user;
-    }
+
 }

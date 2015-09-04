@@ -15,7 +15,6 @@ import java.util.Optional;
 
 public class Makler {
 
-    private final Answers answers;
     private final Questions questions;
     private final Offers offers;
     private final Users users;
@@ -27,7 +26,6 @@ public class Makler {
 
     public Makler(Answers answers, Questions questions, Offers offers, Users users, Transactions transactions) {
         this.questions = questions;
-        this.answers = answers;
         this.offers = offers;
         this.users = users;
         this.transactions = transactions;
@@ -52,8 +50,10 @@ public class Makler {
         return offers.findByUser(user);
     }
 
-    public void buyBundle(Question question, Long quantity, User user){
-        bundle.buy(user, question, quantity);
+    public void buyBundle(Long questionId, Long quantity, User user){
+        Optional<Question> question = questions.find(questionId);
+        if(question.isPresent())
+            bundle.buy(user, question.get(), quantity);
     }
 
     public List<Quote> findQuotes(){

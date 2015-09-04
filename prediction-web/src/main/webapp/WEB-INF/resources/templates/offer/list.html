@@ -12,7 +12,7 @@ Moje oferty
     {%for offer in offers %}
     <tr>
         <td><a href="offer/{{offer.id}}">{{offer.id}}</a></td>
-        <td>{{offer.answerId}}</td>
+        <td>{{offer.answer.name}}</td>
         <td>{{offer.price}}</td>
         <td>{{offer.quantity}}</td>
     </tr>

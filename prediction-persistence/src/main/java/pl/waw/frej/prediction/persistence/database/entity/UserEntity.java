@@ -21,7 +21,10 @@ public class UserEntity implements User {
     @OneToMany(mappedBy = "user")
     private List<TransactionEntity> transactions;
 
-    @ElementCollection
+    @OneToMany(mappedBy = "user")
+    private List<OfferEntity> offers;
+
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name="ANSWER_QUANTITIES")
     @MapKeyJoinColumn(name="ANSWER_ID")
     @Column(name="QUANTITY")

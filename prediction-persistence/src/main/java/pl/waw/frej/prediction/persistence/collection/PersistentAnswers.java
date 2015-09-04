@@ -1,17 +1,15 @@
 package pl.waw.frej.prediction.persistence.collection;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.frej.waw.prediction.core.entity.Answer;
-import pl.frej.waw.prediction.core.entity.Question;
-import pl.frej.waw.prediction.core.entity.User;
 import pl.frej.waw.prediction.core.persistence.Answers;
 import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.repository.AnswerRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersistentAnswers implements Answers {
@@ -36,8 +34,9 @@ public class PersistentAnswers implements Answers {
     }
 
     @Override
-    public Answer find(Long id) {
-        return answerRepository.findOne(id).orElse(null);
+    public Optional<Answer> find(Long id) {
+        Optional<AnswerEntity> one = answerRepository.findOne(id);
+        return Optional.ofNullable((Answer)one.orElse(null));
     }
 
     @Override

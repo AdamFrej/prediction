@@ -1,0 +1,17 @@
+{% extends "page" %}
+{% block title %}{{websiteTitle}}{% endblock %}
+{% block body %}
+Kup pakiet:
+<form id="bundleForm" action="bundle/buy" method="post">
+    <div class="form-group">
+        <label for="questionId">Id pytania:</label>
+        <input type="text" class="form-control" id="questionId" name="questionId">
+    </div>
+    <div class="form-group">
+        <label for="quantity">Ilość:</label>
+        <textarea type="text" class="form-control" id="quantity" name="quantity"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Kup</button>
+</form>
+
+{% endblock %}

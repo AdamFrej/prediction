@@ -23,10 +23,13 @@ public class OfferEntity implements Offer {
     private Long price;
     private Long quantity;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne
     private AnswerEntity answer;
-    @OneToOne(cascade=CascadeType.ALL)
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
     private UserEntity user;
+
     @CreatedDate
     LocalDateTime createdDate;
 

@@ -8,96 +8,60 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class QuestionForm implements Serializable, Question {
-    private Long id;
+public class QuestionForm implements Serializable {
     private String name;
     private String description;
-    private List<Answer> answers;
 
-    private AnswerForm answerOne;
-    private AnswerForm answerTwo;
+    private String answerOne;
+    private String answerTwo;
     private Date completionTime;
     private Long completionValue;
-    private User operator;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
     public String getDescription() {
         return description;
     }
 
-    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @Override
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    @Override
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
-
-    public AnswerForm getAnswerOne() {
+    public String getAnswerOne() {
         return answerOne;
     }
 
-    public void setAnswerOne(AnswerForm answerOne) {
+    public void setAnswerOne(String answerOne) {
         this.answerOne = answerOne;
     }
 
-    public AnswerForm getAnswerTwo() {
+    public String getAnswerTwo() {
         return answerTwo;
     }
 
-    public void setAnswerTwo(AnswerForm answerTwo) {
+    public void setAnswerTwo(String answerTwo) {
         this.answerTwo = answerTwo;
     }
 
-    @Override
     public Date getCompletionTime() {
         return completionTime;
     }
 
-    @Override
     public void setCompletionTime(Date completionTime) {
         this.completionTime = completionTime;
     }
 
-    @Override
     public Long getCompletionValue() {
         return completionValue;
     }
 
-    @Override
     public void setCompletionValue(Long completionValue) {
         this.completionValue = completionValue;
-    }
-
-    @Override
-    public User getOperator() {
-        return operator;
-    }
-
-    @Override
-    public void setOperator(User user) {
-        this.operator = operator;
     }
 }

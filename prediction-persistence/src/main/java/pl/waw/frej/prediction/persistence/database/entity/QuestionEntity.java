@@ -1,5 +1,7 @@
 package pl.waw.frej.prediction.persistence.database.entity;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.entity.Question;
 import pl.frej.waw.prediction.core.entity.User;
@@ -18,10 +20,10 @@ public class QuestionEntity implements Question {
     private String description;
     private Date completionTime;
     private Long completionValue;
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private UserEntity operator;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
     private List<AnswerEntity> answers;
 
     @Override
@@ -51,12 +53,12 @@ public class QuestionEntity implements Question {
 
     @Override
     public List<Answer> getAnswers() {
-        return null;
+        return Lists.newArrayList(answers);
     }
 
     @Override
     public void setAnswers(List<Answer> answers) {
-
+        this.answers = Lists.newArrayList(Iterables.<Answer, AnswerEntity>transform(answers, answer -> (AnswerEntity) answer));
     }
 
     @Override

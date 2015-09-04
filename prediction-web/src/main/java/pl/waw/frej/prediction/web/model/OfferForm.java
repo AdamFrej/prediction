@@ -9,47 +9,34 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class OfferForm implements Serializable, Offer {
+public class OfferForm implements Serializable {
 
-    private Long id;
-    private OfferType offerType;
+    private OfferType type;
     private Long price;
     private Long quantity;
     private Long answerId;
     private Long userId;
-    private LocalDateTime createdDate;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
     public OfferType getType() {
-        return offerType;
+        return type;
     }
 
-    @Override
-    public void setType(OfferType offerType) {
-        this.offerType = offerType;
+    public void setType(OfferType type) {
+        this.type = type;
     }
 
-    @Override
     public Long getPrice() {
         return price;
     }
 
-    @Override
     public void setPrice(Long price) {
         this.price = price;
     }
 
-    @Override
     public Long getQuantity() {
         return quantity;
     }
 
-    @Override
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
     }
@@ -58,37 +45,15 @@ public class OfferForm implements Serializable, Offer {
         return answerId;
     }
 
-    public void setAnswer(Long answerId) {
+    public void setAnswerId(Long answerId) {
         this.answerId = answerId;
     }
 
-    @Override
-    public Answer getAnswer() {
-        throw new UnsupportedOperationException();
+    public Long getUserId() {
+        return userId;
     }
 
-    @Override
-    public void setAnswer(Answer answer) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public User getUser() {
-        return null;
-    }
-
-    @Override
-    public void setUser(User user) {
-        this.userId = user.getId();
-    }
-
-    @Override
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    @Override
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

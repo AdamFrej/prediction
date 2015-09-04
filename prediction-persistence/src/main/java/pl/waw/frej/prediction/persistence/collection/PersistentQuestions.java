@@ -10,6 +10,7 @@ import pl.waw.frej.prediction.persistence.database.entity.QuestionEntity;
 import pl.waw.frej.prediction.persistence.database.repository.QuestionRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersistentQuestions implements Questions {
@@ -26,8 +27,8 @@ public class PersistentQuestions implements Questions {
     }
 
     @Override
-    public Question find(Long id) {
-        return questionRepository.findOne(id).orElse(null);
+    public Optional<Question> find(Long id) {
+        return Optional.ofNullable((Question) questionRepository.findOne(id).orElse(null));
     }
 
     @Override

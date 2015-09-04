@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import pl.frej.waw.prediction.core.entity.Answer;
 import pl.frej.waw.prediction.core.usecase.Operator;
+import pl.waw.frej.prediction.web.model.Converter;
 import pl.waw.frej.prediction.web.model.QuestionForm;
 
 import java.util.ArrayList;
@@ -17,6 +18,9 @@ public class OperatorController {
 
     @Autowired
     private Operator operator;
+
+    @Autowired
+    private Converter converter;
 
     @RequestMapping(value = "/operator", method = RequestMethod.GET)
     public ModelAndView operatorMain(){
@@ -28,11 +32,7 @@ public class OperatorController {
 
     @RequestMapping(value = "/addQuestion", method = RequestMethod.POST)
     public String addQuestion(QuestionForm f) {
-        ArrayList<Answer> answers = new ArrayList<>();
-        answers.add(f.getAnswerOne());
-        answers.add(f.getAnswerTwo());
-        f.setAnswers(answers);
-        operator.add(f);
+        operator.add(converter.getQuestionEntity(f));
         return "redirect:/operator";
     }
 }
