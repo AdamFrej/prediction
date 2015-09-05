@@ -4,8 +4,8 @@ import pl.frej.waw.prediction.core.boundary.entity.Answer;
 import pl.frej.waw.prediction.core.boundary.entity.Quote;
 import pl.frej.waw.prediction.core.boundary.entity.Offer;
 import pl.frej.waw.prediction.core.boundary.entity.OfferType;
-import pl.frej.waw.prediction.core.boundary.persistence.Answers;
-import pl.frej.waw.prediction.core.boundary.persistence.Offers;
+import pl.frej.waw.prediction.core.boundary.collection.Answers;
+import pl.frej.waw.prediction.core.boundary.collection.Offers;
 
 import java.util.List;
 import java.util.Optional;

@@ -3,7 +3,7 @@ package pl.waw.frej.prediction.web.spring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pl.frej.waw.prediction.core.boundary.control.*;
-import pl.frej.waw.prediction.core.boundary.persistence.*;
+import pl.frej.waw.prediction.core.boundary.collection.*;
 import pl.waw.frej.prediction.persistence.CollectionFactory;
 
 @Configuration

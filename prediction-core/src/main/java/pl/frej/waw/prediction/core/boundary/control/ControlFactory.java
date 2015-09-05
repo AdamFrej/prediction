@@ -1,6 +1,6 @@
 package pl.frej.waw.prediction.core.boundary.control;
 
-import pl.frej.waw.prediction.core.boundary.persistence.*;
+import pl.frej.waw.prediction.core.boundary.collection.*;
 import pl.frej.waw.prediction.core.usecase.AdminImpl;
 import pl.frej.waw.prediction.core.usecase.MaklerImpl;
 import pl.frej.waw.prediction.core.usecase.OperatorImpl;

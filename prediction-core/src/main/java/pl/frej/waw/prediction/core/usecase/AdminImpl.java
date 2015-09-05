@@ -2,7 +2,7 @@ package pl.frej.waw.prediction.core.usecase;
 
 import pl.frej.waw.prediction.core.boundary.control.Admin;
 import pl.frej.waw.prediction.core.boundary.entity.User;
-import pl.frej.waw.prediction.core.boundary.persistence.Users;
+import pl.frej.waw.prediction.core.boundary.collection.Users;
 
 public class AdminImpl implements Admin {
 

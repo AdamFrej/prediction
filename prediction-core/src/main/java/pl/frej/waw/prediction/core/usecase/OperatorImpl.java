@@ -6,9 +6,9 @@ import pl.frej.waw.prediction.core.boundary.entity.Answer;
 import pl.frej.waw.prediction.core.boundary.entity.Question;
 import pl.frej.waw.prediction.core.operations.AnswerName;
 import pl.frej.waw.prediction.core.operations.Liquidation;
-import pl.frej.waw.prediction.core.boundary.persistence.Answers;
-import pl.frej.waw.prediction.core.boundary.persistence.Questions;
-import pl.frej.waw.prediction.core.boundary.persistence.Users;
+import pl.frej.waw.prediction.core.boundary.collection.Answers;
+import pl.frej.waw.prediction.core.boundary.collection.Questions;
+import pl.frej.waw.prediction.core.boundary.collection.Users;
 
 import java.time.LocalDateTime;
 

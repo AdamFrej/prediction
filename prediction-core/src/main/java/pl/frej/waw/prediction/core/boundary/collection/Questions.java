@@ -1,4 +1,4 @@
-package pl.frej.waw.prediction.core.boundary.persistence;
+package pl.frej.waw.prediction.core.boundary.collection;
 
 import pl.frej.waw.prediction.core.boundary.entity.Question;
 

@@ -5,7 +5,7 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.frej.waw.prediction.core.boundary.entity.Answer;
-import pl.frej.waw.prediction.core.boundary.persistence.Answers;
+import pl.frej.waw.prediction.core.boundary.collection.Answers;
 import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.repository.AnswerRepository;
 

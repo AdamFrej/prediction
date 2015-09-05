@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import pl.frej.waw.prediction.core.boundary.entity.User;
-import pl.frej.waw.prediction.core.boundary.persistence.Users;
+import pl.frej.waw.prediction.core.boundary.collection.Users;
 import pl.waw.frej.prediction.persistence.database.repository.UserRepository;
 
 import java.util.List;

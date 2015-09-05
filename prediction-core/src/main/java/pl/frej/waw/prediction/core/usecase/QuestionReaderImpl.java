@@ -2,7 +2,7 @@ package pl.frej.waw.prediction.core.usecase;
 
 import pl.frej.waw.prediction.core.boundary.control.QuestionReader;
 import pl.frej.waw.prediction.core.boundary.entity.Question;
-import pl.frej.waw.prediction.core.boundary.persistence.Questions;
+import pl.frej.waw.prediction.core.boundary.collection.Questions;
 
 import java.util.List;
 import java.util.Optional;

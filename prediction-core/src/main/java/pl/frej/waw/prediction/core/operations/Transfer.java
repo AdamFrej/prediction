@@ -4,9 +4,9 @@ import pl.frej.waw.prediction.core.boundary.entity.Answer;
 import pl.frej.waw.prediction.core.boundary.entity.Offer;
 import pl.frej.waw.prediction.core.boundary.entity.Transaction;
 import pl.frej.waw.prediction.core.boundary.entity.User;
-import pl.frej.waw.prediction.core.boundary.persistence.Offers;
-import pl.frej.waw.prediction.core.boundary.persistence.Transactions;
-import pl.frej.waw.prediction.core.boundary.persistence.Users;
+import pl.frej.waw.prediction.core.boundary.collection.Offers;
+import pl.frej.waw.prediction.core.boundary.collection.Transactions;
+import pl.frej.waw.prediction.core.boundary.collection.Users;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -6,7 +6,7 @@ import pl.frej.waw.prediction.core.boundary.entity.Offer;
 import pl.frej.waw.prediction.core.boundary.entity.Question;
 import pl.frej.waw.prediction.core.boundary.entity.Quote;
 import pl.frej.waw.prediction.core.boundary.entity.User;
-import pl.frej.waw.prediction.core.boundary.persistence.*;
+import pl.frej.waw.prediction.core.boundary.collection.*;
 import pl.frej.waw.prediction.core.operations.Bundle;
 import pl.frej.waw.prediction.core.operations.Market;
 import pl.frej.waw.prediction.core.operations.Transfer;

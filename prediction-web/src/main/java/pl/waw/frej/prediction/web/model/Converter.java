@@ -3,14 +3,16 @@ package pl.waw.frej.prediction.web.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.frej.waw.prediction.core.boundary.collection.Answers;
+import pl.frej.waw.prediction.core.boundary.collection.Users;
 import pl.frej.waw.prediction.core.boundary.entity.Answer;
 import pl.frej.waw.prediction.core.boundary.entity.Offer;
 import pl.frej.waw.prediction.core.boundary.entity.Question;
 import pl.frej.waw.prediction.core.boundary.entity.User;
-import pl.frej.waw.prediction.core.boundary.persistence.Answers;
-import pl.frej.waw.prediction.core.boundary.persistence.Users;
 import pl.waw.frej.prediction.persistence.EntityFactory;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +20,7 @@ import java.util.Optional;
 @Service
 public class Converter {
 
+    public static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     @Autowired
     private Users users;
     @Autowired
@@ -44,7 +47,8 @@ public class Converter {
     public Question getQuestion(QuestionForm questionForm){
         Question question= EntityFactory.createQuestion();
 
-        question.setCompletionTime(questionForm.getCompletionTime());
+
+        question.setCompletionTime(LocalDateTime.parse(questionForm.getCompletionTime(), DATE_TIME_FORMATTER));
         question.setCompletionValue(questionForm.getCompletionValue());
         question.setDescription(questionForm.getDescription());
         question.setName(questionForm.getName());

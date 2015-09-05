@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import pl.frej.waw.prediction.core.boundary.entity.Offer;
 import pl.frej.waw.prediction.core.boundary.entity.OfferType;
 import pl.frej.waw.prediction.core.boundary.entity.User;
-import pl.frej.waw.prediction.core.boundary.persistence.Offers;
+import pl.frej.waw.prediction.core.boundary.collection.Offers;
 import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
 import pl.waw.frej.prediction.persistence.database.repository.OfferRepository;
 
