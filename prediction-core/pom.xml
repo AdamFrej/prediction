@@ -15,16 +15,4 @@
     <packaging>jar</packaging>
     <name>prediction-core</name>
 
-    <properties>
-        <guava.version>18.0</guava.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-    </dependencies>
-
 </project>
