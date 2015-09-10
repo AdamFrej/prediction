@@ -3,12 +3,12 @@ package pl.waw.frej.prediction.web.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.frej.waw.prediction.core.boundary.collection.Answers;
-import pl.frej.waw.prediction.core.boundary.collection.Users;
-import pl.frej.waw.prediction.core.boundary.entity.Answer;
-import pl.frej.waw.prediction.core.boundary.entity.Offer;
-import pl.frej.waw.prediction.core.boundary.entity.Question;
-import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.core.boundary.collection.Answers;
+import pl.waw.frej.prediction.core.boundary.collection.Users;
+import pl.waw.frej.prediction.core.boundary.entity.Answer;
+import pl.waw.frej.prediction.core.boundary.entity.Offer;
+import pl.waw.frej.prediction.core.boundary.entity.Question;
+import pl.waw.frej.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.persistence.EntityFactory;
 
 import java.time.LocalDateTime;

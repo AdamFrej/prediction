@@ -1,0 +1,101 @@
+{% extends "layout/page" %}
+
+{% block navbar %}
+{{navitem("","rynek","Rynek")}}
+{{navitem("","historia","Historia")}}
+{{navitem("","portfel","Mój Portfel")}}
+{{navitem("active","#","Pomoc")}}
+{% endblock %}
+
+{% block title %}{{websiteTitle}}{% endblock %}
+
+{% block body %}
+<h2>Przedmiot obrotu</h2>
+<p>W tworzonej aplikacji obraca się kontraktami terminowymi, których wartość jest określona przez wydarzenia
+    zdefiniowane przez organizatora rynku. Każdy kontrakt posiada następujące cechy:</p>
+<ul>
+    <li>unikalną nazwę,</li>
+    <li>podstawę, na której opiera się kontrakt,</li>
+    <li>datę likwidacji</li>
+    <li>wartość likwidacyjną.</li>
+</ul>
+<p>Podstawą kontraktu jest definicja obiektywnie mierzalnych parametrów, które określają warunki likwidacji kontraktu.
+    Wartość likwidacyjna określa kwotę, jaką posiadacz kontraktu otrzyma w momencie likwidowania kontraktu. W dniu
+    wyznaczonym przez datę likwidacji następuje likwidacja kontraktu. Jeśli zostały spełnione warunki likwidacji
+    posiadacz otrzymuje kwotę równą wartości likwidacji kontraktu. W przeciwnym wypadku nie otrzymuje nic.</p>
+<p>Każdy kontrakt jest częścią pakietu opartego na tej samej podstawie. Kontrakty z pakietu powinny wyczerpywać
+    wszystkie możliwe przypadki. Warunki likwidacji wszystkich kontraktów w pakiecie powinny być rozłączne tak, aby
+    zawsze tylko jeden kontrakt wypłacał wartość likwidacyjną.</p>
+<h2>Emisja kontraktów</h2>
+<p>Kontrakty są emitowane w postaci pakietów. Wszystkie kontrakty w pakiecie są oparte na tej samej podstawie i mają tę
+    samą wartość likwidacyjną. Różnią się jedynie warunkami likwidacji. Pakiet jest sprzedawany po cenie równej wartości
+    likwidacyjnej, dzięki temu organizator ryku tworzący pakiet nie zyska ani nie straci na obrocie kontraktami.</p>
+<p>Kontrakty trafiają do obrotu poprzez zakup takich pakietów od organizatora rynku. Podobnie mogą zostać wycofane z
+    obrotu przez ich sprzedaż organizatorowi. Ponieważ kontrakty mogą trafić i zniknąć z obiegu tylko poprzez zakup lub
+    sprzedaż pakietu, na rynku zawsze będzie występowała równa liczba wszystkich kontraktów.</p>
+<h2>Wydawanie zleceń na rynku</h2>
+<p>Na rynku przewidywań w opisywanej aplikacji występują dwa rodzaje zleceń: oferta z limitem oraz oferta rynkowa. W
+    obu przypadkach uczestnik rynku może złożyć ofertę kupna lub ofertę sprzedaży.</p>
+<h2>Oferty z limitem</h2>
+<p>Oferta kupna składa się z: nazwy kontraktu, ceny kontraktu, liczby kontraktów oraz daty wygaśnięcia oferty. Cena
+    określa ile składający ofertę zobowiązuję się zapłacić za każdy kontrakt, który pragnie kupić. Liczba kontraktów
+    określa ile kontraktów pragnie kupić a data wygaśnięcia moment, w którym niezrealizowana oferta jest usuwana rynku.
+    Cena musi zawierać się pomiędzy zerem a wartością likwidacyjną kontraktu, a data wygaśnięcia musi równa lub
+    wcześniejsza od daty likwidacji kontraktu.</p>
+<p>Oferty kupna zostaną zrealizowane natychmiast tylko, jeśli istnieje już oferta sprzedaży tego samego kontraktu po
+    tej samej lub niższej cenie. W przeciwnymi wypadku zostanie umieszczona w kolejce oczekując na pojawienie się takiej
+    oferty.</p>
+<p>Oferta sprzedaży wygląda analogicznie do oferty kupna z tą różnicą, że jest realizowana natychmiast, jeśli istnieje
+    oferta kupna po cenie równej bądź wyższej od oferowanej. W przeciwnym wypadku ląduje w kolejce oczekując na taką
+    ofertę kupna.</p>
+<p>W dowolnej chwili uczestnik rynku może obejrzeć swoje oczekujące oferty kupna i sprzedaży. Ofert tych nie można
+    modyfikować, ale można je w dowolnym momencie usunąć i złożyć nowe.</p>
+<h2>Oferty rynkowe</h2>
+<p>Oferta kupna po cenie rynkowej składa się z nazwy kontraktu i liczby kontraktów. Jest realizowana natychmiast i
+    skutkuje nabyciem określonej liczby kontraktów z oferty sprzedaży o najniższej cenie. Zakup kontraktów jest
+    realizowany do momentu wyczerpania liczby kontraktów lub wyczerpania środków na koncie lub wyczerpani oferty
+    sprzedaży. Wyczerpana oferta kupna po cenie rynkowej jest zamykana i nie trafia do kolejki.</p>
+<p>Oferta sprzedaży po cenie rynkowej analogicznie składa się z nazwy kontraktu oraz liczby kontraktów. Skutkuje
+    sprzedażą posiadanego kontraktu po cenie oferty kupna o najwyżej cenie do momentu wyczerpania kontraktów w portfelu,
+    wyczerpania liczby kontraktów lub wyczerpania oferty kupna. Następnie jest zamykana i nie trafia do kolejki.</p>
+<h2>Kolejki ofert kupna i sprzedaży</h2>
+<p>Niezrealizowane oferty kupna lub sprzedaży każdego kontraktu trafiają odpowiednio do kolejki ofert kupna i kolejki
+    ofert sprzedaży. Kolejki są posortowane według ceny oraz daty złożenia oferty. Jeśli dwie lub więcej ofert mają taką
+    samą cenę są układane w kolejności złożenia. Ceny są widoczne dla uczestników rynku postaci najwyższej ceny zakupu i
+    najniższej ceny sprzedaży. Oferty pozostają w kolejce do momentu, kiedy wygasną, zostaną wycofane przez
+    składającego, zostaną zrealizowane lub zostaną usunięte ze względu na niemożliwość ich zrealizowania (na przykład z
+    powodu wyczerpania środków na koncie).</p>
+<h2>Wykonanie transakcji</h2>
+<p>Transakcje następują w momencie złożenia oferty, która może być zrealizowana. Za każdym razem, gdy nowa oferta z
+    limitem pojawi się na szczycie kolejki jest sprawdzana pod kątem możliwości realizacji. Jeśli oferta nie przejdzie
+    testu wykonalności jest usuwana z kolejki. Jeśli oferta przejdzie ten test to system przeprowadza transakcję. Jeśli
+    cena oferty kupna przekracza cenę oferty sprzedaży transakcja jest realizowana po cenie ze starszej oferty. Jeśli
+    oferty różnią się liczbą kontraktów transakcja jest realizowana do mniejszej liczby kontraktów. System zmniejsza
+    odpowiednio środki kupującego i zwiększa środki sprzedającego a także przenosi kontrakty z portfela sprzedającego do
+    portfela kupującego. Następnie oferty kupna i sprzedaży są sprawdzane pod kątem usunięcia ich z kolejki. Jeśli
+    oferta wyczerpała wszystkie liczbę kontraktów jest usuwana z kolejki, w przeciwnym razie liczba kontraktów jest
+    pomniejszana a oferta pozostaje w kolejce.</p>
+<p>Za każdym razem, gdy pojawi się nowa oferta rynkowa jest realizowana podobnie jak oferta z limitem z tą różnicą, że
+    cenę transakcji określa cena oferty oczekującej w kolejce. W przypadku oferty kupna po cenie rynkowej pod uwagę
+    brana jest najniższa cena oferty sprzedaży w przypadku oferty sprzedaży cena najwyższej oferty kupna. W obu
+    przypadkach, jeśli liczba kontraktów oferty rynkowej przekracza liczbę dostępnych kontraktów oferta jest realizowana
+    częściowo a pozostała część oferty rynkowej jest usuwana i nie trafia do kolejki.</p>
+<p>Uczestnik rynku nie może przeprowadzać transakcji sam ze sobą. Jeśli istnieją dwie oferty, między którymi mogłoby
+    dojść do transakcji, system sprawdza czy obie oferty zostały złożone przez tego samego użytkownika. Jeśli tak to
+    starsza z ofert jest usuwana a nowa oferta, jeśli jest ofertą z limitem, trafia do kolejki i następuje kontynuacja
+    sprawdzania czy może nastąpić transakcja.</p>
+<h2>Ograniczenia zawierania transakcji</h2>
+<p>Uczestnicy rynku nie mają możliwości sprzedawania kontraktów, których nie posiadają ani kupowania kontraktów za
+    środki, które nie są im dostępne. Oferty, które mogłyby doprowadzić do takiej transakcji nie przejdą test
+    wykonalności.</p>
+<p>Uczestnik rynku może złożyć ofertę, która nie przechodzi testu wykonalności, ale oferta taka nigdy nie będzie
+    skutkowała zawarciem transakcji. Każda oferta przechodzi test wykonywalności w momencie, gdy może dojść do
+    transakcji. Oferty, które nie przejdą testu wykonalności są usuwane.</p>
+<p>Test wykonywalności sprawdza czy potencjalny nabywca ma środki na zakup chociaż jednego kontraktu. Jeśli zakup
+    kontraktu spowodowałby powstanie ujemnych środków na koncie, oferta jest usuwana. Test sprawdza również czy
+    potencjalny nabywca ma przynajmniej jeden kontrakt do sprzedania. Transakcja jest przeprowadzana po jednym
+    kontrakcie za każdym razem powtarzając test. Przeprowadzanie transakcji kończy się w momencie wyczerpania którejś z
+    ofert lub gdy któraś z ofert nie przejdzie testu wykonalności. Oferta, która nie przeszła testu jest usuwana.</p>
+
+
+{% endblock %}

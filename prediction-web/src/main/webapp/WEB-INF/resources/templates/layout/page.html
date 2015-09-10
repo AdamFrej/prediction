@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    {% include "layout/head" %}
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Rynki przewidywań</h1>
+
+        <p>Aplikacja wspierająca transakcje na rynkach przewidywań</p>
+    </div>
+    <ul class="nav nav-tabs nav-justified">
+        {% block navbar %}{% endblock %}
+    </ul>
+</div>
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+</body>
+</html>
+
+{% macro navitem(class="", href, name) %}
+<li role="presentation" class="{{class}}"><a href="{{href}}">{{name}}</a></li>
+{% endmacro %}

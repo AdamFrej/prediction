@@ -1,7 +1,7 @@
 package pl.waw.frej.prediction.persistence;
 
 
-import pl.frej.waw.prediction.core.boundary.collection.*;
+import pl.waw.frej.prediction.core.boundary.collection.*;
 import pl.waw.frej.prediction.persistence.collection.*;
 
 public abstract class CollectionFactory {

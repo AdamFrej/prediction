@@ -1,15 +1,16 @@
 package pl.waw.frej.prediction.persistence.collection;
 
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.frej.waw.prediction.core.boundary.entity.Offer;
-import pl.frej.waw.prediction.core.boundary.entity.OfferType;
-import pl.frej.waw.prediction.core.boundary.entity.User;
-import pl.frej.waw.prediction.core.boundary.collection.Offers;
+import pl.waw.frej.prediction.core.boundary.collection.Offers;
+import pl.waw.frej.prediction.core.boundary.entity.Offer;
+import pl.waw.frej.prediction.core.boundary.entity.OfferType;
+import pl.waw.frej.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
+import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
 import pl.waw.frej.prediction.persistence.database.repository.OfferRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +20,9 @@ public class PersistentOffers implements Offers {
     @Autowired
     private OfferRepository offerRepository;
 
-    @Autowired
-    private Transformer transformer;
-
     @Override
     public boolean add(Offer offer) {
-        offerRepository.save(transformer.getOfferEntity(offer));
+        offerRepository.save((OfferEntity) offer);
         return true;
     }
 
@@ -45,7 +43,8 @@ public class PersistentOffers implements Offers {
 
     @Override
     public List<Offer> findByUser(User user) {
-        return transformOffers(offerRepository.findByUser(transformer.getUserEntity(user)));
+
+        return transformOffers(offerRepository.findByUser((UserEntity) user));
     }
 
     @Override
@@ -65,7 +64,7 @@ public class PersistentOffers implements Offers {
         Optional<OfferEntity> optional = offerRepository.findOne(offer.getId());
         if (optional.isPresent()) {
             OfferEntity oldOffer = optional.get();
-            OfferEntity newOffer = transformer.getOfferEntity(offer);
+            OfferEntity newOffer = (OfferEntity) offer;
             offerRepository.delete(oldOffer);
             OfferEntity save = offerRepository.save(newOffer);
             return save;
@@ -74,6 +73,6 @@ public class PersistentOffers implements Offers {
     }
 
     private List<Offer> transformOffers(List<OfferEntity> offerEntities) {
-        return Lists.newArrayList(offerEntities);
+        return new ArrayList<>(offerEntities);
     }
 }

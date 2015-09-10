@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1201342246">
+  <component name="DataSourceManagerImpl" format="xml" hash="843631321">
     <data-source source="LOCAL" name="H2 -prediction" uuid="4f4d7a26-934f-43ec-89b5-37f5a4a1dedb">
       <driver-ref>h2.in-memory</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
       <jdbc-url>jdbc:h2:mem:prediction-db</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="prediction-db" uuid="a7a8078d-ee88-4357-bbf3-290fbaffeb3a">
+      <driver-ref>oracle</driver-ref>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@//localhost:1521</jdbc-url>
       <libraries />
     </data-source>
   </component>

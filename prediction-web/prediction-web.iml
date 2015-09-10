@@ -6,6 +6,12 @@
         <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
           <file>file://$MODULE_DIR$/src/main/java/pl/waw/frej/prediction/web/spring/Config.java</file>
           <file>file://$MODULE_DIR$/src/main/java/pl/waw/frej/prediction/web/spring/MvcConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/pl/waw/frej/prediction/web/config/MvcConfig.java</file>
+        </fileset>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/pl/waw/frej/prediction/web/config/MvcConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/pl/waw/frej/prediction/web/config/AppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/pl/waw/frej/prediction/web/config/PredictionCoreConfig.java</file>
         </fileset>
       </configuration>
     </facet>

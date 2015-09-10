@@ -1,11 +1,11 @@
 package pl.waw.frej.prediction.persistence.database.entity;
 
-import com.google.common.collect.Lists;
-import pl.frej.waw.prediction.core.boundary.entity.Answer;
-import pl.frej.waw.prediction.core.boundary.entity.Transaction;
-import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.core.boundary.entity.Answer;
+import pl.waw.frej.prediction.core.boundary.entity.Transaction;
+import pl.waw.frej.prediction.core.boundary.entity.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +38,7 @@ public class UserEntity implements User {
 
     @Override
     public List<Transaction> getTransactions() {
-        return Lists.newArrayList(transactions);
+        return new ArrayList<>(transactions);
     }
 
     @Override

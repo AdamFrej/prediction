@@ -1,6 +1,6 @@
 package pl.waw.frej.prediction.web.model;
 
-import pl.frej.waw.prediction.core.boundary.entity.OfferType;
+import pl.waw.frej.prediction.core.boundary.entity.OfferType;
 
 import java.io.Serializable;
 

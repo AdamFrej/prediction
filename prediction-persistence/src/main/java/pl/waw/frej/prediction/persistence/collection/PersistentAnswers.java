@@ -4,11 +4,12 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.frej.waw.prediction.core.boundary.entity.Answer;
-import pl.frej.waw.prediction.core.boundary.collection.Answers;
+import pl.waw.frej.prediction.core.boundary.collection.Answers;
+import pl.waw.frej.prediction.core.boundary.entity.Answer;
 import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.repository.AnswerRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,12 +19,9 @@ public class PersistentAnswers implements Answers {
     @Autowired
     private AnswerRepository answerRepository;
 
-    @Autowired
-    private Transformer transformer;
-
     @Override
     public boolean add(Answer answer) {
-        AnswerEntity answerEntity = transformer.getAnswerEntity(answer);
+        AnswerEntity answerEntity = (AnswerEntity)answer;
         answerRepository.save(answerEntity);
         return true;
     }
@@ -42,17 +40,17 @@ public class PersistentAnswers implements Answers {
 
     @Override
     public List<Answer> findAll() {
-        return Lists.newArrayList(answerRepository.findAll());
+        return new ArrayList<>(answerRepository.findAll());
     }
 
     @Override
     public Answer update(Answer answer) {
-        return answerRepository.save(transformer.getAnswerEntity(answer));
+        return answerRepository.save((AnswerEntity) answer);
     }
 
     @Override
     public List<Answer> update(List<Answer> answers) {
-        return Lists.newArrayList(answerRepository.save(Iterables.transform(answers, transformer::getAnswerEntity)));
+        return Lists.newArrayList(answerRepository.save(Iterables.transform(answers, answer -> (AnswerEntity) answer)));
     }
 
 }

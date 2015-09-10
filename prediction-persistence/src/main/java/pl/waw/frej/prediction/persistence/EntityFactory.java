@@ -1,7 +1,7 @@
 package pl.waw.frej.prediction.persistence;
 
 
-import pl.frej.waw.prediction.core.boundary.entity.*;
+import pl.waw.frej.prediction.core.boundary.entity.*;
 import pl.waw.frej.prediction.persistence.database.entity.*;
 
 public abstract class EntityFactory {

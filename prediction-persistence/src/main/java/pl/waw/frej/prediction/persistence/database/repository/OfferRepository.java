@@ -2,7 +2,7 @@ package pl.waw.frej.prediction.persistence.database.repository;
 
 
 import org.springframework.data.repository.Repository;
-import pl.frej.waw.prediction.core.boundary.entity.OfferType;
+import pl.waw.frej.prediction.core.boundary.entity.OfferType;
 import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
 import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
 

@@ -1,12 +1,12 @@
 package pl.waw.frej.prediction.persistence.database.entity;
 
-import com.google.common.collect.Lists;
-import pl.frej.waw.prediction.core.boundary.entity.Answer;
-import pl.frej.waw.prediction.core.boundary.entity.Question;
-import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.core.boundary.entity.Answer;
+import pl.waw.frej.prediction.core.boundary.entity.Question;
+import pl.waw.frej.prediction.core.boundary.entity.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -69,7 +69,7 @@ public class AnswerEntity implements Answer {
 
     @Override
     public List<User> getOwners() {
-        return Lists.newArrayList(owners);
+        return new ArrayList<>(owners);
     }
 
     @Override
