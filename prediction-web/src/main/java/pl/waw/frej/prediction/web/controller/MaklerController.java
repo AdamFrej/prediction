@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import pl.frej.waw.prediction.core.boundary.control.Makler;
-import pl.frej.waw.prediction.core.boundary.control.QuestionReader;
-import pl.frej.waw.prediction.core.boundary.entity.Offer;
-import pl.frej.waw.prediction.core.boundary.entity.Question;
-import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.core.boundary.control.Makler;
+import pl.waw.frej.prediction.core.boundary.control.QuestionReader;
+import pl.waw.frej.prediction.core.boundary.entity.Offer;
+import pl.waw.frej.prediction.core.boundary.entity.Question;
+import pl.waw.frej.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.web.model.Converter;
 import pl.waw.frej.prediction.web.model.OfferForm;
-import pl.waw.frej.prediction.web.spring.ResourceNotFoundException;
+import pl.waw.frej.prediction.web.config.ResourceNotFoundException;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
@@ -39,15 +39,6 @@ public class MaklerController {
         modelAndView.addObject("websiteTitle", "Makler");
         modelAndView.addObject("questions", questionReader.read());
         modelAndView.addObject("offers", makler.findOffers(userProvider.from(session)));
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/market", method = RequestMethod.GET)
-    public ModelAndView market(HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("pages/market");
-        modelAndView.addObject("websiteTitle", "Notowania");
-        modelAndView.addObject("answers", makler.findQuotes());
         return modelAndView;
     }
 

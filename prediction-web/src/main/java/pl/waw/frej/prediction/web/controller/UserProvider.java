@@ -2,8 +2,8 @@ package pl.waw.frej.prediction.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.frej.waw.prediction.core.boundary.control.Admin;
-import pl.frej.waw.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.core.boundary.control.Admin;
+import pl.waw.frej.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.persistence.EntityFactory;
 
 import javax.servlet.http.HttpSession;
