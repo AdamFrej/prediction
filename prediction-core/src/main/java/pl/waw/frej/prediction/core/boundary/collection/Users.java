@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface Users {
     Optional<User> find(Long id);
+    Optional<User> find(User user);
 
     User update(User user);
 

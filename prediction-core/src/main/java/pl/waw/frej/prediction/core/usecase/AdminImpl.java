@@ -31,4 +31,9 @@ public class AdminImpl implements Admin {
     public List<User> readUsers() {
         return users.findAll();
     }
+
+    @Override
+    public Optional<User> findUser(Long userId) {
+        return users.find(userId);
+    }
 }

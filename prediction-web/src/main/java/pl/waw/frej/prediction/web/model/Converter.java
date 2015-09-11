@@ -48,8 +48,8 @@ public class Converter {
         Question question= EntityFactory.createQuestion();
 
 
-        question.setCompletionTime(LocalDateTime.parse(questionForm.getCompletionTime(), DATE_TIME_FORMATTER));
-        question.setCompletionValue(questionForm.getCompletionValue());
+        question.setLiquidationDate(LocalDateTime.parse(questionForm.getLiquidationDate(), DATE_TIME_FORMATTER));
+        question.setLiquidationValue(questionForm.getLiquidationValue());
         question.setDescription(questionForm.getDescription());
         question.setName(questionForm.getName());
 

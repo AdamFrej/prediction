@@ -11,9 +11,12 @@
 
 {% block body %}
 
-<div class="col-sm-offset-1 col-sm-10">
-    <h2>Moje pytania</h2>
-
+<div class="col-xs-8">
+    <h3>Moje pytania</h3>
+    {% include "panels/question/list"%}
+</div>
+<div class="col-xs-4">
+    {% include "panels/question/add"%}
 </div>
 
 {% endblock %}

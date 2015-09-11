@@ -15,12 +15,9 @@ public interface Answer {
 
     void setDescription(String description);
 
-    LocalDateTime getCompletionTime();
+    LocalDateTime getLiquidationDate();
 
-    void setCompletionTime(LocalDateTime completionTime);
-
-    Question getQuestion();
-    void setQuestion(Question question);
+    void setLiquidationDate(LocalDateTime completionTime);
 
     List<User> getOwners();
     void addOwner(User user);

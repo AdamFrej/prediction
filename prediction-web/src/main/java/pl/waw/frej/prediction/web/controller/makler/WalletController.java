@@ -23,7 +23,8 @@ public class WalletController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/makler/wallet");
         modelAndView.addObject("websiteTitle", "Mój Portfel");
-        modelAndView.addObject("offers", makler.findOffers(userProvider.from(session)));
+        modelAndView.addObject("funds", userProvider.maklerFrom(session).getFunds());
+        modelAndView.addObject("answerQuantities", userProvider.maklerFrom(session).getAnswerQuantities());
         return modelAndView;
     }
 }

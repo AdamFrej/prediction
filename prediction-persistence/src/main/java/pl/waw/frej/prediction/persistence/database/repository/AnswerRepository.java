@@ -15,5 +15,6 @@ public interface AnswerRepository extends Repository<AnswerEntity, Long> {
     Optional<AnswerEntity> findOne(Long id);
 
     AnswerEntity save(AnswerEntity persisted);
+    AnswerEntity saveAndFlush(AnswerEntity answerEntity);
     Iterable<AnswerEntity> save(Iterable<AnswerEntity> persisted);
 }

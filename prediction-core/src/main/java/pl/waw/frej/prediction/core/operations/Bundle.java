@@ -28,11 +28,11 @@ public class Bundle {
     }
 
     public void buy(User user, Question question, Long quantity) {
-        if(question.getCompletionTime().isAfter(LocalDateTime.now()))
+        if(question.getLiquidationDate().isAfter(LocalDateTime.now()))
             return;
 
         this.quantity=quantity;
-        price = question.getCompletionValue() * quantity;
+        price = question.getLiquidationValue() * quantity;
         answers = question.getAnswers();
         operator = question.getOperator();
         makler = user;

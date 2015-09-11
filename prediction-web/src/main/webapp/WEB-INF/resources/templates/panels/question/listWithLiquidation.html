@@ -15,7 +15,7 @@
         <td>{{question.description}}</td>
         <td>{{question.liquidationDate}}</td>
         <td>{{question.liquidationValue}}</td>
-        <td>{% for answer in question.answers %}{{answer.name}} {% endfor %}</td>
+        <td>{% for answer in question.answers %}<a href="question/liquidate/{{question.id}}/{{answer.id}}">{{answer.name}}</a> {% endfor %}</td>
     </tr>
     {% endfor %}
     </tbody>

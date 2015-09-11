@@ -4,6 +4,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import pl.waw.frej.prediction.core.boundary.collection.Answers;
 import pl.waw.frej.prediction.core.boundary.entity.Answer;
 import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Component
 public class PersistentAnswers implements Answers {
 
@@ -22,7 +24,7 @@ public class PersistentAnswers implements Answers {
     @Override
     public boolean add(Answer answer) {
         AnswerEntity answerEntity = (AnswerEntity)answer;
-        answerRepository.save(answerEntity);
+        answerRepository.saveAndFlush(answerEntity);
         return true;
     }
 

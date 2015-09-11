@@ -20,18 +20,15 @@ public class AnswerEntity implements Answer {
     
     private String name;
     private String description;
-    private LocalDateTime completionTime;
+    private LocalDateTime liquidationDate;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="ANSWER_USER",
             joinColumns={@JoinColumn(name="ANSWER_ID", referencedColumnName="ANSWER_ID")},
             inverseJoinColumns={@JoinColumn(name="USER_ID", referencedColumnName="USER_ID")})
     private List<UserEntity> owners;
 
-    @ManyToOne
-    @JoinColumn(name = "QUESTION_ID")
-    private QuestionEntity question;
 
     @Override
     public Long getId() {
@@ -58,13 +55,13 @@ public class AnswerEntity implements Answer {
         this.description = description;
     }
     @Override
-    public LocalDateTime getCompletionTime() {
-        return completionTime;
+    public LocalDateTime getLiquidationDate() {
+        return liquidationDate;
     }
 
     @Override
-    public void setCompletionTime(LocalDateTime completionTime) {
-        this.completionTime = completionTime;
+    public void setLiquidationDate(LocalDateTime liquidationDate) {
+        this.liquidationDate = liquidationDate;
     }
 
     @Override
@@ -80,15 +77,6 @@ public class AnswerEntity implements Answer {
     @Override
     public void removeOwner(User owner) {
         owners.remove(owner);
-    }
-
-    @Override
-    public Question getQuestion() {
-        return question;
-    }
-    @Override
-    public void setQuestion(Question question) {
-        this.question = (QuestionEntity)question;
     }
 
     @Override

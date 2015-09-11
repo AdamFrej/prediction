@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Component
 public class PersistentUsers implements Users {
 
@@ -23,6 +24,11 @@ public class PersistentUsers implements Users {
     @Override
     public Optional<User> find(Long id) {
         return Optional.ofNullable(userRepository.findOne(id).orElse(null));
+    }
+
+    @Override
+    public Optional<User> find(User user) {
+        return find(user.getId());
     }
 
     @Override
@@ -39,7 +45,7 @@ public class PersistentUsers implements Users {
 
     @Override
     public void add(User user){
-        userRepository.save((UserEntity) user);
+        userRepository.saveAndFlush((UserEntity) user);
     }
 
     @Override

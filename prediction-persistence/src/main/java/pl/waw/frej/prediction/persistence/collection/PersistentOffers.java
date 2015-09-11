@@ -2,6 +2,7 @@ package pl.waw.frej.prediction.persistence.collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import pl.waw.frej.prediction.core.boundary.collection.Offers;
 import pl.waw.frej.prediction.core.boundary.entity.Offer;
 import pl.waw.frej.prediction.core.boundary.entity.OfferType;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @Component
 public class PersistentOffers implements Offers {
 

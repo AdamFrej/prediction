@@ -1,5 +1,6 @@
 package pl.waw.frej.prediction.core.operations;
 
+import pl.waw.frej.prediction.core.boundary.collection.Questions;
 import pl.waw.frej.prediction.core.boundary.entity.Answer;
 import pl.waw.frej.prediction.core.boundary.entity.Question;
 import pl.waw.frej.prediction.core.boundary.entity.User;
@@ -15,16 +16,18 @@ public class Liquidation {
 
     private final Answers answers;
     private final Users users;
+    private final Questions questions;
     private List<Answer> answersToUpdate;
     private List<User> usersToUpdate;
 
-    public Liquidation(Answers answers, Users users) {
+    public Liquidation(Answers answers, Users users, Questions questions) {
         this.answers = answers;
         this.users = users;
+        this.questions = questions;
     }
 
     public void liquidate(Question question, Answer payingAnswer){
-        if(question.getCompletionTime().isBefore(LocalDateTime.now()))
+        if(question.getLiquidationDate().isAfter(LocalDateTime.now()) || question.isLiquidated())
             return;
 
         answersToUpdate = question.getAnswers();
@@ -35,7 +38,7 @@ public class Liquidation {
                 Long quantity = owner.getAnswerQuantities().get(answer);
                 owner.removeAnswer(answer, quantity);
                 if(answer.equals(payingAnswer)){
-                    Long payment = quantity * question.getCompletionValue();
+                    Long payment = quantity * question.getLiquidationValue();
                     User operator = question.getOperator();
                     owner.modifyFunds(payment);
                     operator.modifyFunds(-payment);
@@ -46,5 +49,7 @@ public class Liquidation {
         }
         answers.update(answersToUpdate);
         users.update(usersToUpdate);
+        question.setLiquidated(true);
+        questions.update(question);
     }
 }

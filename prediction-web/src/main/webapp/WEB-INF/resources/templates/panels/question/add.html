@@ -1,28 +1,28 @@
-Dodaj pytanie:
-<form id="questionForm" action="addQuestion" method="post">
+<h3>Dodaj pytanie</h3>
+<form id="questionForm" action="question/add" method="post">
     <div class="form-group">
-        <label for="name">Nazwa pytania:</label>
+        <label for="name">Nazwa</label>
         <input type="text" class="form-control" id="name" name="name">
     </div>
     <div class="form-group">
-        <label for="questionDescription">Opis pytania:</label>
+        <label for="questionDescription">Opis</label>
         <textarea  class="form-control" id="questionDescription" name="description"></textarea>
     </div>
     <div class="form-group">
-        <label for="answerOne">Pierwsza odpowiedź na pytanie:</label>
-        <textarea  class="form-control" id="answerOne" name="answerOne.description"></textarea>
+        <label for="answerOne">Pierwsza odpowiedź</label>
+        <textarea  class="form-control" id="answerOne" name="answerOne"></textarea>
     </div>
     <div class="form-group">
-        <label for="answerTwo">Druga odpowiedź na pytanie:</label>
-        <textarea  class="form-control" id="answerTwo" name="answerTwo.description"></textarea>
+        <label for="answerTwo">Druga odpowiedź</label>
+        <textarea  class="form-control" id="answerTwo" name="answerTwo"></textarea>
     </div>
     <div class="form-group">
-        <label for="completionTime">Data likwidacji:</label>
-        <textarea  class="form-control" id="completionTime" name="completionTime"></textarea>
+        <label for="liquidationDate">Data likwidacji</label>
+        <textarea  class="form-control" id="liquidationDate" name="liquidationDate"></textarea>
     </div>
     <div class="form-group">
-        <label for="completionValue">Wartość likwidacyjna:</label>
-        <textarea  class="form-control" id="completionValue" name="completionValue"></textarea>
+        <label for="liquidationValue">Wartość likwidacyjna</label>
+        <textarea  class="form-control" id="liquidationValue" name="liquidationValue"></textarea>
     </div>
-    <button type="submit" class="btn btn-default">Dodaj pytanie</button>
+    <button type="submit" class="btn btn-primary btn-sm">Dodaj</button>
 </form>

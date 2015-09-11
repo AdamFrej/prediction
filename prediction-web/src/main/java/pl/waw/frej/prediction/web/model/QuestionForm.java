@@ -1,8 +1,6 @@
 package pl.waw.frej.prediction.web.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 public class QuestionForm implements Serializable {
     private String name;
@@ -10,8 +8,8 @@ public class QuestionForm implements Serializable {
 
     private String answerOne;
     private String answerTwo;
-    private String completionTime;
-    private Long completionValue;
+    private String liquidationDate;
+    private Long liquidationValue;
 
     public String getName() {
         return name;
@@ -45,19 +43,19 @@ public class QuestionForm implements Serializable {
         this.answerTwo = answerTwo;
     }
 
-    public String getCompletionTime() {
-        return completionTime;
+    public String getLiquidationDate() {
+        return liquidationDate;
     }
 
-    public void setCompletionTime(String completionTime) {
-        this.completionTime = completionTime;
+    public void setLiquidationDate(String liquidationDate) {
+        this.liquidationDate = liquidationDate;
     }
 
-    public Long getCompletionValue() {
-        return completionValue;
+    public Long getLiquidationValue() {
+        return liquidationValue;
     }
 
-    public void setCompletionValue(Long completionValue) {
-        this.completionValue = completionValue;
+    public void setLiquidationValue(Long liquidationValue) {
+        this.liquidationValue = liquidationValue;
     }
 }

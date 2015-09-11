@@ -19,12 +19,14 @@ public class QuestionEntity implements Question {
     private Long id;
     private String name;
     private String description;
-    private LocalDateTime completionTime;
-    private Long completionValue;
-    @OneToOne(cascade = CascadeType.ALL)
+    private LocalDateTime liquidationDate;
+    private Long liquidationValue;
+    private boolean liquidated;
+    @ManyToOne
     private UserEntity operator;
 
-    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="QUESTION_ID", referencedColumnName="QUESTION_ID")
     private List<AnswerEntity> answers;
 
     @Override
@@ -63,23 +65,23 @@ public class QuestionEntity implements Question {
     }
 
     @Override
-    public LocalDateTime getCompletionTime() {
-        return completionTime;
+    public LocalDateTime getLiquidationDate() {
+        return liquidationDate;
     }
 
     @Override
-    public void setCompletionTime(LocalDateTime completionTime) {
-        this.completionTime = completionTime;
+    public void setLiquidationDate(LocalDateTime liquidationDate) {
+        this.liquidationDate = liquidationDate;
     }
 
     @Override
-    public Long getCompletionValue() {
-        return completionValue;
+    public Long getLiquidationValue() {
+        return liquidationValue;
     }
 
     @Override
-    public void setCompletionValue(Long completionValue) {
-        this.completionValue = completionValue;
+    public void setLiquidationValue(Long liquidationValue) {
+        this.liquidationValue = liquidationValue;
     }
 
     @Override
@@ -90,5 +92,15 @@ public class QuestionEntity implements Question {
     @Override
     public void setOperator(User operator) {
         this.operator = (UserEntity) operator;
+    }
+
+    @Override
+    public boolean isLiquidated() {
+        return liquidated;
+    }
+
+    @Override
+    public void setLiquidated(boolean liquidated) {
+        this.liquidated = liquidated;
     }
 }

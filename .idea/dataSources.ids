@@ -333,11 +333,11 @@
     <schema name="SYSTEM" catalog=""/>
     <table name="ANSWERENTITY" schema="PREDICTION" catalog="" type="TABLE">
       <column name="ANSWER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="false" jdbcType="3"/>
-      <column name="COMPLETIONTIME" sqlType="RAW" precision="255" scale="0" nullable="true" jdbcType="-3"/>
       <column name="DESCRIPTION" sqlType="VARCHAR2" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LIQUIDATIONDATE" sqlType="RAW" precision="255" scale="0" nullable="true" jdbcType="-3"/>
       <column name="NAME" sqlType="VARCHAR2" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="QUESTION_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
-      <primary-key name="SYS_C0011446" columns="ANSWER_ID"/>
+      <primary-key name="SYS_C0013552" columns="ANSWER_ID"/>
       <foreign-key name="FKDT3LAPSRLE98UCRLYUOL1C5KS" columns="QUESTION_ID" ref-table="QUESTIONENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="QUESTION_ID" update-rule="0" delete-rule="1" deferrability="2"/>
       <exported-key name="FK8JO5MHOXLSW3TDCN4SVVYGYX5" table="ANSWER_QUANTITIES" schema="PREDICTION" catalog="" columns="ANSWER_ID"/>
       <exported-key name="FK3AA9WRBWQ3YBLUEHGS3MBAQOC" table="ANSWER_USER" schema="PREDICTION" catalog="" columns="ANSWER_ID"/>
@@ -348,7 +348,7 @@
       <column name="USERENTITY_USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="false" jdbcType="3"/>
       <column name="QUANTITY" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="ANSWER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="false" jdbcType="3"/>
-      <primary-key name="SYS_C0011442" columns="USERENTITY_USER_ID,ANSWER_ID"/>
+      <primary-key name="SYS_C0013035" columns="USERENTITY_USER_ID,ANSWER_ID"/>
       <foreign-key name="FK8JO5MHOXLSW3TDCN4SVVYGYX5" columns="ANSWER_ID" ref-table="ANSWERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="ANSWER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
       <foreign-key name="FKGELFMH9YS7P4OF0BEG824OQT6" columns="USERENTITY_USER_ID" ref-table="USERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="USER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
     </table>
@@ -367,7 +367,7 @@
       <column name="QUANTITY" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="ANSWER_ANSWER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
-      <primary-key name="SYS_C0011448" columns="ID"/>
+      <primary-key name="SYS_C0013041" columns="ID"/>
       <foreign-key name="FKB4129R6WV639RAGX7PLBC4AUF" columns="ANSWER_ANSWER_ID" ref-table="ANSWERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="ANSWER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
       <foreign-key name="FKSU85RHYLBX8GU405H2W1HQ2G0" columns="USER_ID" ref-table="USERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="USER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
     </table>
@@ -378,7 +378,7 @@
       <column name="DESCRIPTION" sqlType="VARCHAR2" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="NAME" sqlType="VARCHAR2" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="OPERATOR_USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
-      <primary-key name="SYS_C0011450" columns="QUESTION_ID"/>
+      <primary-key name="SYS_C0013043" columns="QUESTION_ID"/>
       <foreign-key name="FKI6IVUIDX3KWEB3Y2V4OK5NY80" columns="OPERATOR_USER_ID" ref-table="USERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="USER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
       <exported-key name="FKDT3LAPSRLE98UCRLYUOL1C5KS" table="ANSWERENTITY" schema="PREDICTION" catalog="" columns="QUESTION_ID"/>
     </table>
@@ -391,7 +391,7 @@
       <column name="BUYER_USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="SELLER_USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
-      <primary-key name="SYS_C0011452" columns="TRANSACTION_ID"/>
+      <primary-key name="SYS_C0013045" columns="TRANSACTION_ID"/>
       <foreign-key name="FKQUETCN9PPX5218MU601L1OA6Y" columns="ANSWER_ANSWER_ID" ref-table="ANSWERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="ANSWER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
       <foreign-key name="FK4E7GNTWF44OQ44WSUL82WYEEI" columns="BUYER_USER_ID" ref-table="USERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="USER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
       <foreign-key name="FKRH21Y7JUYTAI1G7I5CRT766R0" columns="USER_ID" ref-table="USERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="USER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
@@ -400,7 +400,8 @@
     <table name="USERENTITY" schema="PREDICTION" catalog="" type="TABLE">
       <column name="USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="false" jdbcType="3"/>
       <column name="FUNDS" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
-      <primary-key name="SYS_C0011454" columns="USER_ID"/>
+      <column name="NAME" sqlType="VARCHAR2" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="SYS_C0013506" columns="USER_ID"/>
       <exported-key name="FKGELFMH9YS7P4OF0BEG824OQT6" table="ANSWER_QUANTITIES" schema="PREDICTION" catalog="" columns="USERENTITY_USER_ID"/>
       <exported-key name="FKRJUHLJN1QJI3PUYPFBE28KMN6" table="ANSWER_USER" schema="PREDICTION" catalog="" columns="USER_ID"/>
       <exported-key name="FKSU85RHYLBX8GU405H2W1HQ2G0" table="OFFERENTITY" schema="PREDICTION" catalog="" columns="USER_ID"/>

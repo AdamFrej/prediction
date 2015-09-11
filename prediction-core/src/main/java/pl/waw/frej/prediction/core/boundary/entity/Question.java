@@ -19,14 +19,18 @@ public interface Question {
 
     void setAnswers(List<Answer> answers);
 
-    LocalDateTime getCompletionTime();
+    LocalDateTime getLiquidationDate();
 
-    void setCompletionTime(LocalDateTime completionTime);
+    void setLiquidationDate(LocalDateTime completionTime);
 
-    Long getCompletionValue();
+    Long getLiquidationValue();
 
-    void setCompletionValue(Long completionValue);
+    void setLiquidationValue(Long completionValue);
 
     User getOperator();
     void setOperator(User user);
+
+    boolean isLiquidated();
+
+    void setLiquidated(boolean liquidated);
 }
