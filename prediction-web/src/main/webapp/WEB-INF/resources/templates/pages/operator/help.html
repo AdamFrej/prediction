@@ -1,0 +1,38 @@
+{% extends "layout/page" %}
+{% block subtitle %}Strefa operatora{% endblock %}
+
+{% block navbar %}
+{{navitem("","pytania","Moje Pytania")}}
+{{navitem("","likwidacja","Likwidacja")}}
+{{navitem("active","#","Pomoc")}}
+{% endblock %}
+
+{% block title %}{{websiteTitle}}{% endblock %}
+
+{% block body %}
+
+<div class="col-sm-offset-1 col-sm-10">
+    <h2>Warunki prawidłowego pytania</h2>
+
+    <p>
+        Aby pytanie mogło zostać zamienione na pakiet kontraktów musi być ono zdefiniowane w taki sposób by mogło stać
+        się podstawą pakietu kontraktów.</p>
+
+    <p>Warunki, jakie powinno spełniać pytanie i odpowiedzi:</p>
+    <ul>
+        <li>pytanie powinno być możliwe do obiektywnego i bezspornego sprawdzenia.</li>
+        <li>pytanie powinno mieć określoną datę kiedy zostanie określona na nie odpowiedź.</li>
+        <li>pytanie powinno mieć ograniczoną listę odpowiedzi, które wyczerpują wszystkie sytuacje, jakie mogą
+            wystąpić.
+        </li>
+        <li>odpowiedzi na te pytania nie mogą na siebie nachodzić, co oznacza, że dwie odpowiedzi nie powinny być
+            jednocześnie prawdziwe.
+        </li>
+    </ul>
+    <p>Odpowiedzialność za właściwie przygotowanie pytań spoczywa na interesariuszach. Występują oni w roli organizatora
+        rynku i w ich gestii leży prawidłowość przygotowanych przez siebie pytań.</p>
+
+</div>
+
+
+{% endblock %}

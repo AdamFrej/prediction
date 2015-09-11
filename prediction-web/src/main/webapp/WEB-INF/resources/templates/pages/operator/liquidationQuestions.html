@@ -1,0 +1,20 @@
+{% extends "layout/page" %}
+{% block subtitle %}Strefa operatora{% endblock %}
+
+{% block navbar %}
+{{navitem("","pytania","Moje Pytania")}}
+{{navitem("active","#","Likwidacja")}}
+{{navitem("","pomoc","Pomoc")}}
+{% endblock %}
+
+{% block title %}{{websiteTitle}}{% endblock %}
+
+{% block body %}
+
+<div class="col-sm-offset-1 col-sm-10">
+    <h2>Pytania do likwidacji</h2>
+
+</div>
+
+
+{% endblock %}

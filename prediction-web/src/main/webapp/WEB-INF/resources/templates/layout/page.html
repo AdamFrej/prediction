@@ -5,17 +5,23 @@
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron">
-        <h1>Rynki przewidywań</h1>
+    <div class="row">
+        <div class="jumbotron">
+            <h1>Rynki przewidywań</h1>
 
-        <p>Aplikacja wspierająca transakcje na rynkach przewidywań</p>
+            <p>{% block subtitle %}{% endblock %}</p>
+        </div>
     </div>
-    <ul class="nav nav-tabs nav-justified">
-        {% block navbar %}{% endblock %}
-    </ul>
+    <div class="row">
+        <ul class="nav nav-tabs nav-justified">
+            {% block navbar %}{% endblock %}
+        </ul>
+    </div>
 </div>
-<div class="container">
-    {% block body %}{% endblock %}
+<div class="container bordered-container fill">
+    <div class="row fill">
+        {% block body %}{% endblock %}
+    </div>
 </div>
 </body>
 </html>
