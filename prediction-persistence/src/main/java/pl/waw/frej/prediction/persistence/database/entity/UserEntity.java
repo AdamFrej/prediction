@@ -30,10 +30,21 @@ public class UserEntity implements User {
     @Column(name="QUANTITY")
     private Map<AnswerEntity, Long> answerQuantities = new HashMap<>();
     private Long funds;
+    private String name;
 
     @Override
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name=name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

@@ -26,7 +26,7 @@ public class Converter {
     @Autowired
     private Answers answers;
 
-    public Offer getOffer(OfferForm offerForm) {
+    public Offer toDomain(OfferForm offerForm) {
         Offer offer = EntityFactory.createOffer();
 
         offer.setType(offerForm.getType());
@@ -44,7 +44,7 @@ public class Converter {
         return offer;
     }
 
-    public Question getQuestion(QuestionForm questionForm){
+    public Question toDomain(QuestionForm questionForm){
         Question question= EntityFactory.createQuestion();
 
 
@@ -59,6 +59,13 @@ public class Converter {
         question.setAnswers(answers);
 
         return question;
+    }
+
+    public User toDomain(UserForm userForm){
+        User user = EntityFactory.createUser();
+        user.setFunds(userForm.getFunds());
+        user.setName(userForm.getName());
+        return user;
     }
 
     private Answer fromDescription(String description) {

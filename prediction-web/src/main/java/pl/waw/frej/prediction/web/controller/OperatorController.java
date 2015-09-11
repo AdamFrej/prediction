@@ -29,7 +29,7 @@ public class OperatorController {
 
     @RequestMapping(value = "/addQuestion", method = RequestMethod.POST)
     public String addQuestion(QuestionForm f) {
-        operator.add(converter.getQuestion(f));
+        operator.add(converter.toDomain(f));
         return "redirect:/operator";
     }
 }

@@ -21,4 +21,7 @@ import java.util.Map;
      void modifyFunds(Long funds);
 
      Long getId();
+
+     void setName(String name);
+     String getName();
  }

@@ -72,7 +72,7 @@ public class MaklerController {
     public String addOffer(OfferForm f, HttpSession session) {
         User user = userProvider.from(session);
         f.setUserId(user.getId());
-        makler.addOffer(converter.getOffer(f), user);
+        makler.addOffer(converter.toDomain(f), user);
         return "redirect:/makler";
     }
 

@@ -1,0 +1,21 @@
+<h3>Użytkownicy</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nazwa</th>
+        <th>Fundusze</th>
+        <th>Usuń</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for user in users %}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.funds}}</td>
+        <td><a href="user/remove/{{user.id}}" class="btn btn-danger btn-sm" role="button"><i class="fa fa-times"></i></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -10,6 +10,7 @@ import pl.waw.frej.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
 import pl.waw.frej.prediction.persistence.database.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,12 +34,21 @@ public class PersistentUsers implements Users {
 
     @Override
     public List<User> update(List<User> users){
-        return Lists.newArrayList(userRepository.save(Iterables.transform(users, u->(UserEntity)u)));
+        return Lists.newArrayList(userRepository.save(Iterables.transform(users, u -> (UserEntity) u)));
     }
 
     @Override
     public void add(User user){
-
         userRepository.save((UserEntity) user);
+    }
+
+    @Override
+    public void removeUser(User user) {
+        userRepository.delete((UserEntity) user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return new ArrayList<>(userRepository.findAll());
     }
 }

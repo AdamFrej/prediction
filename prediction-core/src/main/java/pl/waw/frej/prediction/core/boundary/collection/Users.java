@@ -13,4 +13,8 @@ public interface Users {
     List<User> update(List<User> users);
 
     void add(User user);
+
+    void removeUser(User user);
+
+    List<User> findAll();
 }
