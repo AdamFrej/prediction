@@ -18,7 +18,7 @@ public class UserEntity implements User {
     @Column(name = "USER_ID")
     private Long id;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<TransactionEntity> transactions;
 
     @OneToMany(mappedBy = "user")

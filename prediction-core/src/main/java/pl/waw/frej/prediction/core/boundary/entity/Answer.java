@@ -23,4 +23,9 @@ public interface Answer {
     void addOwner(User user);
 
     void removeOwner(User owner);
+
+    boolean isLiquidated();
+
+    void setLiquidated(boolean liquidated);
+
 }

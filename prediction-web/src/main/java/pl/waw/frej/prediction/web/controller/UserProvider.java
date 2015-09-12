@@ -18,9 +18,9 @@ public class UserProvider {
     public static final String OPERATOR = "operator";
 
     public User maklerFrom(HttpSession session) {
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute(MAKLER);
         if (user == null) {
-            Optional<User> autoUser = admin.findUser(156L);
+            Optional<User> autoUser = admin.findUser(5L);
             if (autoUser.isPresent())
                 user=autoUser.get();
             else {
@@ -47,23 +47,6 @@ public class UserProvider {
                 admin.addUser(user);
             }
             session.setAttribute(OPERATOR, user);
-        }
-        return user;
-    }
-
-    public User from(HttpSession session) {
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-            Optional<User> autoUser = admin.findUser(1L);
-            if (autoUser.isPresent())
-                user=autoUser.get();
-            else {
-                user = EntityFactory.createUser();
-                user.setName("autoUser");
-                user.setFunds(15L);
-                admin.addUser(user);
-            }
-            session.setAttribute("user", user);
         }
         return user;
     }

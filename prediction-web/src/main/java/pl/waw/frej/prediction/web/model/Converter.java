@@ -32,6 +32,7 @@ public class Converter {
         offer.setType(offerForm.getType());
         offer.setPrice(offerForm.getPrice());
         offer.setQuantity(offerForm.getQuantity());
+        offer.setCreatedDate(LocalDateTime.now());
 
         Optional<Answer> answer = answers.find(offerForm.getAnswerId());
         Optional<User> user = users.find(offerForm.getUserId());

@@ -28,6 +28,7 @@ public class AnswerEntity implements Answer {
             joinColumns={@JoinColumn(name="ANSWER_ID", referencedColumnName="ANSWER_ID")},
             inverseJoinColumns={@JoinColumn(name="USER_ID", referencedColumnName="USER_ID")})
     private List<UserEntity> owners;
+    private boolean liquidated;
 
 
     @Override
@@ -77,6 +78,16 @@ public class AnswerEntity implements Answer {
     @Override
     public void removeOwner(User owner) {
         owners.remove(owner);
+    }
+
+    @Override
+    public boolean isLiquidated() {
+        return liquidated;
+    }
+
+    @Override
+    public void setLiquidated(boolean liquidated) {
+        this.liquidated = liquidated;
     }
 
     @Override

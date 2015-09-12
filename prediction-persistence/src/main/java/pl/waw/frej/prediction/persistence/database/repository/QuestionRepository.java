@@ -3,6 +3,7 @@ package pl.waw.frej.prediction.persistence.database.repository;
 
 import org.springframework.data.repository.Repository;
 import pl.waw.frej.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.entity.QuestionEntity;
 import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
 
@@ -15,7 +16,7 @@ public interface QuestionRepository extends Repository<QuestionEntity,Long>{
 
     List<QuestionEntity> findAll();
     List<QuestionEntity> findByOperator(UserEntity operator);
-//    List<QuestionEntity> findByAnswerId(Long answerId);
+    List<QuestionEntity> findByAnswers(AnswerEntity answerEntity);
 
     Optional<QuestionEntity> findOne(Long id);
 

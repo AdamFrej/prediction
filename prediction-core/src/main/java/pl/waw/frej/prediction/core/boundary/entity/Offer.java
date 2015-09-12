@@ -1,6 +1,7 @@
 package pl.waw.frej.prediction.core.boundary.entity;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 public interface Offer {
 
@@ -30,9 +31,15 @@ public interface Offer {
 
     void setCreatedDate(LocalDateTime createdDate);
 
-    default boolean isValid(){
+    default boolean isValid() {
         boolean hasFunds = getPrice() <= getUser().getFunds();
-        Long answerCount = getUser().getAnswerQuantities().get(getAnswer());
+        Long answerCount = null;
+        for (Map.Entry<Answer, Long> entry : getUser().getAnswerQuantities().entrySet()) {
+            if (entry.getKey().getId().equals(getAnswer().getId())) {
+                answerCount = entry.getValue();
+                break;
+            }
+        }
         boolean hasAnswers = answerCount != null && getQuantity() <= answerCount;
         return OfferType.BUY.equals(getType()) ? hasFunds : hasAnswers;
     }

@@ -19,4 +19,5 @@ public interface Makler {
     void buyBundle(Long questionId, Long quantity, User user);
 
     List<Quote> findQuotes();
+    Optional<Quote> findQuote(Long id);
 }

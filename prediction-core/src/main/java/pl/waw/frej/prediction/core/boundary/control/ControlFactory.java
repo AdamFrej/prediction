@@ -3,7 +3,7 @@ package pl.waw.frej.prediction.core.boundary.control;
 import pl.waw.frej.prediction.core.usecase.AdminImpl;
 import pl.waw.frej.prediction.core.usecase.MaklerImpl;
 import pl.waw.frej.prediction.core.usecase.OperatorImpl;
-import pl.waw.frej.prediction.core.usecase.QuestionReaderImpl;
+import pl.waw.frej.prediction.core.usecase.ReaderImpl;
 import pl.waw.frej.prediction.core.boundary.collection.*;
 
 public abstract class ControlFactory {
@@ -19,7 +19,7 @@ public abstract class ControlFactory {
         return new OperatorImpl(questions, answers, users);
     }
 
-    public static QuestionReader createQuestionReader(Questions questions){
-        return new QuestionReaderImpl(questions);
+    public static Reader createQuestionReader(Questions questions, Answers answers, Offers offers){
+        return new ReaderImpl(questions, answers, offers);
     }
 }

@@ -46,6 +46,7 @@ public class Liquidation {
                 }
                 usersToUpdate.add(owner);
             }
+            answer.setLiquidated(true);
         }
         answers.update(answersToUpdate);
         users.update(usersToUpdate);

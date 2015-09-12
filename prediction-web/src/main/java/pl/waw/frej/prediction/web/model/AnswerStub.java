@@ -65,4 +65,14 @@ public class AnswerStub implements Answer {
     public void removeOwner(User owner) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public boolean isLiquidated() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void setLiquidated(boolean liquidated) {
+        throw new UnsupportedOperationException();
+    }
 }

@@ -19,14 +19,14 @@ public class TransactionEntity implements Transaction {
     @JoinColumn(name = "USER_ID")
     private UserEntity user;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne
     private AnswerEntity answer;
     private Long price;
     private Long quantity;
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne
     private UserEntity buyer;
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne
     private UserEntity seller;
 
     private LocalDateTime completionDate;

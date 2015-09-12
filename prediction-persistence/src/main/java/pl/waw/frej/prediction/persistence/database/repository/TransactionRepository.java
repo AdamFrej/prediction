@@ -2,6 +2,7 @@ package pl.waw.frej.prediction.persistence.database.repository;
 
 
 import org.springframework.data.repository.Repository;
+import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.entity.TransactionEntity;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface TransactionRepository extends Repository<TransactionEntity, Lon
     void delete(TransactionEntity deleted);
 
     List<TransactionEntity> findAll();
-//    List<TransactionEntity> findByAnswerId(Long answerId);
+    List<TransactionEntity> findByAnswerOrderByCompletionDateDesc(AnswerEntity answerEntity);
 
     Optional<TransactionEntity> findOne(Long id);
 

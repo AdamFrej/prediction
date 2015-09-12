@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Pytanie</th>
+        <th>Cena kupna</th>
+        <th>Cena sprzedazy</th>
+        <th>Ostatni kurs</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for quote in quotes %}
+    <tr>
+        <td><a href="answer/{{quote.answerId}}">{{quote.answerName}}</a></td>
+        <td>{{quote.buyPrice}}</td>
+        <td>{{quote.sellPrice}}</td>
+        <td>{{quote.lastTransactionPrice}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

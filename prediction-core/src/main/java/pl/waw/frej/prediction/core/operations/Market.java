@@ -1,9 +1,7 @@
 package pl.waw.frej.prediction.core.operations;
 
-import pl.waw.frej.prediction.core.boundary.entity.Answer;
-import pl.waw.frej.prediction.core.boundary.entity.Quote;
-import pl.waw.frej.prediction.core.boundary.entity.Offer;
-import pl.waw.frej.prediction.core.boundary.entity.OfferType;
+import pl.waw.frej.prediction.core.boundary.collection.Transactions;
+import pl.waw.frej.prediction.core.boundary.entity.*;
 import pl.waw.frej.prediction.core.boundary.collection.Answers;
 import pl.waw.frej.prediction.core.boundary.collection.Offers;
 
@@ -15,35 +13,36 @@ public class Market {
 
     private final Answers answers;
     private final Offers offers;
+    private final Transactions transactions;
 
-    public Market(Answers answers, Offers offers) {
+    public Market(Answers answers, Offers offers, Transactions transactions) {
         this.answers = answers;
         this.offers = offers;
+        this.transactions = transactions;
     }
 
     public List<Quote> findQuotes() {
-        return answers.findAll().stream().map(this::createQuote).collect(Collectors.toList());
+        return answers.findAll().stream().map(this::findQuote).collect(Collectors.toList());
     }
 
-    private Quote createQuote(Answer answer) {
+    public Quote findQuote(Answer answer) {
         Quote q = new Quote();
         q.setAnswerName(answer.getName());
+        q.setAnswerId(answer.getId());
         q.setBuyPrice(getPrice(answer, OfferType.BUY).orElse(null));
         q.setSellPrice(getPrice(answer, OfferType.SELL).orElse(null));
-        q.setAveragePrice(getAveragePrice(answer).orElse(null));
+        q.setLastTransactionPrice(getLastTransactionPrice(answer).orElse(null));
         return q;
     }
 
-    private Optional<Long> getAveragePrice(Answer answer) {
-        Optional<Long> buyPrice = getPrice(answer, OfferType.BUY);
-        Optional<Long> sellPrice = getPrice(answer, OfferType.SELL);
-        if (buyPrice.isPresent() && sellPrice.isPresent())
-            return Optional.of((buyPrice.get() + sellPrice.get()) / 2);
-        if (buyPrice.isPresent())
-            return buyPrice;
-        if (sellPrice.isPresent())
-            return sellPrice;
-        return Optional.empty();
+    private Optional<Long> getLastTransactionPrice(Answer answer) {
+        Optional<Transaction> first = transactions.find(answer).stream().findFirst();
+        Optional<Long> price = Optional.empty();
+
+        if(first.isPresent())
+             price = Optional.of(first.get().getPrice());
+
+        return price;
     }
 
     private Optional<Long> getPrice(Answer answer, OfferType type) {

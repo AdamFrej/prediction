@@ -1,0 +1,23 @@
+<h3>Moje odpowiedzi</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nazwa</th>
+        <th>Cena kupna</th>
+        <th>Cena sprzedazy</th>
+        <th>Ostatni kurs</th>
+        <th>Liczba</th>
+    </tr>
+    </thead>
+    <tbody>
+    {%for quantity in answerQuantities %}
+    <tr>
+        <td>{{quantity.answerName}}</td>
+        <td>{{quantity.buyPrice}}</td>
+        <td>{{quantity.sellPrice}}</td>
+        <td>{{quantity.AveragePrice}}</td>
+        <td>{{quantity.quantity}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

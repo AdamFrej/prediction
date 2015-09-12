@@ -47,7 +47,7 @@ public class PredictionCoreConfig {
     }
 
     @Bean
-    public QuestionReader questionReader(){
-        return ControlFactory.createQuestionReader(questions());
+    public Reader questionReader(){
+        return ControlFactory.createQuestionReader(questions(), answers(), offers());
     }
 }

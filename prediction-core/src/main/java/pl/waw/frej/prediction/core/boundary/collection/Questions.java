@@ -1,5 +1,6 @@
 package pl.waw.frej.prediction.core.boundary.collection;
 
+import pl.waw.frej.prediction.core.boundary.entity.Answer;
 import pl.waw.frej.prediction.core.boundary.entity.Question;
 import pl.waw.frej.prediction.core.boundary.entity.User;
 
@@ -19,4 +20,6 @@ public interface Questions {
     List<Question> findByOperatorAndDateBefore(User user, LocalDateTime date);
 
     void update(Question question);
+
+    Optional<Question> findByAnswer(Answer answer);
 }

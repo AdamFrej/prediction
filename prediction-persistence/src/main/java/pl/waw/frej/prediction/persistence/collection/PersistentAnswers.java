@@ -13,6 +13,7 @@ import pl.waw.frej.prediction.persistence.database.repository.AnswerRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Transactional
 @Component
@@ -36,13 +37,18 @@ public class PersistentAnswers implements Answers {
 
     @Override
     public Optional<Answer> find(Long id) {
-        Optional<AnswerEntity> one = answerRepository.findOne(id);
-        return Optional.ofNullable((Answer) one.orElse(null));
+        Optional<Answer> ret = Optional.empty();
+
+        Optional<AnswerEntity> answer = answerRepository.findOne(id);
+        if(answer.isPresent() && !answer.get().isLiquidated())
+            ret = Optional.of((Answer)answer.get());
+
+        return ret;
     }
 
     @Override
     public List<Answer> findAll() {
-        return new ArrayList<>(answerRepository.findAll());
+        return new ArrayList<>(notLiquidated(answerRepository.findAll()));
     }
 
     @Override
@@ -53,6 +59,11 @@ public class PersistentAnswers implements Answers {
     @Override
     public List<Answer> update(List<Answer> answers) {
         return Lists.newArrayList(answerRepository.save(Iterables.transform(answers, answer -> (AnswerEntity) answer)));
+    }
+
+
+    private List<AnswerEntity> notLiquidated(List<AnswerEntity> list) {
+        return list.stream().filter(answerEntity -> !answerEntity.isLiquidated()).collect(Collectors.toList());
     }
 
 }

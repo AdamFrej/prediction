@@ -1,0 +1,10 @@
+<div class="row">
+    <form class="form-inline" id="bundleForm" action="/bundle/buy" method="post">
+        <div class="form-group">
+            <label class="control-label" for="quantity">Liczba pakietów</label>
+            <input type="text" class="form-control" id="quantity" name="quantity">
+        </div>
+        <input type="hidden" id="questionId" name="questionId" value="{{questionId}}">
+        <button type="submit" class="btn btn-primary btn-sm">Kup w pakiecie</button>
+    </form>
+</div>

@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import pl.waw.frej.prediction.core.boundary.collection.Transactions;
+import pl.waw.frej.prediction.core.boundary.entity.Answer;
 import pl.waw.frej.prediction.core.boundary.entity.Transaction;
+import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.entity.TransactionEntity;
 import pl.waw.frej.prediction.persistence.database.repository.TransactionRepository;
 
@@ -21,6 +23,11 @@ public class PersistentTransactions implements Transactions {
     @Override
     public List<Transaction> find() {
         return new ArrayList<>(transactionRepository.findAll());
+    }
+
+    @Override
+    public List<Transaction> find(Answer answer) {
+        return new ArrayList<>(transactionRepository.findByAnswerOrderByCompletionDateDesc((AnswerEntity) answer));
     }
 
     @Override

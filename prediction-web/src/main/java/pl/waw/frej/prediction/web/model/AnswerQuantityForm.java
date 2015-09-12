@@ -1,14 +1,12 @@
-package pl.waw.frej.prediction.core.boundary.entity;
+package pl.waw.frej.prediction.web.model;
 
-
-public class Quote {
-
+public class AnswerQuantityForm {
     private String answerName;
-    private Long answerId;
+    private Long quantity;
 
     private Long buyPrice;
     private Long sellPrice;
-    private Long lastTransactionPrice;
+    private Long averagePrice;
 
     public String getAnswerName() {
         return answerName;
@@ -18,12 +16,12 @@ public class Quote {
         this.answerName = answerName;
     }
 
-    public Long getAnswerId() {
-        return answerId;
+    public Long getQuantity() {
+        return quantity;
     }
 
-    public void setAnswerId(Long answerId) {
-        this.answerId = answerId;
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
     }
 
     public Long getBuyPrice() {
@@ -42,11 +40,11 @@ public class Quote {
         this.sellPrice = sellPrice;
     }
 
-    public Long getLastTransactionPrice() {
-        return lastTransactionPrice;
+    public Long getAveragePrice() {
+        return averagePrice;
     }
 
-    public void setLastTransactionPrice(Long lastTransactionPrice) {
-        this.lastTransactionPrice = lastTransactionPrice;
+    public void setAveragePrice(Long averagePrice) {
+        this.averagePrice = averagePrice;
     }
 }

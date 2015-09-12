@@ -3,10 +3,7 @@ package pl.waw.frej.prediction.core.usecase;
 
 import pl.waw.frej.prediction.core.boundary.collection.*;
 import pl.waw.frej.prediction.core.boundary.control.Makler;
-import pl.waw.frej.prediction.core.boundary.entity.Offer;
-import pl.waw.frej.prediction.core.boundary.entity.Question;
-import pl.waw.frej.prediction.core.boundary.entity.Quote;
-import pl.waw.frej.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.core.boundary.entity.*;
 import pl.waw.frej.prediction.core.operations.Bundle;
 import pl.waw.frej.prediction.core.operations.Market;
 import pl.waw.frej.prediction.core.operations.Transfer;
@@ -18,6 +15,7 @@ public class MaklerImpl implements Makler {
 
     private final Questions questions;
     private final Offers offers;
+    private final Answers answers;
 
     private final Bundle bundle;
     private final Transfer transfer;
@@ -29,7 +27,8 @@ public class MaklerImpl implements Makler {
         this.offers = offers;
         this.transfer = new Transfer(users, offers, transactions);
         this.bundle = new Bundle(users, transactions);
-        this.market = new Market(answers, offers);
+        this.market = new Market(answers, offers, transactions);
+        this.answers = answers;
     }
 
     @Override
@@ -66,6 +65,13 @@ public class MaklerImpl implements Makler {
     @Override
     public List<Quote> findQuotes() {
         return market.findQuotes();
+    }
+
+    @Override
+    public Optional<Quote> findQuote(Long id) {
+        Optional<Answer> answer = answers.find(id);;
+        Quote quote = answer.isPresent() ? market.findQuote(answer.get()) : null;
+        return Optional.ofNullable(quote);
     }
 
     private void makeTransferIfPossible(Offer offer, User user) {

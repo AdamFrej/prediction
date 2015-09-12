@@ -9,6 +9,7 @@ import pl.waw.frej.prediction.core.boundary.collection.Questions;
 import pl.waw.frej.prediction.core.boundary.entity.Answer;
 import pl.waw.frej.prediction.core.boundary.entity.Question;
 import pl.waw.frej.prediction.core.boundary.entity.User;
+import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.entity.QuestionEntity;
 import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
 import pl.waw.frej.prediction.persistence.database.repository.QuestionRepository;
@@ -53,6 +54,16 @@ public class PersistentQuestions implements Questions {
     @Override
     public void update(Question question) {
         questionRepository.save((QuestionEntity) question);
+    }
+
+    @Override
+    public Optional<Question> findByAnswer(Answer answer) {
+        List<QuestionEntity> questions = questionRepository.findByAnswers((AnswerEntity) answer);
+        QuestionEntity question = null;
+        if(!questions.isEmpty()) {
+            question = questions.get(0);
+        }
+        return Optional.ofNullable(question);
     }
 
 

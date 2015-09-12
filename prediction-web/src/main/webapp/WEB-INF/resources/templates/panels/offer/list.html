@@ -2,19 +2,19 @@
 <table class="table">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>Id pytania</th>
+        <th>Nazwa pytania</th>
         <th>Cena</th>
+        <th>Liczba</th>
         <th>Typ</th>
     </tr>
     </thead>
     <tbody>
     {%for offer in offers %}
     <tr>
-        <td><a href="offer/{{offer.id}}">{{offer.id}}</a></td>
         <td>{{offer.answer.name}}</td>
         <td>{{offer.price}}</td>
         <td>{{offer.quantity}}</td>
+        <td>{{offer.type}}</td>
     </tr>
     {% endfor %}
     </tbody>

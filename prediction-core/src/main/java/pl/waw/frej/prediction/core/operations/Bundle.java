@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Bundle {
     private User operator;
-    private Long price;
+    private Long cost;
     private List<Answer> answers;
     private User makler;
     private Long quantity;
@@ -28,16 +28,16 @@ public class Bundle {
     }
 
     public void buy(User user, Question question, Long quantity) {
-        if(question.getLiquidationDate().isAfter(LocalDateTime.now()))
+        if(question.getLiquidationDate().isBefore(LocalDateTime.now()))
             return;
 
         this.quantity=quantity;
-        price = question.getLiquidationValue() * quantity;
+        cost = question.getLiquidationValue() * quantity;
         answers = question.getAnswers();
         operator = question.getOperator();
         makler = user;
 
-        if (price > makler.getFunds()) {
+        if (cost > makler.getFunds()) {
             return;
         }
 
@@ -50,7 +50,7 @@ public class Bundle {
         for (Answer answer : answers) {
             Transaction t = transactions.create();
             t.setAuthor(makler);
-            t.setPrice(price / answers.size());
+            t.setPrice(cost/answers.size() / quantity);
             t.setQuantity(quantity);
             t.setAnswer(answer);
             t.setBuyer(makler);
@@ -71,8 +71,8 @@ public class Bundle {
         for (Answer answer : answers) {
             makler.addAnswer(answer, quantity);
         }
-        makler.setFunds(makler.getFunds() - price);
-        operator.setFunds(operator.getFunds() + price);
+        makler.setFunds(makler.getFunds() - cost);
+        operator.setFunds(operator.getFunds() + cost);
     }
 
 }
