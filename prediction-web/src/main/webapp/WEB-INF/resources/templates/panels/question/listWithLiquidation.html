@@ -2,7 +2,6 @@
     <thead>
     <tr>
         <th>Nazwa</th>
-        <th>Opis</th>
         <th>Data likwidacji</th>
         <th>Wartość likwidacji</th>
         <th>odpowiedzi</th>
@@ -11,9 +10,8 @@
     <tbody>
     {%for question in questions %}
     <tr>
-        <td><a href="question/{{question.id}}">{{question.name}}</a></td>
-        <td>{{question.description}}</td>
-        <td>{{question.liquidationDate}}</td>
+        <td>{{question.name}}</td>
+        <td>{{question.liquidationDate }}</td>
         <td>{{question.liquidationValue}}</td>
         <td>{% for answer in question.answers %}<a href="question/liquidate/{{question.id}}/{{answer.id}}">{{answer.name}}</a> {% endfor %}</td>
     </tr>

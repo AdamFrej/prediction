@@ -53,7 +53,7 @@ public class MarketController {
             questionId = reader.readQuestion(answer.get()).get().getId();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/makler/answerDetail");
-        modelAndView.addObject("websiteTitle", "Szczegóły pytania");
+        modelAndView.addObject("websiteTitle", "Szczegóły odpowiedzi");
 
         modelAndView.addObject("answer", answer.orElse(null));
         modelAndView.addObject("quote", makler.findQuote(id).orElse(null));

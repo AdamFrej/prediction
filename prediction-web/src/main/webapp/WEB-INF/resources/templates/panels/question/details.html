@@ -1,13 +1,35 @@
-Szczegóły pytania:
-<ul>
-    <li>id: {{question.id}}</li>
-    <li>nazwa: {{question.name}}</li>
-    <li>opis: {{question.description}}</li>
-    <li>odpowiedzi:
-        <ul>
-            {% for answer in question.answers %}
-            <li>{{answer}}</li>
-            {% endfor %}
-        </ul>
-    </li>
-</ul>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Opis</th>
+        <th>Data likwidacji</th>
+        <th>Wartość likwidacji</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{question.description}}</td>
+        <td>{{question.liquidationDate}}</td>
+        <td>{{question.liquidationValue}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Nazwa odpowiedzi</th>
+        <th>Szansa na wystąpienie</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{question.answerOneName}}</td>
+        <td>{{question.answerOnePercentage | numberformat("#.##")}}%</td>
+    </tr>
+    <tr>
+        <td>{{question.answerTwoName}}</td>
+        <td>{{question.answerTwoPercentage | numberformat("#.##")}}%</td>
+    </tr>
+    </tbody>
+</table>

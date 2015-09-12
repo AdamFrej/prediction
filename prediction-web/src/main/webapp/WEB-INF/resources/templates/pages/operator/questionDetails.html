@@ -1,0 +1,22 @@
+{% extends "layout/page" %}
+{% block subtitle %}Strefa operatora{% endblock %}
+
+{% block navbar %}
+{{navitem("active","/pytania","Moje Pytania")}}
+{{navitem("","/likwidacja","Likwidacja")}}
+{{navitem("","/pomoc","Pomoc")}}
+{% endblock %}
+
+{% block title %}{{websiteTitle}}{% endblock %}
+
+{% block body %}
+
+<div class="col-xs-8">
+    <h3>{{question.name}}</h3>
+    {% include "panels/question/details"%}
+</div>
+<div class="col-xs-4">
+    {% include "panels/question/add"%}
+</div>
+
+{% endblock %}

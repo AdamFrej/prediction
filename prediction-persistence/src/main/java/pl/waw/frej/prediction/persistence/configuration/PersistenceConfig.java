@@ -74,6 +74,8 @@ public class PersistenceConfig {
         //when it writes SQL to the console.
         jpaProperties.put(PROPERTY_NAME_HIBERNATE_FORMAT_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL));
 
+        jpaProperties.put("hibernate.connection.characterEncoding", "UTF-8");
+        jpaProperties.put("hibernate.connection.charSet", "UTF-8");
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
         return entityManagerFactoryBean;
