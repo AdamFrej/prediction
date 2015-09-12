@@ -6,8 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.waw.frej.prediction.core.boundary.collection.Transactions;
 import pl.waw.frej.prediction.core.boundary.entity.Answer;
 import pl.waw.frej.prediction.core.boundary.entity.Transaction;
+import pl.waw.frej.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.persistence.database.entity.AnswerEntity;
 import pl.waw.frej.prediction.persistence.database.entity.TransactionEntity;
+import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
 import pl.waw.frej.prediction.persistence.database.repository.TransactionRepository;
 
 import java.util.ArrayList;
@@ -32,11 +34,21 @@ public class PersistentTransactions implements Transactions {
 
     @Override
     public void add(Transaction transaction) {
-        transactionRepository.save((TransactionEntity) transaction);
+        transactionRepository.saveAndFlush((TransactionEntity) transaction);
     }
 
     @Override
     public Transaction create() {
         return new TransactionEntity();
+    }
+
+    @Override
+    public List<Transaction> findByBuyer(User user) {
+        return new ArrayList<>(transactionRepository.findByBuyer((UserEntity)user));
+    }
+
+    @Override
+    public List<Transaction> findBySeller(User user) {
+        return new ArrayList<>(transactionRepository.findBySeller((UserEntity)user));
     }
 }

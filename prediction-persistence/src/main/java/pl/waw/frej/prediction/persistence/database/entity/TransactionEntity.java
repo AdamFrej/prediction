@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class TransactionEntity implements Transaction {
+public class TransactionEntity implements Transaction, Comparable {
 
     @Id
     @GeneratedValue
@@ -103,5 +103,10 @@ public class TransactionEntity implements Transaction {
     @Override
     public void setCompletionDate(LocalDateTime completionDate) {
         this.completionDate = completionDate;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.getCompletionDate().compareTo(((TransactionEntity) o).getCompletionDate());
     }
 }

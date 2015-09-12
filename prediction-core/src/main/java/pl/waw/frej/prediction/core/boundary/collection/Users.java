@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface Users {
     Optional<User> find(Long id);
     Optional<User> find(User user);
+    Optional<User> find(String userName);
 
     User update(User user);
 

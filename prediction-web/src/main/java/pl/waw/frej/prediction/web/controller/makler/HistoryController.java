@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.waw.frej.prediction.core.boundary.control.Makler;
 import pl.waw.frej.prediction.web.controller.UserProvider;
 
-import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 public class HistoryController {
@@ -19,11 +19,11 @@ public class HistoryController {
     private UserProvider userProvider;
 
     @RequestMapping(value = URI, method = RequestMethod.GET)
-    public ModelAndView history(HttpSession session) {
+    public ModelAndView history(Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/makler/history");
         modelAndView.addObject("websiteTitle", "Historia transakcji");
-        modelAndView.addObject("transactions", userProvider.maklerFrom(session).getTransactions());
+        modelAndView.addObject("transactions", makler.findTransactions(userProvider.from(principal)));
         return modelAndView;
     }
 }

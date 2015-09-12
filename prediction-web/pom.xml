@@ -18,6 +18,7 @@
 
     <properties>
         <spring.version>4.1.6.RELEASE</spring.version>
+        <spring-security.version>4.0.2.RELEASE</spring-security.version>
         <pebble.version>1.5.1</pebble.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
@@ -77,6 +78,19 @@
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+
 
         <!-- Pebble -->
         <dependency>

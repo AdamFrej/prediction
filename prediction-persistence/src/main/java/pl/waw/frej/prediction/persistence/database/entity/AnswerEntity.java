@@ -91,7 +91,22 @@ public class AnswerEntity implements Answer {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return obj instanceof AnswerEntity ? this.getId().equals(((AnswerEntity) obj).getId()) : super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AnswerEntity that = (AnswerEntity) o;
+
+        if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
+        if (getName() != null ? !getName().equals(that.getName()) : that.getName() != null) return false;
+        return !(getDescription() != null ? !getDescription().equals(that.getDescription()) : that.getDescription() != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getName() != null ? getName().hashCode() : 0;
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        return result;
     }
 }

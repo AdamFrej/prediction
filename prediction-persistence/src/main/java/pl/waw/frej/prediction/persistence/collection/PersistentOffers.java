@@ -63,15 +63,7 @@ public class PersistentOffers implements Offers {
 
     @Override
     public Offer update(Offer offer) {
-        Optional<OfferEntity> optional = offerRepository.findOne(offer.getId());
-        if (optional.isPresent()) {
-            OfferEntity oldOffer = optional.get();
-            OfferEntity newOffer = (OfferEntity) offer;
-            offerRepository.delete(oldOffer);
-            OfferEntity save = offerRepository.save(newOffer);
-            return save;
-        } else
-            return offer;
+        return offerRepository.saveAndFlush((OfferEntity) offer);
     }
 
     private List<Offer> transformOffers(List<OfferEntity> offerEntities) {

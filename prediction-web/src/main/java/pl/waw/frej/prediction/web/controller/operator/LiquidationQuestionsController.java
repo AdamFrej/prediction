@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import pl.waw.frej.prediction.core.boundary.control.Operator;
 import pl.waw.frej.prediction.web.controller.UserProvider;
-import pl.waw.frej.prediction.web.model.*;
+import pl.waw.frej.prediction.web.model.AnswerStub;
+import pl.waw.frej.prediction.web.model.QuestionStub;
 
-import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 public class LiquidationQuestionsController {
@@ -24,11 +25,11 @@ public class LiquidationQuestionsController {
 
 
     @RequestMapping(value = URI, method = RequestMethod.GET)
-    public ModelAndView liquidationQuestions(HttpSession session) {
+    public ModelAndView liquidationQuestions(Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/operator/liquidationQuestions");
         modelAndView.addObject("websiteTitle", "Pytania do likwidacji");
-        modelAndView.addObject("questions", operator.findLiquidationQuestions(userProvider.operatorFrom(session)));
+        modelAndView.addObject("questions", operator.findLiquidationQuestions(userProvider.from(principal)));
         return modelAndView;
     }
 

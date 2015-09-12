@@ -32,14 +32,10 @@ public interface Offer {
     void setCreatedDate(LocalDateTime createdDate);
 
     default boolean isValid() {
+        if(getQuantity()<=0)
+            return false;
         boolean hasFunds = getPrice() <= getUser().getFunds();
-        Long answerCount = null;
-        for (Map.Entry<Answer, Long> entry : getUser().getAnswerQuantities().entrySet()) {
-            if (entry.getKey().getId().equals(getAnswer().getId())) {
-                answerCount = entry.getValue();
-                break;
-            }
-        }
+        Long answerCount = getUser().getAnswerQuantities().get(getAnswer());
         boolean hasAnswers = answerCount != null && getQuantity() <= answerCount;
         return OfferType.BUY.equals(getType()) ? hasFunds : hasAnswers;
     }

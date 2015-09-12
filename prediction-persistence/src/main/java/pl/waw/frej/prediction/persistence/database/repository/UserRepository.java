@@ -12,9 +12,9 @@ public interface UserRepository extends Repository<UserEntity,Long> {
     UserEntity save(UserEntity persisted);
     UserEntity saveAndFlush(UserEntity persisted);
     Iterable<UserEntity> save(Iterable<UserEntity> persisted);
-//    Iterable<UserEntity> saveAndFlush(Iterable<UserEntity> persisted);
     void delete(UserEntity userEntity);
 
     List<UserEntity> findAll();
 
+    List<UserEntity> findByName(String name);
 }

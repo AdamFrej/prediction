@@ -12,6 +12,7 @@ import pl.waw.frej.prediction.web.model.Converter;
 import pl.waw.frej.prediction.web.model.QuestionForm;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 public class MyQuestionsController {
@@ -27,18 +28,18 @@ public class MyQuestionsController {
 
 
     @RequestMapping(value = URI, method = RequestMethod.GET)
-    public ModelAndView myQuestions(HttpSession session) {
+    public ModelAndView myQuestions(Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/operator/myQuestions");
         modelAndView.addObject("websiteTitle", "Moje pytania");
-        modelAndView.addObject("questions", operator.findQuestions(userProvider.operatorFrom(session)));
+        modelAndView.addObject("questions", operator.findQuestions(userProvider.from(principal)));
         return modelAndView;
     }
 
     @RequestMapping(value = QUESTION_ADD, method = RequestMethod.POST)
-    public String addQuestion(HttpSession session, QuestionForm questionForm) {
+    public String addQuestion(Principal principal, QuestionForm questionForm) {
         Question question = converter.toDomain(questionForm);
-        question.setOperator(userProvider.operatorFrom(session));
+        question.setOperator(userProvider.from(principal));
         operator.add(question);
         return "redirect:" + URI;
     }

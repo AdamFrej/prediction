@@ -8,7 +8,8 @@ import pl.waw.frej.prediction.persistence.configuration.PersistenceConfig;
 @Import({
         MvcConfig.class,
         PersistenceConfig.class,
-        PredictionCoreConfig.class
+        PredictionCoreConfig.class,
+        SecurityConfig.class
 })
 public class AppConfig {
 

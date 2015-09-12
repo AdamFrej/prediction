@@ -8,10 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.waw.frej.prediction.core.boundary.control.Makler;
 import pl.waw.frej.prediction.core.boundary.entity.Answer;
 import pl.waw.frej.prediction.core.boundary.entity.Quote;
+import pl.waw.frej.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.web.controller.UserProvider;
 import pl.waw.frej.prediction.web.model.AnswerQuantityForm;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,19 +27,21 @@ public class WalletController {
     private UserProvider userProvider;
 
     @RequestMapping(value = URI, method = RequestMethod.GET)
-    public ModelAndView wallet(HttpSession session) {
+    public ModelAndView wallet(Principal principal) {
+        User user = userProvider.from(principal);
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/makler/wallet");
         modelAndView.addObject("websiteTitle", "Mój Portfel");
-        modelAndView.addObject("funds", userProvider.maklerFrom(session).getFunds());
-        modelAndView.addObject("answerQuantities", getAnswerQuantities(session));
-        modelAndView.addObject("offers", makler.findOffers(userProvider.maklerFrom(session)));
+        modelAndView.addObject("funds", makler.findFunds(user));
+        modelAndView.addObject("answerQuantities", getAnswerQuantities(user));
+        modelAndView.addObject("offers", makler.findOffers(user));
         return modelAndView;
     }
 
-    private List<AnswerQuantityForm> getAnswerQuantities(HttpSession session) {
+    private List<AnswerQuantityForm> getAnswerQuantities(User user) {
         List<Quote> quotes = makler.findQuotes();
-        Map<Answer, Long> answerQuantities = userProvider.maklerFrom(session).getAnswerQuantities();
+        Map<Answer, Long> answerQuantities = makler.getAnswerQuantities(user);
         List<AnswerQuantityForm> forms = new ArrayList<>();
         for (Map.Entry<Answer, Long> entry : answerQuantities.entrySet()) {
             AnswerQuantityForm form = new AnswerQuantityForm();

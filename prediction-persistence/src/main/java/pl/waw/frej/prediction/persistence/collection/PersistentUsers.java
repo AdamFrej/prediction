@@ -32,6 +32,12 @@ public class PersistentUsers implements Users {
     }
 
     @Override
+    public Optional<User> find(String userName) {
+        List<UserEntity> list = userRepository.findByName(userName);
+        return Optional.ofNullable(!list.isEmpty() ? list.get(0) : null);
+    }
+
+    @Override
     @Transactional
     public User update(User user) {
 

@@ -2,6 +2,7 @@ package pl.waw.frej.prediction.persistence.database.repository;
 
 
 import org.springframework.data.repository.Repository;
+import pl.waw.frej.prediction.core.boundary.entity.Offer;
 import pl.waw.frej.prediction.core.boundary.entity.OfferType;
 import pl.waw.frej.prediction.persistence.database.entity.OfferEntity;
 import pl.waw.frej.prediction.persistence.database.entity.UserEntity;
@@ -22,4 +23,5 @@ public interface OfferRepository extends Repository<OfferEntity,Long>{
     Optional<OfferEntity> findOne(Long id);
 
     OfferEntity save(OfferEntity persisted);
+    OfferEntity saveAndFlush(OfferEntity persisted);
 }

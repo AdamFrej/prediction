@@ -15,7 +15,7 @@ import pl.waw.frej.prediction.web.model.BundleForm;
 import pl.waw.frej.prediction.web.model.Converter;
 import pl.waw.frej.prediction.web.model.OfferForm;
 
-import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
@@ -37,7 +37,7 @@ public class MarketController {
     private Converter converter;
 
     @RequestMapping(value = URI, method = RequestMethod.GET)
-    public ModelAndView market(HttpSession session) {
+    public ModelAndView market() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/makler/market");
         modelAndView.addObject("websiteTitle", "Notowania");
@@ -63,14 +63,14 @@ public class MarketController {
     }
 
     @RequestMapping(value = BUNDLE_BUY, method = RequestMethod.POST)
-    public String buyBundle(BundleForm f, HttpSession session) {
-        makler.buyBundle(f.getQuestionId(), f.getQuantity(), userProvider.maklerFrom(session));
+    public String buyBundle(BundleForm f, Principal principal) {
+        makler.buyBundle(f.getQuestionId(), f.getQuantity(), userProvider.from(principal));
         return "redirect:" + URI;
     }
 
     @RequestMapping(value = OFFER_ADD, method = RequestMethod.POST)
-    public String addOffer(OfferForm f, HttpSession session) {
-        User user = userProvider.maklerFrom(session);
+    public String addOffer(OfferForm f, Principal principal) {
+        User user = userProvider.from(principal);
         f.setUserId(user.getId());
         makler.addOffer(converter.toDomain(f), user);
         return "redirect:" + URI;

@@ -40,13 +40,13 @@
     <table name="HIBERNATE_SEQUENCE" schema="PREDICTION" catalog="" type="SEQUENCE"/>
     <table name="OFFERENTITY" schema="PREDICTION" catalog="" type="TABLE">
       <column name="ID" sqlType="NUMBER" precision="19" scale="0" nullable="false" jdbcType="3"/>
-      <column name="CREATEDDATE" sqlType="RAW" precision="255" scale="0" nullable="true" jdbcType="-3"/>
+      <column name="CREATEDDATE" sqlType="TIMESTAMP(6)" precision="11" scale="6" nullable="true" jdbcType="93"/>
       <column name="OFFERTYPE" sqlType="VARCHAR2" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="PRICE" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="QUANTITY" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="ANSWER_ANSWER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
-      <primary-key name="SYS_C0013041" columns="ID"/>
+      <primary-key name="SYS_C0013872" columns="ID"/>
       <foreign-key name="FKB4129R6WV639RAGX7PLBC4AUF" columns="ANSWER_ANSWER_ID" ref-table="ANSWERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="ANSWER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
       <foreign-key name="FKSU85RHYLBX8GU405H2W1HQ2G0" columns="USER_ID" ref-table="USERENTITY" ref-schema="PREDICTION" ref-catalog="" ref-columns="USER_ID" update-rule="0" delete-rule="1" deferrability="2"/>
     </table>
@@ -81,7 +81,7 @@
       <column name="USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="false" jdbcType="3"/>
       <column name="FUNDS" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="NAME" sqlType="VARCHAR2" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="SYS_C0013506" columns="USER_ID"/>
+      <primary-key name="SYS_C0013879" columns="USER_ID"/>
       <exported-key name="FKGELFMH9YS7P4OF0BEG824OQT6" table="ANSWER_QUANTITIES" schema="PREDICTION" catalog="" columns="USERENTITY_USER_ID"/>
       <exported-key name="FKRJUHLJN1QJI3PUYPFBE28KMN6" table="ANSWER_USER" schema="PREDICTION" catalog="" columns="USER_ID"/>
       <exported-key name="FKSU85RHYLBX8GU405H2W1HQ2G0" table="OFFERENTITY" schema="PREDICTION" catalog="" columns="USER_ID"/>
