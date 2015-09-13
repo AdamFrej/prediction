@@ -12,3 +12,8 @@ html, body {
     border-bottom: 1px solid #ddd;
     padding: 10px;
 }
+
+.top-buffer {
+    margin-top: 20px;
+}
+

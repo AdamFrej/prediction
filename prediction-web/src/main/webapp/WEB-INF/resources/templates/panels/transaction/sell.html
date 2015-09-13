@@ -1,14 +1,18 @@
-<form class="form-inline" id="offerForm" action="/offer/add" method="post">
-    <input type="hidden" id="answerId" name="answerId" value="{{answer.id}}">
-    <input type="hidden" id="type" name="type" value="SELL"/>
+<div class="row top-buffer">
+    <form class="form-inline" id="sellForm" action="/offer/add" method="post">
+        <input type="hidden" id="answerId" name="answerId" value="{{answer.id}}">
+        <input type="hidden" id="type" name="type" value="SELL"/>
 
-    <div class="form-group">
-        <label class="sr-only" for="price">Cena</label>
-        <input type="text" class="form-control" id="price" name="price" placeholder="Cena">
-    </div>
-    <div class="form-group">
-        <label class="sr-only" for="quantity">Liczba</label>
-        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Liczba">
-    </div>
-    <button type="submit" class="btn btn-default">Złóż ofertę sprzedaży</button>
-</form>
+        <div class="form-group">
+            <label class="sr-only" for="price">Cena</label>
+            <input type="text" class="form-control" id="price" name="price" placeholder="Cena">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="quantity">Liczba</label>
+            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Liczba">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-sm">Złóż ofertę sprzedaży</button>
+        </div>
+    </form>
+</div>

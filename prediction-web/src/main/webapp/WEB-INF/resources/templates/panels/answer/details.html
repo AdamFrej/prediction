@@ -1,1 +1,34 @@
-Tu będzie wykres
+<div class="row top-buffer">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena kupna</th>
+            <th>Cena sprzedazy</th>
+            <th>Ostatni kurs</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{answer.name}}</td>
+            <td>{{quote.buyPrice}}</td>
+            <td>{{quote.sellPrice}}</td>
+            <td>{{quote.lastTransactionPrice}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Opis</th>
+            <th>Data likwidacji</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{answer.description}}</td>
+            <td>{{answer.liquidationDate}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
