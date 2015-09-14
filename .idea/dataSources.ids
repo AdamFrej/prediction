@@ -81,7 +81,7 @@
       <column name="USER_ID" sqlType="NUMBER" precision="19" scale="0" nullable="false" jdbcType="3"/>
       <column name="FUNDS" sqlType="NUMBER" precision="19" scale="0" nullable="true" jdbcType="3"/>
       <column name="NAME" sqlType="VARCHAR2" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <primary-key name="SYS_C0013879" columns="USER_ID"/>
+      <primary-key name="SYS_C0013918" columns="USER_ID"/>
       <exported-key name="FKGELFMH9YS7P4OF0BEG824OQT6" table="ANSWER_QUANTITIES" schema="PREDICTION" catalog="" columns="USERENTITY_USER_ID"/>
       <exported-key name="FKRJUHLJN1QJI3PUYPFBE28KMN6" table="ANSWER_USER" schema="PREDICTION" catalog="" columns="USER_ID"/>
       <exported-key name="FKSU85RHYLBX8GU405H2W1HQ2G0" table="OFFERENTITY" schema="PREDICTION" catalog="" columns="USER_ID"/>

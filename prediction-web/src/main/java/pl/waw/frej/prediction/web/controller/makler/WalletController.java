@@ -2,6 +2,7 @@ package pl.waw.frej.prediction.web.controller.makler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +13,6 @@ import pl.waw.frej.prediction.core.boundary.entity.User;
 import pl.waw.frej.prediction.web.controller.UserProvider;
 import pl.waw.frej.prediction.web.model.AnswerQuantityForm;
 
-import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,7 @@ import java.util.Map;
 @Controller
 public class WalletController {
     public static final String URI = "/portfel";
+    public static final String OFFER_CANCEL = "/offer/cancel";
     @Autowired
     private Makler makler;
     @Autowired
@@ -37,6 +38,13 @@ public class WalletController {
         modelAndView.addObject("answerQuantities", getAnswerQuantities(user));
         modelAndView.addObject("offers", makler.findOffers(user));
         return modelAndView;
+    }
+
+    @RequestMapping(value = OFFER_CANCEL +"/{id}", method = RequestMethod.GET)
+    public String offerCancel(Principal principal, @PathVariable("id") Long id) {
+        User user = userProvider.from(principal);
+        makler.cancel(user,id);
+        return "redirect:"+URI;
     }
 
     private List<AnswerQuantityForm> getAnswerQuantities(User user) {

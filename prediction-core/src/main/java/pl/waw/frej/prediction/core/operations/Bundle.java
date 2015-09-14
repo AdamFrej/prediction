@@ -73,7 +73,7 @@ public class Bundle {
 
     private void exchangeAnswersForFunds() {
         for (Answer answer : answerList) {
-            answer.addOwner(makler);
+//            answer.addOwner(makler);
             makler.addAnswer(answer, quantity);
         }
         makler.setFunds(makler.getFunds() - cost);

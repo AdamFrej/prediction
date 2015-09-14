@@ -98,6 +98,12 @@ public class Transfer {
     private boolean offersAreValidForTransaction(Offer a, Offer b) {
         boolean offersAreFromTheSameUser = a.getUser().getId().equals(b.getUser().getId());
         boolean offersAreOfTheSameType = a.getType().equals(b.getType());
-        return !(offersAreFromTheSameUser || offersAreOfTheSameType);
+
+        buy = a.getType() == OfferType.BUY ? a : b;
+        sell = a.getType() == OfferType.SELL ? a :b;
+
+        boolean buPriceIsLoweThanSellPrice = buy.getPrice() < sell.getPrice();
+
+        return !(offersAreFromTheSameUser || offersAreOfTheSameType || buPriceIsLoweThanSellPrice);
     }
 }

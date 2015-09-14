@@ -26,7 +26,7 @@ public class QuestionEntity implements Question {
     private UserEntity operator;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="QUESTION_ID", referencedColumnName="QUESTION_ID")
+    @JoinColumn(name="T_QUESTION_ID", referencedColumnName="QUESTION_ID")
     private List<AnswerEntity> answers;
 
     @Override

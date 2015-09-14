@@ -78,12 +78,16 @@ public class MyQuestionsController {
         form.setAnswerTwoName(question.getAnswers().get(1).getName());
 
         Long priceOne = makler.findQuote(question.getAnswers().get(0).getId()).get().getLastTransactionPrice();
-        if (priceOne !=null)
-            form.setAnswerOnePercentage(priceOne.doubleValue() / question.getLiquidationValue().doubleValue());
+        if (priceOne !=null) {
+            double answerOnePercentage = priceOne.doubleValue() / question.getLiquidationValue().doubleValue();
+            form.setAnswerOnePercentage(answerOnePercentage*100);
+        }
 
         Long priceTwo = makler.findQuote(question.getAnswers().get(1).getId()).get().getLastTransactionPrice();
-        if(priceTwo !=null)
-            form.setAnswerTwoPercentage(priceTwo.doubleValue() / question.getLiquidationValue().doubleValue());
+        if(priceTwo !=null) {
+            double answerTwoPercentage = priceTwo.doubleValue() / question.getLiquidationValue().doubleValue();
+            form.setAnswerTwoPercentage(answerTwoPercentage*100);
+        }
 
         return form;
     }

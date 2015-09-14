@@ -50,6 +50,7 @@ public class MaklerImpl implements Makler {
     public Optional<Offer> findOffer(Long id) {
         return offers.find(id);
     }
+
     @Override
     public List<Offer> findOffers(User user) {
         return offers.findByUser(user);
@@ -64,7 +65,10 @@ public class MaklerImpl implements Makler {
 
     @Override
     public boolean cancel(User user, Long offerId) {
-        return user.getId().equals(offerId) && offers.remove(offerId);
+        Optional<Offer> offer = offers.find(offerId);
+        if (offer.isPresent() && user.getId().equals(offer.get().getUser().getId()))
+            return offers.remove(offerId);
+        return false;
     }
 
     @Override
@@ -89,7 +93,7 @@ public class MaklerImpl implements Makler {
     @Override
     public Long findFunds(User user) {
         Optional<User> u = users.find(user.getId());
-        if(u.isPresent())
+        if (u.isPresent())
             return u.get().getFunds();
         return null;
     }

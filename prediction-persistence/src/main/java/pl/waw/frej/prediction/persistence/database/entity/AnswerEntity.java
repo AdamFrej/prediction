@@ -25,8 +25,8 @@ public class AnswerEntity implements Answer {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="ANSWER_USER",
-            joinColumns={@JoinColumn(name="ANSWER_ID", referencedColumnName="ANSWER_ID")},
-            inverseJoinColumns={@JoinColumn(name="USER_ID", referencedColumnName="USER_ID")})
+            joinColumns={@JoinColumn(name="T_ANSWER_ID", referencedColumnName="ANSWER_ID")},
+            inverseJoinColumns={@JoinColumn(name="T_USER_ID", referencedColumnName="USER_ID")})
     private List<UserEntity> owners;
     private boolean liquidated;
 
